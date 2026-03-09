@@ -654,6 +654,9 @@
         <p>Diseñado con ❤️ para nuestra escapada. ¡Ganas de viaje!</p>
     </footer>
 
+    <!-- config.js está en .gitignore — contiene el token de GitHub, nunca se sube al repo -->
+    <script src="config.js" onerror="console.warn('config.js no encontrado — se usará el token guardado en localStorage')"></script>
+
     <!-- ==================== JAVASCRIPT ==================== -->
     <script>
         // --- COLORES HOMOGENEIZADOS ---
@@ -783,7 +786,9 @@
         const GH_API  = `https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}`;
 
         function getGHToken() {
-            return localStorage.getItem('maleta_gh_token') || '';
+            return (window.GH_TOKEN && window.GH_TOKEN !== 'PEGA_AQUI_TU_TOKEN' ? window.GH_TOKEN : null)
+                || localStorage.getItem('maleta_gh_token')
+                || '';
         }
         function promptGHToken() {
             const existing = getGHToken();
