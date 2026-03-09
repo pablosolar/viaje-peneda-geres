@@ -60,8 +60,8 @@
         .hero-card:hover { transform: translateY(-6px); box-shadow: 0 20px 30px -10px rgba(0,0,0,0.15); }
         .placeholder-item { border: 2px dashed #99C1B9; border-radius: 1rem; padding: 2rem; text-align: center; color: #7D8F69; transition: all 0.2s; }
         .placeholder-item:hover { border-color: #D88C9A; color: #D88C9A; }        
-        .mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
-        .mobile-menu.open { max-height: 400px; }    
+        .mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding-bottom: 0; }
+        .mobile-menu.open { max-height: 400px; padding-bottom: 0.5rem; }
     </style>
 </head>
 <body class="antialiased selection:bg-arcilla selection:text-white pb-20">
@@ -86,7 +86,7 @@
                 <button class="md:hidden text-tierra text-2xl" onclick="toggleMobileMenu()">☰</button>
             </div>
             <!-- Mobile menu -->
-            <div class="mobile-menu md:hidden pb-2" id="mobile-menu">
+            <div class="mobile-menu md:hidden" id="mobile-menu">
                 <div class="flex flex-col gap-1">
                     <button class="main-nav-btn text-left active-section" data-section="home" onclick="showSection('home'); toggleMobileMenu()"><span class="w-6 inline-block">🏠</span> Inicio</button>
                     <button class="main-nav-btn text-left" data-section="plan" onclick="showSection('plan'); toggleMobileMenu()"><span class="w-6 inline-block">📋</span> Plan de Viaje</button>
@@ -103,7 +103,7 @@
     <section id="section-home" class="page-section">
 
         <!-- ── Hero Banner ── -->
-        <div class="relative w-full overflow-hidden" style="height: clamp(320px, 55vw, 580px);">
+        <div class="relative w-full overflow-hidden" style="height: clamp(180px, 50vw, 580px);">
             <img src="ecu_viajeras.webp" alt="Ecuaciones Viajeras"
                  class="w-full h-full"
                  style="object-fit: cover; object-position: center 70%;">
@@ -119,16 +119,16 @@
             <p class="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto">
                 Andrea, aquí tienes toda la info del viaje organizada. Pulsa en cualquier sección para explorarla.
             </p>
-            <div class="flex flex-wrap items-center justify-center gap-1 mt-4 text-sm font-bold" style="color:#2D3436;">
-                <span class="px-2 py-0.5 rounded-full" style="background:rgba(125,143,105,0.4);">Gijón</span>
+            <div class="flex items-center justify-center gap-0.5 mt-4 text-xs font-semibold" style="color:#2D3436;">
+                <span class="px-1.5 py-0.5 rounded-full whitespace-nowrap" style="background:rgba(125,143,105,0.4);">Gijón</span>
                 <span style="color:#7D8F69;">→</span>
-                <span class="px-2 py-0.5 rounded-full" style="background:rgba(125,143,105,0.4);">Valença</span>
+                <span class="px-1.5 py-0.5 rounded-full whitespace-nowrap" style="background:rgba(125,143,105,0.4);">Valença</span>
                 <span style="color:#7D8F69;">→</span>
-                <span class="px-2 py-0.5 rounded-full" style="background:rgba(125,143,105,0.4);">Gerês</span>
+                <span class="px-1.5 py-0.5 rounded-full whitespace-nowrap" style="background:rgba(125,143,105,0.4);">Gerês</span>
                 <span style="color:#7D8F69;">→</span>
-                <span class="px-2 py-0.5 rounded-full" style="background:rgba(125,143,105,0.4);">Ribeira Sacra</span>
+                <span class="px-1.5 py-0.5 rounded-full whitespace-nowrap" style="background:rgba(125,143,105,0.4);">Ribeira Sacra</span>
                 <span style="color:#7D8F69;">→</span>
-                <span class="px-2 py-0.5 rounded-full" style="background:rgba(125,143,105,0.4);">Gijón</span>
+                <span class="px-1.5 py-0.5 rounded-full whitespace-nowrap" style="background:rgba(125,143,105,0.4);">Gijón</span>
             </div>
         </header>
 
