@@ -60,6 +60,17 @@
         .hero-card:hover { transform: translateY(-6px); box-shadow: 0 20px 30px -10px rgba(0,0,0,0.15); }
         .placeholder-item { border: 2px dashed #99C1B9; border-radius: 1rem; padding: 2rem; text-align: center; color: #7D8F69; transition: all 0.2s; }
         .placeholder-item:hover { border-color: #D88C9A; color: #D88C9A; }        
+        .maleta-tab { color: #6b7280; background: transparent; border-bottom: 3px solid transparent; margin-bottom: -1px; }
+        .maleta-tab.active { color: #53a8c8; border-bottom-color: #53a8c8; background: white; font-weight: 700; }
+        .maleta-tab:hover:not(.active) { color: #53a8c8; background: rgba(83,168,200,0.07); }
+        .checklist-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0.5rem; border-radius: 0.4rem; transition: background 0.15s; }
+        .checklist-item:hover { background: rgba(0,0,0,0.03); }
+        .checklist-item input[type=checkbox] { accent-color: #53a8c8; width: 1rem; height: 1rem; flex-shrink: 0; cursor: pointer; }
+        .checklist-item label { cursor: pointer; font-size: 0.9rem; line-height: 1.3; flex: 1; }
+        .checklist-item label.done { text-decoration: line-through; color: #9ca3af; }
+        .checklist-item .del-btn { opacity: 0; color: #d1d5db; font-size: 0.75rem; cursor: pointer; transition: opacity 0.15s; padding: 0 0.2rem; background: none; border: none; }
+        .checklist-item:hover .del-btn { opacity: 1; }
+        .del-btn:hover { color: #D88C9A !important; }
         .mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding-bottom: 0; }
         .mobile-menu.open { max-height: 400px; padding-bottom: 0.5rem; }
         .hero-img { display: block; width: 100%; height: auto; }
@@ -583,27 +594,52 @@
 
     <!-- ==================== SECCIÓN: MALETA ==================== -->
     <section id="section-maleta" class="page-section section-hidden">
-        <header class="max-w-4xl mx-auto px-4 mt-10 mb-8 text-center">
-            <p class="text-oceano font-semibold tracking-widest uppercase text-sm mb-2">Preparativos</p>
+        <header class="max-w-4xl mx-auto px-4 mt-10 mb-6 text-center">
+            <p class="font-semibold tracking-widest uppercase text-sm mb-2" style="color:#53a8c8;">Preparativos</p>
             <h1 class="font-anton text-4xl md:text-6xl text-bosque mb-4 tracking-wide">Maleta</h1>
-            <p class="text-lg text-gray-700 max-w-2xl mx-auto">Todo lo que tenemos que llevarnos: ropa, material de montaña, documentos y cosas que no se nos pueden olvidar.</p>
+            <p class="text-lg text-gray-700 max-w-2xl mx-auto">Todo lo que tenemos que llevarnos. Marca lo que ya tienes listo — se guarda automáticamente.</p>
         </header>
+
+        <!-- Tabs de personas -->
         <div class="max-w-5xl mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="placeholder-item">
-                    <span class="text-4xl block mb-3">👕</span>
-                    <p class="font-anton text-xl tracking-wide mb-1">Ropa</p>
-                    <p class="text-sm">Lista de ropa para 4 días: montaña, casual y por si refresca.</p>
+            <div class="flex gap-2 mb-6 border-b border-gray-200">
+                <button onclick="showMaletaTab('general')" id="tab-general"
+                    class="maleta-tab font-anton tracking-wider px-5 py-2.5 text-base rounded-t-lg transition-all">
+                    🎒 General
+                </button>
+                <button onclick="showMaletaTab('pablo')" id="tab-pablo"
+                    class="maleta-tab font-anton tracking-wider px-5 py-2.5 text-base rounded-t-lg transition-all">
+                    🧔 Pablo
+                </button>
+                <button onclick="showMaletaTab('andrea')" id="tab-andrea"
+                    class="maleta-tab font-anton tracking-wider px-5 py-2.5 text-base rounded-t-lg transition-all">
+                    👩 Andrea
+                </button>
+            </div>
+
+            <!-- Panel: General -->
+            <div id="maleta-panel-general" class="maleta-panel">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div id="checklist-general_comida"></div>
+                    <div id="checklist-general_farmacia"></div>
                 </div>
-                <div class="placeholder-item">
-                    <span class="text-4xl block mb-3">🧭</span>
-                    <p class="font-anton text-xl tracking-wide mb-1">Material de montaña</p>
-                    <p class="text-sm">Botas, bastones, mochila, frontal, botiquín...</p>
+            </div>
+
+            <!-- Panel: Pablo -->
+            <div id="maleta-panel-pablo" class="maleta-panel hidden">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    <div id="checklist-pablo_ropa"></div>
+                    <div id="checklist-pablo_material"></div>
+                    <div id="checklist-pablo_documentos"></div>
                 </div>
-                <div class="placeholder-item">
-                    <span class="text-4xl block mb-3">📄</span>
-                    <p class="font-anton text-xl tracking-wide mb-1">Documentos y varios</p>
-                    <p class="text-sm">DNI, tarjetas, permisos ICNF, EasyToll, efectivo...</p>
+            </div>
+
+            <!-- Panel: Andrea -->
+            <div id="maleta-panel-andrea" class="maleta-panel hidden">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    <div id="checklist-andrea_ropa"></div>
+                    <div id="checklist-andrea_material"></div>
+                    <div id="checklist-andrea_documentos"></div>
                 </div>
             </div>
         </div>
@@ -732,6 +768,112 @@
             if (sectionId === 'rutas') {
                 setTimeout(initRutasCharts, 100);
             }
+            if (sectionId === 'maleta') {
+                setTimeout(initMaleta, 50);
+            }
+        }
+
+        // --- MALETA: CHECKLISTS CON PERSISTENCIA ---
+        const MALETA_DEFAULTS = {
+            'general_comida':     ['Snacks para las rutas', 'Barritas energéticas', 'Frutos secos', 'Fruta fresca', 'Agua (cantimploras)'],
+            'general_farmacia':   ['Ibuprofeno / paracetamol', 'Tiritas y vendas', 'Crema antiséptica', 'Antihistamínico', 'Protector solar SPF50', 'Repelente de insectos'],
+            'pablo_ropa':         ['Camisetas técnicas ×3', 'Pantalón de montaña', 'Forro polar', 'Chubasquero', 'Ropa interior ×4', 'Calcetines senderismo ×3', 'Ropa casual para cenar', 'Bañador'],
+            'pablo_material':     ['Botas de montaña', 'Mochila de día 25L', 'Bastones', 'Frontal + pilas extra', 'Gafas de sol', 'Gorra / buff', 'Navaja multiusos'],
+            'pablo_documentos':   ['DNI', 'Tarjeta sanitaria', 'Tarjeta bancaria', 'Permiso ICNF (Nevosa)', 'EasyToll cargado', 'Confirmaciones alojamiento'],
+            'andrea_ropa':        ['Camisetas técnicas ×3', 'Pantalón de montaña', 'Forro polar', 'Chubasquero', 'Ropa interior ×4', 'Calcetines senderismo ×3', 'Ropa casual para cenar', 'Bañador'],
+            'andrea_material':    ['Botas de montaña', 'Mochila de día 25L', 'Bastones', 'Frontal + pilas extra', 'Gafas de sol', 'Gorra / buff', 'Navaja multiusos'],
+            'andrea_documentos':  ['DNI', 'Tarjeta sanitaria', 'Tarjeta bancaria', 'Permiso ICNF (Nevosa)', 'EasyToll cargado', 'Confirmaciones alojamiento'],
+        };
+
+        const MALETA_META = {
+            'general_comida':    { title: '🍎 Comida & Snacks' },
+            'general_farmacia':  { title: '💊 Farmacia' },
+            'pablo_ropa':        { title: '👕 Ropa' },
+            'pablo_material':    { title: '🧭 Material' },
+            'pablo_documentos':  { title: '📄 Documentos' },
+            'andrea_ropa':       { title: '👕 Ropa' },
+            'andrea_material':   { title: '🧭 Material' },
+            'andrea_documentos': { title: '📄 Documentos' },
+        };
+
+        function getMaletaItems(key) {
+            const stored = localStorage.getItem('maleta_' + key);
+            if (stored) return JSON.parse(stored);
+            return MALETA_DEFAULTS[key].map(t => ({ text: t, checked: false }));
+        }
+
+        function saveMaletaItems(key, items) {
+            localStorage.setItem('maleta_' + key, JSON.stringify(items));
+        }
+
+        function renderChecklist(key) {
+            const container = document.getElementById('checklist-' + key);
+            if (!container) return;
+            const items = getMaletaItems(key);
+            const meta = MALETA_META[key];
+            const done = items.filter(i => i.checked).length;
+
+            container.innerHTML = `
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="font-anton tracking-wider text-lg text-bosque">${meta.title}</h3>
+                        <span class="text-xs font-semibold px-2 py-0.5 rounded-full" style="background:rgba(83,168,200,0.15);color:#53a8c8;">${done}/${items.length}</span>
+                    </div>
+                    <ul class="space-y-0.5 mb-4" id="list-${key}">
+                        ${items.map((item, i) => `
+                            <li class="checklist-item">
+                                <input type="checkbox" id="chk-${key}-${i}" ${item.checked ? 'checked' : ''}
+                                    onchange="toggleMaletaItem('${key}', ${i})">
+                                <label for="chk-${key}-${i}" class="${item.checked ? 'done' : ''}">${item.text}</label>
+                                <button class="del-btn" onclick="deleteMaletaItem('${key}', ${i})" title="Eliminar">✕</button>
+                            </li>
+                        `).join('')}
+                    </ul>
+                    <div class="flex gap-2">
+                        <input type="text" id="input-${key}" placeholder="Añadir elemento…"
+                            class="flex-1 text-sm border border-gray-200 rounded-lg px-3 py-1.5 focus:outline-none focus:border-[#53a8c8] bg-gray-50"
+                            onkeydown="if(event.key==='Enter') addMaletaItem('${key}')">
+                        <button onclick="addMaletaItem('${key}')"
+                            class="text-sm font-semibold px-3 py-1.5 rounded-lg text-white transition-opacity hover:opacity-80"
+                            style="background:#53a8c8;">+ Añadir</button>
+                    </div>
+                </div>`;
+        }
+
+        function toggleMaletaItem(key, index) {
+            const items = getMaletaItems(key);
+            items[index].checked = !items[index].checked;
+            saveMaletaItems(key, items);
+            renderChecklist(key);
+        }
+
+        function deleteMaletaItem(key, index) {
+            const items = getMaletaItems(key);
+            items.splice(index, 1);
+            saveMaletaItems(key, items);
+            renderChecklist(key);
+        }
+
+        function addMaletaItem(key) {
+            const input = document.getElementById('input-' + key);
+            const text = input.value.trim();
+            if (!text) return;
+            const items = getMaletaItems(key);
+            items.push({ text, checked: false });
+            saveMaletaItems(key, items);
+            renderChecklist(key);
+        }
+
+        function showMaletaTab(tab) {
+            ['general', 'pablo', 'andrea'].forEach(t => {
+                document.getElementById('maleta-panel-' + t).classList.toggle('hidden', t !== tab);
+                document.getElementById('tab-' + t).classList.toggle('active', t === tab);
+            });
+        }
+
+        function initMaleta() {
+            Object.keys(MALETA_META).forEach(key => renderChecklist(key));
+            showMaletaTab('general');
         }
 
         // --- MENÚ MOBILE ---
