@@ -15,11 +15,12 @@
             theme: {
                 extend: {
                     colors: {
-                        'tierra': '#F4EFEA',
+                        'tierra': '#F1E3D3',
                         'bosque': '#7D8F69',
-                        'oceano': '#85A9D1',
-                        'arcilla': '#C98B6D',
-                        'piedra': '#94A684',
+                        'oceano': '#8E7DBE',
+                        'arcilla': '#D88C9A',
+                        'piedra': '#99C1B9',
+                        'apricot': '#F2D0A9',
                         'alerta': '#D68C8C',
                         'texto': '#2D3436'
                     },
@@ -33,7 +34,7 @@
         }
     </script>
     <style>
-        body { font-family: 'Nunito Sans', sans-serif; background-color: #F4EFEA; color: #2D3436; }
+        body { font-family: 'Nunito Sans', sans-serif; background-color: #F1E3D3; color: #2D3436; }
         .font-serif { font-family: 'Lora', serif; }
         .font-anton { font-family: 'Anton', sans-serif; }
         .section-hidden { display: none !important; }
@@ -45,17 +46,17 @@
         .seg-btn { padding: 0.4rem 0.9rem; border-radius: 0.4rem; font-size: 0.8rem; font-weight: 600; transition: all 0.2s; cursor: pointer; border: none; background: transparent; color: #4b5563; }
         .seg-btn.active { background: white; color: #7D8F69; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
         .tab-btn { transition: all 0.3s ease; border-bottom: 3px solid transparent; }
-        .tab-btn.active { border-bottom-color: #C98B6D; color: #7D8F69; font-weight: bold; }
-        .tab-btn:hover:not(.active) { border-bottom-color: #94A684; }
+        .tab-btn.active { border-bottom-color: #D88C9A; color: #7D8F69; font-weight: bold; }
+        .tab-btn:hover:not(.active) { border-bottom-color: #99C1B9; }
         .info-card { transition: transform 0.2s, box-shadow 0.2s; }
         .info-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
-        .main-nav-btn { position: relative; padding: 0.5rem 1rem; border-radius: 0.5rem; transition: all 0.25s ease; font-weight: 600; font-size: 0.875rem; color: #F4EFEA; }
+        .main-nav-btn { position: relative; padding: 0.5rem 1rem; border-radius: 0.5rem; transition: all 0.25s ease; font-weight: 600; font-size: 1.1rem; letter-spacing: 0.1em; color: #F1E3D3; }
         .main-nav-btn:hover { background-color: rgba(255,255,255,0.15); }
-        .main-nav-btn.active-section { background-color: rgba(255,255,255,0.2); box-shadow: inset 0 -3px 0 #C98B6D; }
+        .main-nav-btn.active-section { background-color: rgba(255,255,255,0.2); box-shadow: inset 0 -3px 0 #D88C9A; }
         .hero-card { transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; }
         .hero-card:hover { transform: translateY(-6px); box-shadow: 0 20px 30px -10px rgba(0,0,0,0.15); }
-        .placeholder-item { border: 2px dashed #94A684; border-radius: 1rem; padding: 2rem; text-align: center; color: #7D8F69; transition: all 0.2s; }
-        .placeholder-item:hover { border-color: #C98B6D; color: #C98B6D; }        
+        .placeholder-item { border: 2px dashed #99C1B9; border-radius: 1rem; padding: 2rem; text-align: center; color: #7D8F69; transition: all 0.2s; }
+        .placeholder-item:hover { border-color: #D88C9A; color: #D88C9A; }        
         .mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
         .mobile-menu.open { max-height: 400px; }    
     </style>
@@ -102,8 +103,8 @@
         <div class="relative w-full overflow-hidden" style="height: clamp(320px, 55vw, 580px);">
             <img src="ecu_viajeras.webp" alt="Ecuaciones Viajeras"
                  class="w-full h-full"
-                 style="object-fit: cover; object-position: center 45%;">
-            <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(244,239,234,0.92) 85%, #F4EFEA 100%);"></div>
+                 style="object-fit: cover; object-position: center 70%;">
+            <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(241,227,211,0.92) 85%, #F1E3D3 100%);"></div>
             <div class="absolute top-5 right-5 md:top-8 md:right-8 bg-bosque/80 backdrop-blur-sm text-tierra px-4 py-2 rounded-xl text-xs font-semibold tracking-widest uppercase shadow-lg">
                 2 – 5 Abril 2026
             </div>
@@ -125,12 +126,12 @@
 
             <!-- Plan de Viaje — verde bosque -->
             <div class="hero-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100" onclick="showSection('plan')">
-                <div class="h-2" style="background:#5C7A5A;"></div>
+                <div class="h-2" style="background:#99C1B9;"></div>
                 <div class="p-6">
                     <div class="text-4xl mb-3">📋</div>
-                    <h3 class="font-anton text-2xl tracking-wide mb-2" style="color:#5C7A5A;">Plan de Viaje</h3>
+                    <h3 class="font-anton text-2xl tracking-wide mb-2" style="color:#99C1B9;">Plan de Viaje</h3>
                     <p class="text-gray-600 text-sm">El itinerario completo día a día: horarios, paradas, alojamiento, alternativas y notas logísticas.</p>
-                    <div class="mt-4 font-semibold text-sm flex items-center gap-1" style="color:#5C7A5A;">
+                    <div class="mt-4 font-semibold text-sm flex items-center gap-1" style="color:#99C1B9;">
                         Ver plan completo <span>→</span>
                     </div>
                 </div>
@@ -138,12 +139,12 @@
 
             <!-- Rutas — terracota -->
             <div class="hero-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100" onclick="showSection('rutas')">
-                <div class="h-2" style="background:#C98B6D;"></div>
+                <div class="h-2" style="background:#D88C9A;"></div>
                 <div class="p-6">
                     <div class="text-4xl mb-3">🥾</div>
-                    <h3 class="font-anton text-2xl tracking-wide mb-2" style="color:#C98B6D;">Rutas</h3>
+                    <h3 class="font-anton text-2xl tracking-wide mb-2" style="color:#D88C9A;">Rutas</h3>
                     <p class="text-gray-600 text-sm">Todas las rutas de senderismo que hemos considerado: distancias, desniveles, tracks y qué esperar.</p>
-                    <div class="mt-4 font-semibold text-sm flex items-center gap-1" style="color:#C98B6D;">
+                    <div class="mt-4 font-semibold text-sm flex items-center gap-1" style="color:#D88C9A;">
                         Explorar rutas <span>→</span>
                     </div>
                 </div>
@@ -151,12 +152,12 @@
 
             <!-- Mercadillos — azul oceano -->
             <div class="hero-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100" onclick="showSection('mercadillos')">
-                <div class="h-2" style="background:#7BA3C8;"></div>
+                <div class="h-2" style="background:#8E7DBE;"></div>
                 <div class="p-6">
                     <div class="text-4xl mb-3">🛍️</div>
-                    <h3 class="font-anton text-2xl tracking-wide mb-2" style="color:#7BA3C8;">Mercadillos</h3>
+                    <h3 class="font-anton text-2xl tracking-wide mb-2" style="color:#8E7DBE;">Mercadillos</h3>
                     <p class="text-gray-600 text-sm">Ferias medievales, mercados de artesanía, tiendas de plata y cerámica que pillamos de camino.</p>
-                    <div class="mt-4 font-semibold text-sm flex items-center gap-1" style="color:#7BA3C8;">
+                    <div class="mt-4 font-semibold text-sm flex items-center gap-1" style="color:#8E7DBE;">
                         Ver mercadillos <span>→</span>
                     </div>
                 </div>
@@ -164,12 +165,12 @@
 
             <!-- Pueblos — ámbar cálido -->
             <div class="hero-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100" onclick="showSection('pueblos')">
-                <div class="h-2" style="background:#C8844A;"></div>
+                <div class="h-2" style="background:#C8894A;"></div>
                 <div class="p-6">
                     <div class="text-4xl mb-3">🏘️</div>
-                    <h3 class="font-anton text-2xl tracking-wide mb-2" style="color:#C8844A;">Pueblos</h3>
+                    <h3 class="font-anton text-2xl tracking-wide mb-2" style="color:#C8894A;">Pueblos</h3>
                     <p class="text-gray-600 text-sm">Los pueblos de piedra, aldeas remotas y villas con encanto que vamos a visitar o que nos quedan a tiro.</p>
-                    <div class="mt-4 font-semibold text-sm flex items-center gap-1" style="color:#C8844A;">
+                    <div class="mt-4 font-semibold text-sm flex items-center gap-1" style="color:#C8894A;">
                         Descubrir pueblos <span>→</span>
                     </div>
                 </div>
@@ -190,28 +191,20 @@
 
         </div>
 
-        <!-- Mini-resumen rápido -->
+        <!-- Widget del tiempo en Gerês -->
         <div class="max-w-4xl mx-auto px-4 mb-16">
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                <div>
-                    <div class="text-3xl mb-1">🗓️</div>
-                    <div class="text-2xl font-bold text-bosque">4</div>
-                    <div class="text-sm text-gray-500">Días</div>
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <div>
+                        <h3 class="font-anton text-lg tracking-wide text-bosque">☁️ Tiempo en Gerês</h3>
+                        <p class="text-xs text-gray-400 mt-0.5">Parque Nacional Peneda-Gerês · Actualizado en directo</p>
+                    </div>
+                    <span id="weather-updated" class="text-[10px] text-gray-400"></span>
                 </div>
-                <div>
-                    <div class="text-3xl mb-1">🥾</div>
-                    <div class="text-2xl font-bold text-bosque">~37 km</div>
-                    <div class="text-sm text-gray-500">De rutas</div>
-                </div>
-                <div>
-                    <div class="text-3xl mb-1">♨️</div>
-                    <div class="text-2xl font-bold text-bosque">40 ºC</div>
-                    <div class="text-sm text-gray-500">Termas</div>
-                </div>
-                <div>
-                    <div class="text-3xl mb-1">🏰</div>
-                    <div class="text-2xl font-bold text-bosque">2</div>
-                    <div class="text-sm text-gray-500">Países</div>
+                <div id="weather-grid" class="grid grid-cols-4 md:grid-cols-7 gap-2">
+                    <div class="col-span-4 md:col-span-7 text-center py-6 text-gray-400 text-sm" id="weather-loading">
+                        Cargando previsión…
+                    </div>
                 </div>
             </div>
         </div>
@@ -610,12 +603,85 @@
         // --- COLORES HOMOGENEIZADOS ---
         const COLORS = {
             bosque: '#7D8F69',
-            oceano: '#85A9D1',
-            arcilla: '#C98B6D',
-            piedra: '#94A684',
+            oceano: '#8E7DBE',
+            arcilla: '#D88C9A',
+            piedra: '#99C1B9',
             alerta: '#D68C8C',
             texto: '#2D3436'
         };
+
+        // ═══════════ WIDGET TIEMPO GERÊS (Open-Meteo, sin API key) ═══════════
+        const WMO = {
+            0:'☀️',1:'🌤️',2:'⛅',3:'☁️',
+            45:'🌫️',48:'🌫️',
+            51:'🌦️',53:'🌦️',55:'🌧️',
+            61:'🌧️',63:'🌧️',65:'🌧️',
+            71:'❄️',73:'❄️',75:'❄️',
+            80:'🌦️',81:'🌦️',82:'⛈️',
+            85:'🌨️',86:'🌨️',
+            95:'⛈️',96:'⛈️',99:'⛈️'
+        };
+        const WMO_DESC = {
+            0:'Despejado',1:'Poco nuboso',2:'Nuboso',3:'Cubierto',
+            45:'Niebla',48:'Niebla',
+            51:'Llovizna',53:'Llovizna',55:'Llovizna fuerte',
+            61:'Lluvia leve',63:'Lluvia',65:'Lluvia fuerte',
+            71:'Nieve leve',73:'Nieve',75:'Nieve fuerte',
+            80:'Chubascos',81:'Chubascos',82:'Chubascos fuertes',
+            85:'Nieve',86:'Nieve fuerte',
+            95:'Tormenta',96:'Tormenta',99:'Tormenta'
+        };
+        const DIAS_ES = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+
+        async function loadWeather() {
+            try {
+                const url = 'https://api.open-meteo.com/v1/forecast?latitude=41.72&longitude=-8.16&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,wind_speed_10m_max&timezone=Europe%2FLisbon&forecast_days=7';
+                const res = await fetch(url);
+                const data = await res.json();
+                const { time, weather_code, temperature_2m_max, temperature_2m_min, precipitation_sum, wind_speed_10m_max } = data.daily;
+
+                const grid = document.getElementById('weather-grid');
+                grid.innerHTML = '';
+
+                time.forEach((dateStr, i) => {
+                    const date = new Date(dateStr + 'T12:00:00');
+                    const dia = DIAS_ES[date.getDay()];
+                    const num = date.getDate();
+                    const code = weather_code[i];
+                    const emoji = WMO[code] || '🌡️';
+                    const desc = WMO_DESC[code] || '';
+                    const tmax = Math.round(temperature_2m_max[i]);
+                    const tmin = Math.round(temperature_2m_min[i]);
+                    const precip = precipitation_sum[i]?.toFixed(1) ?? '0';
+                    const viento = Math.round(wind_speed_10m_max[i]);
+
+                    const card = document.createElement('div');
+                    card.className = 'flex flex-col items-center text-center p-2 rounded-xl bg-tierra/50 gap-1';
+                    card.innerHTML = `
+                        <span class="text-xs font-bold text-bosque uppercase tracking-wide">${dia}</span>
+                        <span class="text-xs text-gray-400">${num}</span>
+                        <span class="text-2xl leading-none">${emoji}</span>
+                        <span class="text-[10px] text-gray-500 leading-tight">${desc}</span>
+                        <div class="flex gap-1 text-xs font-bold">
+                            <span style="color:#D88C9A">${tmax}°</span>
+                            <span class="text-gray-400">${tmin}°</span>
+                        </div>
+                        <span class="text-[10px] text-gray-400">💧${precip}mm</span>
+                    `;
+                    grid.appendChild(card);
+                });
+
+                const now = new Date();
+                document.getElementById('weather-updated').textContent =
+                    `Actualizado ${now.getHours()}:${String(now.getMinutes()).padStart(2,'0')}`;
+            } catch(e) {
+                document.getElementById('weather-grid').innerHTML =
+                    '<p class="col-span-7 text-center text-gray-400 text-sm py-4">No se pudo cargar la previsión.</p>';
+            }
+        }
+
+        // Cargar al iniciar y al volver al home
+        document.addEventListener('DOMContentLoaded', loadWeather);
 
         // --- NAVEGACIÓN ENTRE SECCIONES ---
         function showSection(sectionId) {
@@ -751,7 +817,7 @@
         }
         function getDiffBgClass(d) {
             if (d === 'facil') return 'bg-[#7D8F69]';
-            if (d === 'moderada') return 'bg-[#85A9D1]';
+            if (d === 'moderada') return 'bg-[#8E7DBE]';
             return 'bg-[#D68C8C]';
         }
         function getTagBg(tag) {
