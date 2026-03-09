@@ -62,6 +62,12 @@
         .placeholder-item:hover { border-color: #D88C9A; color: #D88C9A; }        
         .mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding-bottom: 0; }
         .mobile-menu.open { max-height: 400px; padding-bottom: 0.5rem; }
+        .hero-img { display: block; width: 100%; height: auto; }
+        .hero-banner { height: auto; }
+        @media (min-width: 768px) {
+            .hero-banner { height: clamp(320px, 55vw, 580px); }
+            .hero-img { height: 100%; object-fit: cover; object-position: center 70%; }
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-arcilla selection:text-white pb-20">
@@ -83,7 +89,7 @@
                     <button class="main-nav-btn font-anton tracking-wider" data-section="maleta" onclick="showSection('maleta')">Maleta</button>
                 </div>
                 <!-- Mobile hamburger -->
-                <button class="md:hidden text-tierra text-2xl" onclick="toggleMobileMenu()">☰</button>
+                <button class="md:hidden text-tierra" style="font-size:3.5rem; line-height:1;" onclick="toggleMobileMenu()">☰</button>
             </div>
             <!-- Mobile menu -->
             <div class="mobile-menu md:hidden" id="mobile-menu">
@@ -103,10 +109,9 @@
     <section id="section-home" class="page-section">
 
         <!-- ── Hero Banner ── -->
-        <div class="relative w-full overflow-hidden" style="height: clamp(180px, 50vw, 580px);">
+        <div class="relative w-full overflow-hidden hero-banner" style="height: auto;">
             <img src="ecu_viajeras.webp" alt="Ecuaciones Viajeras"
-                 class="w-full h-full"
-                 style="object-fit: cover; object-position: center 70%;">
+                 class="hero-img">
             <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(241,227,211,0.92) 85%, #F1E3D3 100%);"></div>
             <div class="absolute top-5 right-5 md:top-8 md:right-8 bg-bosque/80 backdrop-blur-sm text-tierra px-4 py-2 rounded-xl text-xs font-semibold tracking-widest uppercase shadow-lg">
                 2 – 5 Abril 2026
