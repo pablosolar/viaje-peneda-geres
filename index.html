@@ -55,7 +55,11 @@
         .hero-card { transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; }
         .hero-card:hover { transform: translateY(-6px); box-shadow: 0 20px 30px -10px rgba(0,0,0,0.15); }
         .placeholder-item { border: 2px dashed #94A684; border-radius: 1rem; padding: 2rem; text-align: center; color: #7D8F69; transition: all 0.2s; }
-        .placeholder-item:hover { border-color: #C98B6D; color: #C98B6D; }\n        .mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }\n        .mobile-menu.open { max-height: 400px; }\n    </style>\n</head>
+        .placeholder-item:hover { border-color: #C98B6D; color: #C98B6D; }        
+        .mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .mobile-menu.open { max-height: 400px; }    
+    </style>
+</head>
 <body class="antialiased selection:bg-arcilla selection:text-white pb-20">
 
     <!-- ==================== NAVEGACIÓN PRINCIPAL ==================== -->
@@ -63,7 +67,7 @@
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between items-center py-3">
                 <button onclick="showSection('home')" class="font-anton text-2xl tracking-wider hover:opacity-80 transition-opacity cursor-pointer flex items-center gap-3">
-                    🗺️ Ecuaciones Viajeras
+                    <img src="ecu_viajeras.webp" alt="Ecuaciones Viajeras" class="h-8">
                 </button>
                 <!-- Desktop nav -->
                 <div class="hidden md:flex items-center gap-1" id="desktop-nav">
@@ -285,7 +289,7 @@
                                 <li>🔸 <strong>Opción B (Pozas):</strong> Ruta de los 7 puentes o enlazar hacia Poço Azul. Menos desnivel pero nos permite ver piscinas naturales impresionantes.</li>
                             </ul>
                             <div class="bg-yellow-50 text-yellow-800 p-3 rounded text-sm mt-4">
-                                <strong>Nota:</strong> Esta zona tiene alta protección. Ver pestaña "Notas" sobre el ICNF y aparcamiento.
+                                <strong>Nota:</strong> Esta zona tiene alta protección. Ver pestaña \"Notas\" sobre el ICNF y aparcamiento.
                             </div>
                         </div>
                         <div class="bg-tierra rounded-xl p-6 border-l-4 border-oceano flex flex-col justify-center">
@@ -382,7 +386,7 @@
                         </div>
                         <div class="border border-gray-200 p-4 rounded-lg bg-white">
                             <h4 class="font-anton text-xl tracking-wide text-bosque">🏙️ Braga</h4>
-                            <p class="text-sm text-gray-700 mt-2">Si un día diluvia y no se puede ir al monte, Braga está a menos de 1 hora de nuestra casa. Es una ciudad preciosa, el "Santuario del Bom Jesus do Monte" (el de las escaleras infinitas) es espectacular, y tiene mucho ambiente para tomar algo y tiendas.</p>
+                            <p class="text-sm text-gray-700 mt-2">Si un día diluvia y no se puede ir al monte, Braga está a menos de 1 hora de nuestra casa. Es una ciudad preciosa, el \"Santuario del Bom Jesus do Monte\" (el de las escaleras infinitas) es espectacular, y tiene mucho ambiente para tomar algo y tiendas.</p>
                         </div>
                         <div class="border border-gray-200 p-4 rounded-lg bg-white">
                             <h4 class="font-anton text-xl tracking-wide text-bosque">🥾 Trilho da Cidade da Calcedónia</h4>
@@ -390,7 +394,7 @@
                         </div>
                         <div class="border border-gray-200 p-4 rounded-lg bg-white">
                             <h4 class="font-anton text-xl tracking-wide text-bosque">🛍️ Allariz (Galicia)</h4>
-                            <p class="text-sm text-gray-700 mt-2">Si el plan de Monforte el domingo falla, Allariz está en la autopista volviendo a España. Ese finde tienen "Semana Santa ao Vivo", música en la calle, mercado de la Biosfera y los outlets de ropa abiertos.</p>
+                            <p class="text-sm text-gray-700 mt-2">Si el plan de Monforte el domingo falla, Allariz está en la autopista volviendo a España. Ese finde tienen \"Semana Santa ao Vivo\", música en la calle, mercado de la Biosfera y los outlets de ropa abiertos.</p>
                         </div>
                     </div>
                 </div>
@@ -586,8 +590,7 @@
 
     <!-- ==================== JAVASCRIPT ==================== -->
     <script>
-        // --- COLORES HOMOGENEIZADOS ---
-        const COLORS = {
+        // --- COLORES HOMOGENEIZADOS ---\n        const COLORS = {
             bosque: '#7D8F69',
             oceano: '#85A9D1',
             arcilla: '#C98B6D',
@@ -596,8 +599,7 @@
             texto: '#2D3436'
         };
 
-        // --- NAVEGACIÓN ENTRE SECCIONES ---
-        function showSection(sectionId) {
+        // --- NAVEGACIÓN ENTRE SECCIONES ---\n        function showSection(sectionId) {
             document.querySelectorAll('.page-section').forEach(s => s.classList.add('section-hidden'));
             const target = document.getElementById('section-' + sectionId);
             if (target) target.classList.remove('section-hidden');
@@ -619,13 +621,11 @@
             }
         }
 
-        // --- MENÚ MOBILE ---
-        function toggleMobileMenu() {
+        // --- MENÚ MOBILE ---\n        function toggleMobileMenu() {
             document.getElementById('mobile-menu').classList.toggle('open');
         }
 
-        // --- PESTAÑAS DEL PLAN DE VIAJE ---
-        document.addEventListener('DOMContentLoaded', () => {
+        // --- PESTAÑAS DEL PLAN DE VIAJE ---\n        document.addEventListener('DOMContentLoaded', () => {
             const tabBtns = document.querySelectorAll('.tab-btn');
             const dayPanels = document.querySelectorAll('.day-panel');
 
@@ -642,8 +642,7 @@
             });
         });
 
-        // --- CHART.JS ---
-        let chartInitialized = false;
+        // --- CHART.JS ---\n        let chartInitialized = false;
         function initChart() {
             if (chartInitialized) return;
             const canvas = document.getElementById('rutasChart');
@@ -677,10 +676,10 @@
                     maintainAspectRatio: false,
                     interaction: { mode: 'index', intersect: false },
                     plugins: {
-                        legend: { position: 'top', labels: { color: COLORS.texto, font: { family: "'Nunito Sans', sans-serif", weight: 'bold' } } },
+                        legend: { position: 'top', labels: { color: COLORS.texto, font: { family: "\'Nunito Sans\', sans-serif", weight: 'bold' } } },
                     },
                     scales: {
-                        x: { grid: { display: false }, ticks: { color: COLORS.texto, font: { family: "'Nunito Sans', sans-serif" } } },
+                        x: { grid: { display: false }, ticks: { color: COLORS.texto, font: { family: "\'Nunito Sans\', sans-serif" } } },
                         y: { type: 'linear', display: true, position: 'left', ticks: { color: COLORS.texto }, title: { display: true, text: 'Kilómetros', color: COLORS.texto, font: { size: 11 } }, grid: { color: 'rgba(0,0,0,0.05)' } },
                         y1: { type: 'linear', display: true, position: 'right', ticks: { color: COLORS.texto }, title: { display: true, text: 'Metros (Desnivel)', color: COLORS.texto, font: { size: 11 } }, grid: { drawOnChartArea: false } },
                     }
@@ -688,14 +687,13 @@
             });
         }
 
-        // ═══════════ RUTAS: Datos actualizados según URLs ═══════════
-        const rutasData = [
+        // ═══════════ RUTAS: Datos actualizados según URLs ═══════════\n        const rutasData = [
             { name: 'Trilho Bouzas a Fonte Fria', short: 'Bouzas–Fonte Fria', dist: 17.25, elev: 764, diff: 'moderada', time: 9.5, circular: true, tag: 'Alta Montaña', desc: 'Ruta circular por el Xurés entre Bouzas y Fonte Fria. Paisajes de alta montaña y restos megalíticos.', url: 'https://es.wikiloc.com/rutas-senderismo/trilho-de-bouzas-a-fonte-fria-11003252' },
             { name: 'Portela do Homem – Pico da Nevosa', short: 'Portela–Nevosa', dist: 24.92, elev: 953, diff: 'dificil', time: 9, circular: true, tag: 'Cima', desc: 'Travesía hasta el techo del Parque Nacional (1546 m). Requiere permiso del ICNF.', url: 'https://pt.wikiloc.com/trilhas-trekking/portela-do-homem-pico-da-nevosa-2401028' },
             { name: 'Portela do Homem – Portela de Leonte', short: 'Portela–Leonte', dist: 19.38, elev: 848, diff: 'dificil', time: 8.5, circular: true, tag: 'Bosque', desc: 'Circular por los prados de montaña entre Portela do Homem y Leonte. Paisajes abiertos.', url: 'https://es.wikiloc.com/rutas-senderismo/geres-portela-do-homem-pelos-prados-ate-portela-de-leonte-a-portela-do-homem-19533752' },
             { name: 'Trilho Poço Azul', short: 'Poço Azul', dist: 8.86, elev: 296, diff: 'facil', time: 2.5, circular: true, tag: 'Pozas', desc: 'Ruta a la Cascata do Arado y el Poço Azul, una de las más populares del Parque. Ideal para bañarse.', url: 'https://pt.wikiloc.com/trilhas-trekking/trilho-poco-azul-geres-113130771' },
             { name: 'Sete Lagoas (7 Lagunas)', short: 'Sete Lagoas', dist: 9.88, elev: 285, diff: 'facil', time: 4.4, circular: true, tag: 'Pozas', desc: 'Desde Xertelo hasta las 7 lagunas del río Cabril. Pozas de agua cristalina.', url: 'https://es.wikiloc.com/rutas-senderismo/sete-lagoas-geres-7307407' },
-            { name: 'Trilho Cidade da Calcedónia (PR1)', short: 'Calcedónia (PR1)', dist: 8.54, elev: 551, diff: 'dificil', time: 4, circular: true, tag: 'Aventura', desc: 'Sendero que recorre la "ciudad de piedra" de Calcedónia. Formaciones graníticas espectaculares.', url: 'https://es.wikiloc.com/rutas-senderismo/trilho-da-cidade-da-calcedonia-51216566' },
+            { name: 'Trilho Cidade da Calcedónia (PR1)', short: 'Calcedónia (PR1)', dist: 8.54, elev: 551, diff: 'dificil', time: 4, circular: true, tag: 'Aventura', desc: 'Sendero que recorre la \"ciudad de piedra\" de Calcedónia. Formaciones graníticas espectaculares.', url: 'https://es.wikiloc.com/rutas-senderismo/trilho-da-cidade-da-calcedonia-51216566' },
             { name: 'Trilho Pedra Bela', short: 'Pedra Bela', dist: 12.6, elev: 600, diff: 'moderada', time: 4, circular: true, tag: 'Vistas', desc: 'Circular hasta el mirador de Pedra Bela (829 m). Paisajes variados y zona de baño.', url: 'https://www.alltrails.com/es/ruta/portugal/braga/trilho-pedra-bela' },
             { name: 'PR3 Currais + PR10 Preguiça + Vidoal', short: 'PR3+PR10 Currais', dist: 19.19, elev: 979, diff: 'dificil', time: 9.5, circular: true, tag: 'Bosque', desc: 'Combinación de senderos PR3 y PR10 ampliado al Prado do Vidoal. Corrales y bosque autóctono.', url: 'https://es.wikiloc.com/rutas-senderismo/pnpg-pr3-tbr-currais-pr10-tbr-preguica-alargado-ao-prado-do-vidoal-231715328' },
             { name: '7 Puentes – Mata da Albergaria', short: '7 Puentes Albergaria', dist: 9.27, elev: 412, diff: 'moderada', time: 4, circular: true, tag: 'Histórica', desc: 'Por la Geira Romana a través del bosque milenario de Mata da Albergaria. Patrimonio y naturaleza.', url: 'https://es.wikiloc.com/rutas-senderismo/por-los-7-puentes-de-mata-da-albergaria-36660792' },
@@ -703,10 +701,10 @@
             { name: 'Serra Amarela: Vilarinho – Louriça', short: 'Serra Amarela', dist: 16.22, elev: 929, diff: 'moderada', time: 6.5, circular: true, tag: 'Cima', desc: 'Travesía hasta Louriça (1361 m) por la Serra Amarela. Muy exigente, sin mucha señalización.', url: 'https://es.wikiloc.com/rutas-senderismo/serra-amarela-vilarinho-das-furnas-lourica-21322306' },
             { name: 'Mirador de Vilouxe (Ribeira Sacra)', short: 'Vilouxe', dist: 1.91, elev: 120, diff: 'facil', time: 1, circular: true, tag: 'Vistas', desc: 'Paseo corto hasta el espectacular mirador del Cañón del Sil. Vistas inmejorables.', url: 'https://es.wikiloc.com/rutas-senderismo/mirador-de-vilouxe-130962802' },
             { name: 'Castro Laboreiro: Puentes y Cascada', short: 'Castro Laboreiro', dist: 8.73, elev: 236, diff: 'facil', time: 3.5, circular: true, tag: 'Histórica', desc: 'Puentes medievales, aldea de Pontes, acueducto y cascada. Historia y agua.', url: 'https://es.wikiloc.com/rutas-senderismo/por-castro-laboreiro-puentes-aldea-y-cascada-de-pontes-78671985' },
-            { name: 'Lagoa do Marinho + Cascata Pincães', short: 'Marinho+Pincães', dist: 19.25, elev: 841, diff: 'moderada', time: 9, circular: true, tag: 'Épica', desc: 'Ruta larga desde Pincães: laguna de Marinho, fojos de lobos y la cascada. GPS imprescindible.', url: 'https://es.wikiloc.com/rutas-senderismo/rota-da-lagoa-do-marinho-e-cascata-de-pincaes-10985932/' },
+            { name: 'Lagoa do Marinho + Cascata Pincães', short: 'Marinho+Pincães', dist: 19.25, elev: 841, diff: 'moderada', time: 9, circular: true, tag: 'Épica', desc: 'Ruta larga desde Pincães: laguna de Marinho, fojos de lobos y la cascada. GPS imprescindible.', url: 'https://es.wikiloc.com/rutas-senderismo/rota-da-lagoa-do-marinho-e-cascata-de-pincaes-10985932/\' },
             { name: 'Pincães – Cascada – Colmenar', short: 'Pincães–Colmenar', dist: 7.51, elev: 380, diff: 'moderada', time: 3, circular: true, tag: 'Cascadas', desc: 'Circular desde Pincães pasando por la cascada y el colmenar de la Silha. Muy recomendada.', url: 'https://es.wikiloc.com/rutas-senderismo/pincaes-cascada-colmenar-pincaes-13718358' },
-            { name: 'Vilarinho das Furnas', short: 'Vilarinho Furnas', dist: 9.27, elev: 380, diff: 'moderada', time: 2, circular: true, tag: 'Ruinas', desc: 'Recorrido por la aldea sumergida y su embalse. Paisaje melancólico y único.', url: 'https://es.wikiloc.com/rutas-senderismo/vilarinho-das-furnas-100104049' },
-            { name: 'Minas dos Carris', short: 'Minas Carris', dist: 22.0, elev: 1100, diff: 'dificil', time: 9, circular: false, tag: 'Épica', desc: 'Expedición de alta montaña a las minas de wolframio abandonadas cerca de la frontera con España.', url: 'https://andamento.pt/lugares-magicos-da-serra-do-geres/' },
+            { name: 'Vilarinho das Furnas', short: 'Vilarinho Furnas', dist: 9.27, elev: 380, diff: 'moderada', time: 2, circular: true, tag: 'Ruinas', desc: 'Recorrido por la aldea sumergida y su embalse. Paisaje melancólico y único.', url: 'https://es.wikiloc.com/rutas-senderismo/vilarinho-das-furnas-100104049\' },
+            { name: 'Minas dos Carris', short: 'Minas Carris', dist: 22.0, elev: 1100, diff: 'dificil', time: 9, circular: false, tag: 'Épica', desc: 'Expedición de alta montaña a las minas de wolframio abandonadas cerca de la frontera con España.', url: 'https://andamento.pt/lugares-magicos-da-serra-do-geres/\' },
         ];
 
         let rutasChartInstance = null;
@@ -758,8 +756,7 @@
                 .replace(/-+$/, '');
         }
 
-        // ═══════════ Renderizado dinámico de tarjetas ═══════════
-        function renderRutasGrid() {
+        // ═══════════ Renderizado dinámico de tarjetas ═══════════\n        function renderRutasGrid() {
             const grid = document.getElementById('rutas-grid');
             if (!grid) return;
             const search = (document.getElementById('rutaSearch')?.value || '').toLowerCase();
@@ -823,8 +820,7 @@
             showRutaChart('distancia');
         }
 
-        // ═══════════ Gráficos Chart.js ═══════════
-        function showRutaChart(type) {
+        // ═══════════ Gráficos Chart.js ═══════════\n        function showRutaChart(type) {
             document.querySelectorAll('.seg-btn[data-chart]').forEach(btn => {
                 if (btn.dataset.chart === type) { btn.classList.add('active'); }
                 else { btn.classList.remove('active'); }
@@ -914,7 +910,7 @@
                             grid: { color: 'rgba(0,0,0,0.04)' },
                             ticks: {
                                 color: COLORS.texto,
-                                font: { family: "'Nunito Sans', sans-serif", size: 11 },
+                                font: { family: "\'Nunito Sans\', sans-serif", size: 11 },
                                 callback: function(v) {
                                     if (type === 'dificultad') {
                                         return ['', 'Fácil', 'Moderada', 'Difícil'][v] || '';
@@ -928,7 +924,7 @@
                             grid: { display: false },
                             ticks: {
                                 color: COLORS.texto,
-                                font: { family: "'Nunito Sans', sans-serif", size: 10 },
+                                font: { family: "\'Nunito Sans\', sans-serif", size: 10 },
                                 callback: function(value) {
                                     const label = this.getLabelForValue(value);
                                     return label.length > 22 ? label.substring(0, 22) + '…' : label;
