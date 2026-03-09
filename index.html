@@ -99,10 +99,10 @@
     <section id="section-home" class="page-section">
 
         <!-- ── Hero Banner ── -->
-        <div class="relative w-full overflow-hidden" style="height: clamp(260px, 42vw, 480px);">
+        <div class="relative w-full overflow-hidden" style="height: clamp(320px, 55vw, 580px);">
             <img src="ecu_viajeras.webp" alt="Ecuaciones Viajeras"
                  class="w-full h-full"
-                 style="object-fit: cover; object-position: center 50%;">
+                 style="object-fit: cover; object-position: center 45%;">
             <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(244,239,234,0.92) 85%, #F4EFEA 100%);"></div>
             <div class="absolute top-5 right-5 md:top-8 md:right-8 bg-bosque/80 backdrop-blur-sm text-tierra px-4 py-2 rounded-xl text-xs font-semibold tracking-widest uppercase shadow-lg">
                 2 – 5 Abril 2026
@@ -123,61 +123,66 @@
         <!-- Cards de navegación -->
         <div class="max-w-5xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
 
+            <!-- Plan de Viaje — verde bosque -->
             <div class="hero-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100" onclick="showSection('plan')">
-                <div class="h-3 bg-bosque"></div>
+                <div class="h-2" style="background:#5C7A5A;"></div>
                 <div class="p-6">
                     <div class="text-4xl mb-3">📋</div>
-                    <h3 class="font-anton text-2xl tracking-wide text-bosque mb-2">Plan de Viaje</h3>
+                    <h3 class="font-anton text-2xl tracking-wide mb-2" style="color:#5C7A5A;">Plan de Viaje</h3>
                     <p class="text-gray-600 text-sm">El itinerario completo día a día: horarios, paradas, alojamiento, alternativas y notas logísticas.</p>
-                    <div class="mt-4 text-arcilla font-semibold text-sm flex items-center gap-1">
+                    <div class="mt-4 font-semibold text-sm flex items-center gap-1" style="color:#5C7A5A;">
                         Ver plan completo <span>→</span>
                     </div>
                 </div>
             </div>
 
+            <!-- Rutas — terracota -->
             <div class="hero-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100" onclick="showSection('rutas')">
-                <div class="h-3 bg-oceano"></div>
+                <div class="h-2" style="background:#C98B6D;"></div>
                 <div class="p-6">
                     <div class="text-4xl mb-3">🥾</div>
-                    <h3 class="font-anton text-2xl tracking-wide text-bosque mb-2">Rutas</h3>
+                    <h3 class="font-anton text-2xl tracking-wide mb-2" style="color:#C98B6D;">Rutas</h3>
                     <p class="text-gray-600 text-sm">Todas las rutas de senderismo que hemos considerado: distancias, desniveles, tracks y qué esperar.</p>
-                    <div class="mt-4 text-arcilla font-semibold text-sm flex items-center gap-1">
+                    <div class="mt-4 font-semibold text-sm flex items-center gap-1" style="color:#C98B6D;">
                         Explorar rutas <span>→</span>
                     </div>
                 </div>
             </div>
 
+            <!-- Mercadillos — azul oceano -->
             <div class="hero-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100" onclick="showSection('mercadillos')">
-                <div class="h-3 bg-piedra"></div>
+                <div class="h-2" style="background:#7BA3C8;"></div>
                 <div class="p-6">
                     <div class="text-4xl mb-3">🛍️</div>
-                    <h3 class="font-anton text-2xl tracking-wide text-bosque mb-2">Mercadillos</h3>
+                    <h3 class="font-anton text-2xl tracking-wide mb-2" style="color:#7BA3C8;">Mercadillos</h3>
                     <p class="text-gray-600 text-sm">Ferias medievales, mercados de artesanía, tiendas de plata y cerámica que pillamos de camino.</p>
-                    <div class="mt-4 text-arcilla font-semibold text-sm flex items-center gap-1">
+                    <div class="mt-4 font-semibold text-sm flex items-center gap-1" style="color:#7BA3C8;">
                         Ver mercadillos <span>→</span>
                     </div>
                 </div>
             </div>
 
+            <!-- Pueblos — ámbar cálido -->
             <div class="hero-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100" onclick="showSection('pueblos')">
-                <div class="h-3" style="background: linear-gradient(90deg, #7D8F69, #85A9D1);"></div>
+                <div class="h-2" style="background:#C8844A;"></div>
                 <div class="p-6">
                     <div class="text-4xl mb-3">🏘️</div>
-                    <h3 class="font-anton text-2xl tracking-wide text-bosque mb-2">Pueblos</h3>
+                    <h3 class="font-anton text-2xl tracking-wide mb-2" style="color:#C8844A;">Pueblos</h3>
                     <p class="text-gray-600 text-sm">Los pueblos de piedra, aldeas remotas y villas con encanto que vamos a visitar o que nos quedan a tiro.</p>
-                    <div class="mt-4 text-arcilla font-semibold text-sm flex items-center gap-1">
+                    <div class="mt-4 font-semibold text-sm flex items-center gap-1" style="color:#C8844A;">
                         Descubrir pueblos <span>→</span>
                     </div>
                 </div>
             </div>
 
+            <!-- Maleta — lila suave -->
             <div class="hero-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 sm:col-span-2 lg:col-span-1" onclick="showSection('maleta')">
-                <div class="h-3 bg-amber-200"></div>
+                <div class="h-2" style="background:#9B7FA6;"></div>
                 <div class="p-6">
                     <div class="text-4xl mb-3">🎒</div>
-                    <h3 class="font-anton text-2xl tracking-wide text-bosque mb-2">Maleta</h3>
+                    <h3 class="font-anton text-2xl tracking-wide mb-2" style="color:#9B7FA6;">Maleta</h3>
                     <p class="text-gray-600 text-sm">Lista de lo que llevarnos: ropa, material de montaña, documentos, botiquín y cosas que no se nos pueden olvidar.</p>
-                    <div class="mt-4 text-arcilla font-semibold text-sm flex items-center gap-1">
+                    <div class="mt-4 font-semibold text-sm flex items-center gap-1" style="color:#9B7FA6;">
                         Ver checklist <span>→</span>
                     </div>
                 </div>
