@@ -52,7 +52,7 @@
         .info-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
         .main-nav-btn { position: relative; padding: 0.5rem 1rem; border-radius: 0.5rem; transition: all 0.25s ease; font-weight: 600; font-size: 1.1rem; letter-spacing: 0.1em; color: #F1E3D3; }
         .main-nav-btn:hover { background-color: rgba(255,255,255,0.15); }
-        .main-nav-btn.active-section { background-color: rgba(255,255,255,0.2); box-shadow: inset 0 -3px 0 #D88C9A; }
+        .main-nav-btn.active-section { background-color: rgba(255,255,255,0.2); box-shadow: inset 0 -3px 0 var(--section-color, #D88C9A); }
         .hero-card { transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; }
         .hero-card:hover { transform: translateY(-6px); box-shadow: 0 20px 30px -10px rgba(0,0,0,0.15); }
         .placeholder-item { border: 2px dashed #99C1B9; border-radius: 1rem; padding: 2rem; text-align: center; color: #7D8F69; transition: all 0.2s; }
@@ -116,8 +116,16 @@
             <p class="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto">
                 Andrea, aquí tienes toda la info del viaje organizada. Pulsa en cualquier sección para explorarla.
             </p>
-            <div class="flex items-center justify-center gap-2 mt-4 text-sm text-piedra font-bold">
-                <span>Gijón</span><span>→</span><span>Valença</span><span>→</span><span>Gerês</span><span>→</span><span>Ribeira Sacra</span><span>→</span><span>Gijón</span>
+            <div class="flex flex-wrap items-center justify-center gap-1 mt-4 text-sm font-bold" style="color:#2D3436;">
+                <span class="bg-white/70 px-2 py-0.5 rounded-full">Gijón</span>
+                <span style="color:#7D8F69;">→</span>
+                <span class="bg-white/70 px-2 py-0.5 rounded-full">Valença</span>
+                <span style="color:#7D8F69;">→</span>
+                <span class="bg-white/70 px-2 py-0.5 rounded-full">Gerês</span>
+                <span style="color:#7D8F69;">→</span>
+                <span class="bg-white/70 px-2 py-0.5 rounded-full">Ribeira Sacra</span>
+                <span style="color:#7D8F69;">→</span>
+                <span class="bg-white/70 px-2 py-0.5 rounded-full">Gijón</span>
             </div>
         </header>
 
@@ -176,14 +184,14 @@
                 </div>
             </div>
 
-            <!-- Maleta — lila suave -->
+            <!-- Maleta — verde bosque -->
             <div class="hero-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 sm:col-span-2 lg:col-span-1" onclick="showSection('maleta')">
-                <div class="h-2" style="background:#9B7FA6;"></div>
+                <div class="h-2" style="background:#7D8F69;"></div>
                 <div class="p-6">
                     <div class="text-4xl mb-3">🎒</div>
-                    <h3 class="font-anton text-2xl tracking-wide mb-2" style="color:#9B7FA6;">Maleta</h3>
+                    <h3 class="font-anton text-2xl tracking-wide mb-2" style="color:#7D8F69;">Maleta</h3>
                     <p class="text-gray-600 text-sm">Lista de lo que llevarnos: ropa, material de montaña, documentos, botiquín y cosas que no se nos pueden olvidar.</p>
-                    <div class="mt-4 font-semibold text-sm flex items-center gap-1" style="color:#9B7FA6;">
+                    <div class="mt-4 font-semibold text-sm flex items-center gap-1" style="color:#7D8F69;">
                         Ver checklist <span>→</span>
                     </div>
                 </div>
@@ -192,7 +200,7 @@
         </div>
 
         <!-- Widget del tiempo en Gerês -->
-        <div class="max-w-4xl mx-auto px-4 mb-16">
+        <div class="max-w-5xl mx-auto px-4 mb-16">
             <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                 <div class="flex items-center justify-between mb-4">
                     <div>
@@ -684,15 +692,27 @@
         document.addEventListener('DOMContentLoaded', loadWeather);
 
         // --- NAVEGACIÓN ENTRE SECCIONES ---
+        const SECTION_COLORS = {
+            'home':        '#99C1B9',  // Muted Teal (Inicio)
+            'plan':        '#99C1B9',  // Muted Teal
+            'rutas':       '#D88C9A',  // Old Rose
+            'mercadillos': '#8E7DBE',  // Soft Periwinkle
+            'pueblos':     '#C8894A',  // Warm Amber
+            'maleta':      '#7D8F69',  // Bosque Green
+        };
+
         function showSection(sectionId) {
             document.querySelectorAll('.page-section').forEach(s => s.classList.add('section-hidden'));
             const target = document.getElementById('section-' + sectionId);
             if (target) target.classList.remove('section-hidden');
 
+            const color = SECTION_COLORS[sectionId] || '#D88C9A';
             document.querySelectorAll('.main-nav-btn').forEach(btn => {
                 btn.classList.remove('active-section');
+                btn.style.removeProperty('--section-color');
                 if (btn.getAttribute('data-section') === sectionId) {
                     btn.classList.add('active-section');
+                    btn.style.setProperty('--section-color', color);
                 }
             });
 
