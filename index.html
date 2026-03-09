@@ -4,26 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nuestro Viaje: Gerês y Ribeira Sacra</title>
-
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-    <!-- Configuración de Tailwind y Estilos Personalizados -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'tierra': '#F4EFEA', // Fondo cálido
-                        'bosque': '#2C4C3B', // Verde oscuro principal
-                        'arcilla': '#C06E52', // Acento rojizo/naranja
-                        'piedra': '#8A9A92', // Verde grisáceo secundario
+                        'tierra': '#F4EFEA',
+                        'bosque': '#2C4C3B',
+                        'arcilla': '#C06E52',
+                        'piedra': '#8A9A92',
                         'texto': '#333333'
                     },
                     fontFamily: {
@@ -34,478 +26,614 @@
             }
         }
     </script>
-
     <style>
-        /* Estilos base */
-        body {
-            font-family: 'Nunito Sans', sans-serif;
-            background-color: #F4EFEA;
-            color: #333333;
-        }
+        body { font-family: 'Nunito Sans', sans-serif; background-color: #F4EFEA; color: #333333; }
+        h1, h2, h3, h4, .font-serif { font-family: 'Lora', serif; }
+        .section-hidden { display: none !important; }
+        .chart-container { position: relative; width: 100%; max-width: 800px; margin: 0 auto; height: 300px; max-height: 400px; background: white; border-radius: 0.75rem; padding: 1rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        @media (min-width: 768px) { .chart-container { height: 350px; } }
+        .tab-btn { transition: all 0.3s ease; border-bottom: 3px solid transparent; }
+        .tab-btn.active { border-bottom-color: #C06E52; color: #2C4C3B; font-weight: bold; }
+        .tab-btn:hover:not(.active) { border-bottom-color: #8A9A92; }
+        .info-card { transition: transform 0.2s, box-shadow 0.2s; }
+        .info-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
 
-        h1, h2, h3, .font-serif {
-            font-family: 'Lora', serif;
-        }
+        /* --- Navegación principal --- */
+        .main-nav-btn { position: relative; padding: 0.5rem 1rem; border-radius: 0.5rem; transition: all 0.25s ease; font-weight: 600; font-size: 0.875rem; }
+        .main-nav-btn:hover { background-color: rgba(255,255,255,0.15); }
+        .main-nav-btn.active-section { background-color: rgba(255,255,255,0.2); box-shadow: inset 0 -3px 0 #C06E52; }
 
-        /* Utilidades para ocultar/mostrar (JavaScript) */
-        .hidden { display: none !important; }
+        /* --- Hero landing --- */
+        .hero-card { transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; }
+        .hero-card:hover { transform: translateY(-6px); box-shadow: 0 20px 30px -10px rgba(0,0,0,0.15); }
 
-        /* Estilo requerido para contenedores de gráficos */
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 300px;
-            max-height: 400px;
-            background: white;
-            border-radius: 0.75rem;
-            padding: 1rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
+        /* --- Placeholder sections --- */
+        .placeholder-item { border: 2px dashed #8A9A92; border-radius: 1rem; padding: 2rem; text-align: center; color: #8A9A92; transition: all 0.2s; }
+        .placeholder-item:hover { border-color: #C06E52; color: #C06E52; }
 
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 350px;
-            }
-        }
-
-        /* Estilos para las pestañas de navegación */
-        .tab-btn {
-            transition: all 0.3s ease;
-            border-bottom: 3px solid transparent;
-        }
-        .tab-btn.active {
-            border-bottom-color: #C06E52;
-            color: #2C4C3B;
-            font-weight: bold;
-        }
-        .tab-btn:hover:not(.active) {
-            border-bottom-color: #8A9A92;
-        }
-
-        /* Tarjetas interactivas */
-        .info-card {
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .info-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
+        /* --- Mobile nav --- */
+        .mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .mobile-menu.open { max-height: 400px; }
     </style>
 </head>
 <body class="antialiased selection:bg-arcilla selection:text-white pb-20">
 
-    <!-- Navegación superior -->
-    <nav class="bg-bosque text-tierra sticky top-0 z-50 shadow-md">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="font-serif text-xl font-bold tracking-wide">🌲 Escapada Semana Santa 2026</div>
-            <div class="text-sm hidden sm:block">2 - 5 de Abril | Gijón ➔ Gerês ➔ Ribeira Sacra</div>
+    <!-- ==================== NAVEGACIÓN PRINCIPAL ==================== -->
+    <nav class="bg-bosque text-tierra sticky top-0 z-50 shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-3">
+                <button onclick="showSection('home')" class="font-serif text-lg font-bold tracking-wide hover:opacity-80 transition-opacity cursor-pointer">
+                    🌲 Semana Santa 2026
+                </button>
+                <!-- Desktop nav -->
+                <div class="hidden md:flex items-center gap-1" id="desktop-nav">
+                    <button class="main-nav-btn active-section" data-section="home" onclick="showSection('home')">Inicio</button>
+                    <button class="main-nav-btn" data-section="plan" onclick="showSection('plan')">Plan de Viaje</button>
+                    <button class="main-nav-btn" data-section="rutas" onclick="showSection('rutas')">Rutas</button>
+                    <button class="main-nav-btn" data-section="mercadillos" onclick="showSection('mercadillos')">Mercadillos</button>
+                    <button class="main-nav-btn" data-section="pueblos" onclick="showSection('pueblos')">Pueblos</button>
+                    <button class="main-nav-btn" data-section="maleta" onclick="showSection('maleta')">Maleta</button>
+                </div>
+                <!-- Mobile hamburger -->
+                <button class="md:hidden text-tierra text-2xl" onclick="toggleMobileMenu()">☰</button>
+            </div>
+            <!-- Mobile menu -->
+            <div class="mobile-menu md:hidden pb-2" id="mobile-menu">
+                <div class="flex flex-col gap-1">
+                    <button class="main-nav-btn text-left active-section" data-section="home" onclick="showSection('home'); toggleMobileMenu()">🏠 Inicio</button>
+                    <button class="main-nav-btn text-left" data-section="plan" onclick="showSection('plan'); toggleMobileMenu()">📋 Plan de Viaje</button>
+                    <button class="main-nav-btn text-left" data-section="rutas" onclick="showSection('rutas'); toggleMobileMenu()">🥾 Rutas</button>
+                    <button class="main-nav-btn text-left" data-section="mercadillos" onclick="showSection('mercadillos'); toggleMobileMenu()">🛍️ Mercadillos</button>
+                    <button class="main-nav-btn text-left" data-section="pueblos" onclick="showSection('pueblos'); toggleMobileMenu()">🏘️ Pueblos</button>
+                    <button class="main-nav-btn text-left" data-section="maleta" onclick="showSection('maleta'); toggleMobileMenu()">🎒 Maleta</button>
+                </div>
+            </div>
         </div>
     </nav>
 
-    <!-- Cabecera / Intro -->
-    <header class="max-w-4xl mx-auto px-4 mt-10 mb-12 text-center">
-        <h1 class="text-4xl md:text-5xl font-serif font-bold text-bosque mb-4">Nuestro Viaje a Gerês y Cañones del Sil</h1>
-        <p class="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto">
-            Andrea, he estado dándole vueltas a toda la información y he diseñado este plan de viaje para nosotros. La idea es madrugar el primer día para aprovechar al máximo, hacer rutas preciosas (y un poco cañeras, como nos gusta), ver pueblitos de piedra, relajarnos en termas bajo las estrellas y, por supuesto, he encajado la artesanía y la Feria Medieval en nuestro camino de vuelta por los Cañones del Sil. ¡A ver qué te parece!
-        </p>
-    </header>
+    <!-- ==================== SECCIÓN: HOME / LANDING ==================== -->
+    <section id="section-home" class="page-section">
+        <header class="max-w-4xl mx-auto px-4 mt-12 mb-8 text-center">
+            <p class="text-arcilla font-semibold tracking-widest uppercase text-sm mb-3">2 – 5 de Abril de 2026</p>
+            <h1 class="text-4xl md:text-6xl font-serif font-bold text-bosque mb-4 leading-tight">Gerês & Cañones del Sil</h1>
+            <p class="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
+                Andrea, aquí tienes toda la info del viaje organizada. Pulsa en cualquier sección para explorarla.
+            </p>
+            <div class="flex items-center justify-center gap-2 mt-4 text-sm text-piedra">
+                <span>Gijón</span><span>→</span><span>Valença</span><span>→</span><span>Gerês</span><span>→</span><span>Ribeira Sacra</span><span>→</span><span>Gijón</span>
+            </div>
+        </header>
 
-    <!-- Resumen de Esfuerzo (Dashboard) -->
-    <section class="max-w-5xl mx-auto px-4 mb-16">
-        <div class="bg-white rounded-2xl shadow-sm p-6 border border-gray-100">
-            <h2 class="text-2xl font-serif text-bosque mb-2">🏔️ Resumen de nuestras Rutas Principales</h2>
-            <p class="text-gray-600 mb-6 text-sm">Un vistazo rápido a lo que nos van a exigir las piernas cada día para que vayamos mentalizados.</p>
+        <!-- Cards de navegación -->
+        <div class="max-w-5xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
 
-            <div class="chart-container">
-                <canvas id="rutasChart"></canvas>
+            <div class="hero-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100" onclick="showSection('plan')">
+                <div class="h-3 bg-bosque"></div>
+                <div class="p-6">
+                    <div class="text-4xl mb-3">📋</div>
+                    <h3 class="font-serif text-xl font-bold text-bosque mb-2">Plan de Viaje</h3>
+                    <p class="text-gray-600 text-sm">El itinerario completo día a día: horarios, paradas, alojamiento, alternativas y notas logísticas.</p>
+                    <div class="mt-4 text-arcilla font-semibold text-sm flex items-center gap-1">
+                        Ver plan completo <span>→</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100" onclick="showSection('rutas')">
+                <div class="h-3 bg-arcilla"></div>
+                <div class="p-6">
+                    <div class="text-4xl mb-3">🥾</div>
+                    <h3 class="font-serif text-xl font-bold text-bosque mb-2">Rutas</h3>
+                    <p class="text-gray-600 text-sm">Todas las rutas de senderismo que hemos considerado: distancias, desniveles, tracks y qué esperar.</p>
+                    <div class="mt-4 text-arcilla font-semibold text-sm flex items-center gap-1">
+                        Explorar rutas <span>→</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100" onclick="showSection('mercadillos')">
+                <div class="h-3 bg-piedra"></div>
+                <div class="p-6">
+                    <div class="text-4xl mb-3">🛍️</div>
+                    <h3 class="font-serif text-xl font-bold text-bosque mb-2">Mercadillos</h3>
+                    <p class="text-gray-600 text-sm">Ferias medievales, mercados de artesanía, tiendas de plata y cerámica que pillamos de camino.</p>
+                    <div class="mt-4 text-arcilla font-semibold text-sm flex items-center gap-1">
+                        Ver mercadillos <span>→</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100" onclick="showSection('pueblos')">
+                <div class="h-3" style="background: linear-gradient(90deg, #2C4C3B, #C06E52);"></div>
+                <div class="p-6">
+                    <div class="text-4xl mb-3">🏘️</div>
+                    <h3 class="font-serif text-xl font-bold text-bosque mb-2">Pueblos</h3>
+                    <p class="text-gray-600 text-sm">Los pueblos de piedra, aldeas remotas y villas con encanto que vamos a visitar o que nos quedan a tiro.</p>
+                    <div class="mt-4 text-arcilla font-semibold text-sm flex items-center gap-1">
+                        Descubrir pueblos <span>→</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 sm:col-span-2 lg:col-span-1" onclick="showSection('maleta')">
+                <div class="h-3 bg-yellow-500"></div>
+                <div class="p-6">
+                    <div class="text-4xl mb-3">🎒</div>
+                    <h3 class="font-serif text-xl font-bold text-bosque mb-2">Maleta</h3>
+                    <p class="text-gray-600 text-sm">Lista de lo que llevarnos: ropa, material de montaña, documentos, botiquín y cosas que no se nos pueden olvidar.</p>
+                    <div class="mt-4 text-arcilla font-semibold text-sm flex items-center gap-1">
+                        Ver checklist <span>→</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Mini-resumen rápido -->
+        <div class="max-w-4xl mx-auto px-4 mb-16">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div>
+                    <div class="text-3xl mb-1">🗓️</div>
+                    <div class="text-2xl font-bold text-bosque">4</div>
+                    <div class="text-sm text-gray-500">Días</div>
+                </div>
+                <div>
+                    <div class="text-3xl mb-1">🥾</div>
+                    <div class="text-2xl font-bold text-bosque">~37 km</div>
+                    <div class="text-sm text-gray-500">De rutas</div>
+                </div>
+                <div>
+                    <div class="text-3xl mb-1">♨️</div>
+                    <div class="text-2xl font-bold text-bosque">40 ºC</div>
+                    <div class="text-sm text-gray-500">Termas</div>
+                </div>
+                <div>
+                    <div class="text-3xl mb-1">🏰</div>
+                    <div class="text-2xl font-bold text-bosque">2</div>
+                    <div class="text-sm text-gray-500">Países</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Contenedor Principal del Itinerario -->
-    <main class="max-w-5xl mx-auto px-4">
+    <!-- ==================== SECCIÓN: PLAN DE VIAJE ==================== -->
+    <section id="section-plan" class="page-section section-hidden">
 
-        <!-- Pestañas de Navegación del Itinerario -->
-        <div class="flex flex-wrap justify-center border-b border-gray-300 mb-8" id="day-tabs">
-            <button class="tab-btn active px-4 py-3 sm:px-6 text-gray-500 font-medium text-lg" data-target="dia1">Jueves 2</button>
-            <button class="tab-btn px-4 py-3 sm:px-6 text-gray-500 font-medium text-lg" data-target="dia2">Viernes 3</button>
-            <button class="tab-btn px-4 py-3 sm:px-6 text-gray-500 font-medium text-lg" data-target="dia3">Sábado 4</button>
-            <button class="tab-btn px-4 py-3 sm:px-6 text-gray-500 font-medium text-lg" data-target="dia4">Domingo 5</button>
-            <button class="tab-btn px-4 py-3 sm:px-6 text-gray-500 font-medium text-lg" data-target="alternativas">Alternativas</button>
-            <button class="tab-btn px-4 py-3 sm:px-6 text-gray-500 font-medium text-lg" data-target="notas">⚠️ Notas Importantes</button>
+        <header class="max-w-4xl mx-auto px-4 mt-10 mb-8 text-center">
+            <p class="text-arcilla font-semibold tracking-widest uppercase text-sm mb-2">Itinerario completo</p>
+            <h1 class="text-4xl md:text-5xl font-serif font-bold text-bosque mb-4">Plan de Viaje</h1>
+            <p class="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto">
+                Andrea, he estado dándole vueltas a toda la información y he diseñado este plan para nosotros. La idea es madrugar el primer día para aprovechar al máximo, hacer rutas preciosas, relajarnos en termas bajo las estrellas y encajar la artesanía y la Feria Medieval en nuestro camino de vuelta.
+            </p>
+        </header>
+
+        <!-- Dashboard gráfico -->
+        <div class="max-w-5xl mx-auto px-4 mb-12">
+            <div class="bg-white rounded-2xl shadow-sm p-6 border border-gray-100">
+                <h2 class="text-2xl font-serif text-bosque mb-2">🏔️ Resumen de nuestras Rutas Principales</h2>
+                <p class="text-gray-600 mb-6 text-sm">Un vistazo rápido a lo que nos van a exigir las piernas cada día.</p>
+                <div class="chart-container">
+                    <canvas id="rutasChart"></canvas>
+                </div>
+            </div>
         </div>
 
-        <!-- Contenido de los Días -->
-        <div id="tab-content" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-10">
-
-            <!-- DIA 1 -->
-            <div id="dia1" class="day-panel">
-                <div class="flex items-center gap-3 mb-6">
-                    <span class="text-4xl">🚗</span>
-                    <div>
-                        <h2 class="text-3xl font-serif text-bosque">Día 1: Fronteras, Artesanía y Primer Contacto</h2>
-                        <p class="text-gray-500">Jueves, 2 de Abril</p>
-                    </div>
-                </div>
-
-                <p class="mb-8 text-lg">Empezamos fuerte. Salimos de Gijón a las 6:00 a.m. para poder aprovechar el día desde que crucemos la frontera. La idea es parar primero a ver cositas y luego estrenar las botas por la tarde antes de ir a nuestro alojamiento.</p>
-
-                <div class="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gray-300 before:to-transparent">
-
-                    <!-- Hito 1 -->
-                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                        <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-arcilla text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                            10:30
-                        </div>
-                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] info-card bg-tierra p-5 rounded-xl border border-gray-200">
-                            <h3 class="font-bold text-xl text-bosque mb-1">🏰 Valença do Minho y Comida</h3>
-                            <p class="text-gray-700">Nada más cruzar el río Miño, paramos en La Fortaleza de Valença. <strong>Andrea, aquí está tu paraíso</strong>. Todo el interior de la muralla está lleno de tiendas de artesanía, cosas para la casa, bolsos y joyerías donde buscar esos anillos de plata. Comemos por aquí o en ruta hacia el parque.</p>
-                        </div>
-                    </div>
-
-                    <!-- Hito 2 -->
-                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                        <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-bosque text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                            15:30
-                        </div>
-                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] info-card bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
-                            <h3 class="font-bold text-xl text-bosque mb-1">🥾 Ruta Tarde: Cascata de Pincães o Pedra Bela</h3>
-                            <p class="text-gray-700">Llegamos al Parque Nacional. Para soltar piernas del viaje, haremos una ruta no muy larga pero preciosa. Podemos ir a la <em>Cascata de Pincães</em> (una de las cascadas más chulas, ruta de unas 2-3h) o subir al <em>Trilho de Pedra Bela</em> si preferimos vistazas increíbles del valle desde lo alto.</p>
-                        </div>
-                    </div>
-
-                    <!-- Hito 3 -->
-                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                        <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-piedra text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                            18:30
-                        </div>
-                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] info-card bg-white p-5 rounded-xl border border-gray-200">
-                            <h3 class="font-bold text-xl text-bosque mb-1">🏠 Check-in y Cena</h3>
-                            <p class="text-gray-700">Llegada a nuestro campamento base: <strong>Gerês Valley</strong> (Rua Chã de Ermida). Nos instalamos, ducha, y bajamos a la Vila do Gerês a cenar algo contundente (¡hay que probar la posta mirandesa o un buen bacalao!).</p>
-                        </div>
-                    </div>
-                </div>
+        <!-- Pestañas del itinerario -->
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="flex flex-wrap justify-center border-b border-gray-300 mb-8" id="day-tabs">
+                <button class="tab-btn active px-4 py-3 sm:px-6 text-gray-500 font-medium text-lg" data-target="dia1">Jueves 2</button>
+                <button class="tab-btn px-4 py-3 sm:px-6 text-gray-500 font-medium text-lg" data-target="dia2">Viernes 3</button>
+                <button class="tab-btn px-4 py-3 sm:px-6 text-gray-500 font-medium text-lg" data-target="dia3">Sábado 4</button>
+                <button class="tab-btn px-4 py-3 sm:px-6 text-gray-500 font-medium text-lg" data-target="dia4">Domingo 5</button>
+                <button class="tab-btn px-4 py-3 sm:px-6 text-gray-500 font-medium text-lg" data-target="alternativas">Alternativas</button>
+                <button class="tab-btn px-4 py-3 sm:px-6 text-gray-500 font-medium text-lg" data-target="notas">⚠️ Notas</button>
             </div>
 
-            <!-- DIA 2 -->
-            <div id="dia2" class="day-panel hidden">
-                <div class="flex items-center gap-3 mb-6">
-                    <span class="text-4xl">⛰️</span>
-                    <div>
-                        <h2 class="text-3xl font-serif text-bosque">Día 2: Naturaleza Salvaje y Aguas Termales</h2>
-                        <p class="text-gray-500">Viernes, 3 de Abril</p>
-                    </div>
-                </div>
+            <div id="tab-content" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-10">
 
-                <p class="mb-8 text-lg">Hoy es el día de la gran ruta. Llevaremos bocadillos y agua de sobra. Vamos a meternos en el corazón del parque, buscando esos paisajes épicos, y terminaremos el día relajando los músculos como nos merecemos.</p>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-bosque">
-                        <h3 class="font-bold text-2xl text-bosque mb-3">📍 Mañana: Portela do Homem</h3>
-                        <p class="mb-3">Nos acercamos a la frontera en la zona de Mata da Albergaria. Aquí tenemos dos opciones cañeras según cómo nos levantemos:</p>
-                        <ul class="list-none space-y-2 mb-4">
-                            <li>🔸 <strong>Opción A (Épica):</strong> Ruta hacia Pico da Nevosa / Minas dos Carris. Es larga (aprox 15km) y espectacular, zona de alta montaña pura.</li>
-                            <li>🔸 <strong>Opción B (Pozas):</strong> Ruta de los 7 puentes o enlazar hacia Poço Azul. Menos desnivel pero nos permite ver piscinas naturales impresionantes.</li>
-                        </ul>
-                        <div class="bg-yellow-50 text-yellow-800 p-3 rounded text-sm mt-4">
-                            <strong>Nota:</strong> Esta zona tiene alta protección. Ver pestaña "Notas Importantes" sobre el ICNF y aparcamiento.
+                <!-- DIA 1 -->
+                <div id="dia1" class="day-panel">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="text-4xl">🚗</span>
+                        <div>
+                            <h2 class="text-3xl font-serif text-bosque">Día 1: Fronteras, Artesanía y Primer Contacto</h2>
+                            <p class="text-gray-500">Jueves, 2 de Abril</p>
                         </div>
                     </div>
-
-                    <div class="bg-tierra rounded-xl p-6 border-l-4 border-arcilla flex flex-col justify-center">
-                        <h3 class="font-bold text-2xl text-bosque mb-3">✨ Tarde/Noche: Termas de Lobios</h3>
-                        <p class="mb-4">Después de la paliza, cogemos el coche y cruzamos a España justo ahí al lado (Portela do Homem). A 15 minutos están las <strong>Termas de Lobios</strong>.</p>
-                        <p>Son termas públicas gratuitas al aire libre. La idea es llegar atardeciendo, meternos en el agua a 40ºc mientras baja el sol y hacer lo que me pediste: <strong>relajar los músculos bajo las estrellas</strong>. Cenamos por los alrededores antes de volver a la cabaña.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- DIA 3 -->
-            <div id="dia3" class="day-panel hidden">
-                <div class="flex items-center gap-3 mb-6">
-                    <span class="text-4xl">💧</span>
-                    <div>
-                        <h2 class="text-3xl font-serif text-bosque">Día 3: Las 7 Lagoas y Pueblos de Piedra</h2>
-                        <p class="text-gray-500">Sábado, 4 de Abril</p>
-                    </div>
-                </div>
-
-                <p class="mb-8 text-lg">El sábado lo dividiremos en dos: una mañana de senderismo buscando las mejores piscinas naturales de Portugal, y una tarde más cultural visitando patrimonio y pueblos con encanto de la zona.</p>
-
-                <div class="space-y-6">
-                    <div class="flex flex-col md:flex-row gap-6 items-stretch">
-                        <div class="md:w-1/3 bg-bosque text-white rounded-xl p-6 shadow-md flex flex-col justify-center text-center">
-                            <span class="text-5xl mb-2">🥾</span>
-                            <h3 class="text-xl font-bold mb-2">Mañana</h3>
-                            <p class="text-tierra">Trilho das 7 Lagoas</p>
-                            <p class="text-sm mt-2 opacity-80">Ruta desde Xertelo</p>
+                    <p class="mb-8 text-lg">Empezamos fuerte. Salimos de Gijón a las 6:00 a.m. para poder aprovechar el día desde que crucemos la frontera. La idea es parar primero a ver cositas y luego estrenar las botas por la tarde antes de ir a nuestro alojamiento.</p>
+                    <div class="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gray-300 before:to-transparent">
+                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-arcilla text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">10:30</div>
+                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] info-card bg-tierra p-5 rounded-xl border border-gray-200">
+                                <h3 class="font-bold text-xl text-bosque mb-1">🏰 Valença do Minho y Comida</h3>
+                                <p class="text-gray-700">Nada más cruzar el río Miño, paramos en La Fortaleza de Valença. <strong>Andrea, aquí está tu paraíso</strong>. Todo el interior de la muralla está lleno de tiendas de artesanía, cosas para la casa, bolsos y joyerías donde buscar esos anillos de plata. Comemos por aquí o en ruta hacia el parque.</p>
+                            </div>
                         </div>
-                        <div class="md:w-2/3 bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-                            <h4 class="text-xl font-bold text-bosque mb-2">Las Pozas Más Famosas</h4>
-                            <p class="text-gray-700">Esta ruta nos lleva a una serie de pozas escalonadas de agua cristalina. Es exigente (unos 10-12km según cómo la cerremos) y no tiene mucha sombra, pero las vistas merecen cada paso. Si sale un día de calor primaveral, <strong>baño obligatorio</strong>, aunque el agua estará helada.</p>
+                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-bosque text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">15:30</div>
+                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] info-card bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
+                                <h3 class="font-bold text-xl text-bosque mb-1">🥾 Ruta Tarde: Cascata de Pincães o Pedra Bela</h3>
+                                <p class="text-gray-700">Llegamos al Parque Nacional. Para soltar piernas del viaje, haremos una ruta no muy larga pero preciosa. Podemos ir a la <em>Cascata de Pincães</em> (una de las cascadas más chulas, ruta de unas 2-3h) o subir al <em>Trilho de Pedra Bela</em> si preferimos vistazas increíbles del valle desde lo alto.</p>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="flex flex-col md:flex-row gap-6 items-stretch">
-                        <div class="md:w-1/3 bg-arcilla text-white rounded-xl p-6 shadow-md flex flex-col justify-center text-center">
-                            <span class="text-5xl mb-2">🏰</span>
-                            <h3 class="text-xl font-bold mb-2">Tarde</h3>
-                            <p class="text-tierra">Castillos y Hórreos</p>
-                            <p class="text-sm mt-2 opacity-80">Visita a Lindoso</p>
-                        </div>
-                        <div class="md:w-2/3 bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-                            <h4 class="text-xl font-bold text-bosque mb-2">Historia en Piedra</h4>
-                            <p class="text-gray-700 mb-3">Cogemos el coche tras comer y nos vamos a <strong>Lindoso</strong>. Es famoso por tener el mayor conjunto de <em>espigueiros</em> (hórreos de piedra coronados con cruces) de la península, agrupados a los pies de un castillo medieval. Es súper fotogénico.</p>
-                            <p class="text-gray-700">Si nos sobra tiempo y energía, podemos estirar un poco el coche hasta el <em>Santuário de Nossa Senhora da Peneda</em> (una réplica del Bom Jesus encajada en la montaña), aunque queda un poco lejos. Lo valoramos sobre la marcha.</p>
+                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-piedra text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">18:30</div>
+                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] info-card bg-white p-5 rounded-xl border border-gray-200">
+                                <h3 class="font-bold text-xl text-bosque mb-1">🏠 Check-in y Cena</h3>
+                                <p class="text-gray-700">Llegada a nuestro campamento base: <strong>Gerês Valley</strong> (Rua Chã de Ermida). Nos instalamos, ducha, y bajamos a la Vila do Gerês a cenar algo contundente (¡hay que probar la posta mirandesa o un buen bacalao!).</p>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- DIA 2 -->
+                <div id="dia2" class="day-panel section-hidden">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="text-4xl">⛰️</span>
+                        <div>
+                            <h2 class="text-3xl font-serif text-bosque">Día 2: Naturaleza Salvaje y Aguas Termales</h2>
+                            <p class="text-gray-500">Viernes, 3 de Abril</p>
+                        </div>
+                    </div>
+                    <p class="mb-8 text-lg">Hoy es el día de la gran ruta. Llevaremos bocadillos y agua de sobra. Vamos a meternos en el corazón del parque, buscando esos paisajes épicos, y terminaremos el día relajando los músculos como nos merecemos.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-bosque">
+                            <h3 class="font-bold text-2xl text-bosque mb-3">📍 Mañana: Portela do Homem</h3>
+                            <p class="mb-3">Nos acercamos a la frontera en la zona de Mata da Albergaria. Aquí tenemos dos opciones cañeras según cómo nos levantemos:</p>
+                            <ul class="list-none space-y-2 mb-4">
+                                <li>🔸 <strong>Opción A (Épica):</strong> Ruta hacia Pico da Nevosa / Minas dos Carris. Es larga (aprox 15km) y espectacular, zona de alta montaña pura.</li>
+                                <li>🔸 <strong>Opción B (Pozas):</strong> Ruta de los 7 puentes o enlazar hacia Poço Azul. Menos desnivel pero nos permite ver piscinas naturales impresionantes.</li>
+                            </ul>
+                            <div class="bg-yellow-50 text-yellow-800 p-3 rounded text-sm mt-4">
+                                <strong>Nota:</strong> Esta zona tiene alta protección. Ver pestaña "Notas" sobre el ICNF y aparcamiento.
+                            </div>
+                        </div>
+                        <div class="bg-tierra rounded-xl p-6 border-l-4 border-arcilla flex flex-col justify-center">
+                            <h3 class="font-bold text-2xl text-bosque mb-3">✨ Tarde/Noche: Termas de Lobios</h3>
+                            <p class="mb-4">Después de la paliza, cogemos el coche y cruzamos a España justo ahí al lado (Portela do Homem). A 15 minutos están las <strong>Termas de Lobios</strong>.</p>
+                            <p>Son termas públicas gratuitas al aire libre. La idea es llegar atardeciendo, meternos en el agua a 40ºc mientras baja el sol y hacer lo que me pediste: <strong>relajar los músculos bajo las estrellas</strong>. Cenamos por los alrededores antes de volver a la cabaña.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DIA 3 -->
+                <div id="dia3" class="day-panel section-hidden">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="text-4xl">💧</span>
+                        <div>
+                            <h2 class="text-3xl font-serif text-bosque">Día 3: Las 7 Lagoas y Pueblos de Piedra</h2>
+                            <p class="text-gray-500">Sábado, 4 de Abril</p>
+                        </div>
+                    </div>
+                    <p class="mb-8 text-lg">El sábado lo dividiremos en dos: una mañana de senderismo buscando las mejores piscinas naturales de Portugal, y una tarde más cultural visitando patrimonio y pueblos con encanto de la zona.</p>
+                    <div class="space-y-6">
+                        <div class="flex flex-col md:flex-row gap-6 items-stretch">
+                            <div class="md:w-1/3 bg-bosque text-white rounded-xl p-6 shadow-md flex flex-col justify-center text-center">
+                                <span class="text-5xl mb-2">🥾</span>
+                                <h3 class="text-xl font-bold mb-2">Mañana</h3>
+                                <p class="text-tierra">Trilho das 7 Lagoas</p>
+                                <p class="text-sm mt-2 opacity-80">Ruta desde Xertelo</p>
+                            </div>
+                            <div class="md:w-2/3 bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                                <h4 class="text-xl font-bold text-bosque mb-2">Las Pozas Más Famosas</h4>
+                                <p class="text-gray-700">Esta ruta nos lleva a una serie de pozas escalonadas de agua cristalina. Es exigente (unos 10-12km según cómo la cerremos) y no tiene mucha sombra, pero las vistas merecen cada paso. Si sale un día de calor primaveral, <strong>baño obligatorio</strong>, aunque el agua estará helada.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row gap-6 items-stretch">
+                            <div class="md:w-1/3 bg-arcilla text-white rounded-xl p-6 shadow-md flex flex-col justify-center text-center">
+                                <span class="text-5xl mb-2">🏰</span>
+                                <h3 class="text-xl font-bold mb-2">Tarde</h3>
+                                <p class="text-tierra">Castillos y Hórreos</p>
+                                <p class="text-sm mt-2 opacity-80">Visita a Lindoso</p>
+                            </div>
+                            <div class="md:w-2/3 bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                                <h4 class="text-xl font-bold text-bosque mb-2">Historia en Piedra</h4>
+                                <p class="text-gray-700 mb-3">Cogemos el coche tras comer y nos vamos a <strong>Lindoso</strong>. Es famoso por tener el mayor conjunto de <em>espigueiros</em> (hórreos de piedra coronados con cruces) de la península, agrupados a los pies de un castillo medieval. Es súper fotogénico.</p>
+                                <p class="text-gray-700">Si nos sobra tiempo y energía, podemos estirar un poco el coche hasta el <em>Santuário de Nossa Senhora da Peneda</em> (una réplica del Bom Jesus encajada en la montaña), aunque queda un poco lejos. Lo valoramos sobre la marcha.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DIA 4 -->
+                <div id="dia4" class="day-panel section-hidden">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="text-4xl">⛴️</span>
+                        <div>
+                            <h2 class="text-3xl font-serif text-bosque">Día 4: Cañones del Sil y Mercado Medieval</h2>
+                            <p class="text-gray-500">Domingo, 5 de Abril</p>
+                        </div>
+                    </div>
+                    <p class="mb-8 text-lg">Toca volver a Gijón, pero vamos a hacer que el viaje de vuelta sea parte de la aventura. He encajado tu petición de Ribeira Sacra y la feria de artesanía en la misma ruta hacia el norte.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-white border border-gray-200 p-5 rounded-xl shadow-sm text-center info-card">
+                            <div class="text-arcilla font-bold text-lg mb-2">08:00 - Salida</div>
+                            <h4 class="font-bold text-bosque mb-2">Despedida de Gerês</h4>
+                            <p class="text-sm text-gray-600">Hacemos check-out temprano. Tenemos unas 2 horas de coche hasta nuestro primer destino en Galicia, adentrándonos en Ourense.</p>
+                        </div>
+                        <div class="bg-white border border-gray-200 p-5 rounded-xl shadow-sm text-center info-card">
+                            <div class="text-arcilla font-bold text-lg mb-2">10:30 - Ribeira Sacra</div>
+                            <h4 class="font-bold text-bosque mb-2">Los Cañones del Sil</h4>
+                            <p class="text-sm text-gray-600">Llegamos a la zona. Tenemos dos opciones: asomarnos al vértigo del <strong>Mirador de Vilouxe</strong>, o coger un <strong>paseo en barco</strong> por dentro del cañón (suele salir desde el embarcadero de Santo Estevo). <em>(Ojo: el barco hay que reservarlo meses antes)</em>.</p>
+                        </div>
+                        <div class="bg-white border-2 border-arcilla p-5 rounded-xl shadow-md text-center info-card relative overflow-hidden">
+                            <div class="absolute top-0 right-0 bg-arcilla text-white text-xs px-2 py-1 rounded-bl-lg font-bold">¡Planazo!</div>
+                            <div class="text-arcilla font-bold text-lg mb-2">14:00 - Monforte</div>
+                            <h4 class="font-bold text-bosque mb-2">Feria Medieval</h4>
+                            <p class="text-sm text-gray-600">A media horita del Sil llegamos a Monforte de Lemos. Comemos allí y pasamos la tarde en la <strong>XXII Feria Medieval</strong>. Es Domingo de Pascua, estará en pleno apogeo. Aquí sí que vas a encontrar toda la artesanía, cuero y plata que busques. De aquí, nos quedan 3 horitas a Gijón.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ALTERNATIVAS -->
+                <div id="alternativas" class="day-panel section-hidden">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="text-4xl">🔀</span>
+                        <div>
+                            <h2 class="text-3xl font-serif text-bosque">El Banquillo: Otras Opciones Geniales</h2>
+                            <p class="text-gray-500">Por si cambiamos de idea o hace mal tiempo</p>
+                        </div>
+                    </div>
+                    <p class="mb-6 text-lg">Había muchísimas rutas en los enlaces que me pasaste. He seleccionado las mejores para el plan principal, pero aquí te dejo las que se han quedado en reserva por si sobre la marcha queremos cambiar algo.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="border border-gray-200 p-4 rounded-lg bg-white">
+                            <h4 class="font-bold text-lg text-bosque">🦅 Pitões das Júnias</h4>
+                            <p class="text-sm text-gray-700 mt-2">Me dijiste que lo valorara. Es un pueblo remoto increíble. Podríamos cambiar el Día 3 por ir allí: comer su famosa vitela, ver el monasterio en ruinas en silencio absoluto y que tú te hagas un tramo de trail corriendo hacia las cumbres mientras yo paseo. Está en la zona este del parque (Trás-os-Montes).</p>
+                        </div>
+                        <div class="border border-gray-200 p-4 rounded-lg bg-white">
+                            <h4 class="font-bold text-lg text-bosque">🏙️ Braga</h4>
+                            <p class="text-sm text-gray-700 mt-2">Si un día diluvia y no se puede ir al monte, Braga está a menos de 1 hora de nuestra casa. Es una ciudad preciosa, el "Santuario del Bom Jesus do Monte" (el de las escaleras infinitas) es espectacular, y tiene mucho ambiente para tomar algo y tiendas.</p>
+                        </div>
+                        <div class="border border-gray-200 p-4 rounded-lg bg-white">
+                            <h4 class="font-bold text-lg text-bosque">🥾 Trilho da Cidade da Calcedónia</h4>
+                            <p class="text-sm text-gray-700 mt-2">De las rutas que mandaste, esta es muy divertida porque pasas por grietas entre rocas gigantes (como si fuera una ciudad de piedra). Es dura y algo técnica. Si queremos algo de trepar un poco, esta es la elegida.</p>
+                        </div>
+                        <div class="border border-gray-200 p-4 rounded-lg bg-white">
+                            <h4 class="font-bold text-lg text-bosque">🛍️ Allariz (Galicia)</h4>
+                            <p class="text-sm text-gray-700 mt-2">Si el plan de Monforte el domingo falla, Allariz está en la autopista volviendo a España. Ese finde tienen "Semana Santa ao Vivo", música en la calle, mercado de la Biosfera y los outlets de ropa abiertos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NOTAS -->
+                <div id="notas" class="day-panel section-hidden">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="text-4xl">⚠️</span>
+                        <div>
+                            <h2 class="text-3xl font-serif text-bosque">A Tener en Cuenta (Logística aburrida pero vital)</h2>
+                            <p class="text-gray-500">Antes de arrancar el coche</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg">
+                            <h4 class="font-bold text-red-800 text-lg flex items-center gap-2"><span>🛡️</span> Autorizaciones ICNF (Muy Importante)</h4>
+                            <p class="text-sm text-red-900 mt-2">Me preguntaste qué era esto. El <em>Instituto da Conservação da Natureza e das Florestas</em> es el organismo que gestiona el parque. <strong>Para entrar en las Zonas de Protección Total (como la zona de Portela do Homem, Minas dos Carris, etc. del Día 2), hay que pedir un permiso online</strong>. Te multan si te pillan los guardas (Rangers) sin él. El aforo es limitado al día, así que tendremos que sacarlo por internet unas semanas antes. Además, en Portela do Homem cobran aparcamiento (unos 1.50€) si pasas en coche hacia la zona restringida.</p>
+                        </div>
+                        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
+                            <h4 class="font-bold text-blue-800 text-lg flex items-center gap-2"><span>🛣️</span> Peajes en Portugal (SCUTs)</h4>
+                            <p class="text-sm text-blue-900 mt-2">Portugal usa peajes electrónicos (arcos en la autovía que leen la matrícula). No hay garitas para pagar en metálico. Lo más fácil: nada más cruzar la frontera o antes de irnos, vinculamos nuestra matrícula a la tarjeta de crédito por internet (sistema EasyToll), y nos olvidamos. Se cobra solo.</p>
+                        </div>
+                        <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg">
+                            <h4 class="font-bold text-green-800 text-lg flex items-center gap-2"><span>🎒</span> ¿Qué metemos en la mochila?</h4>
+                            <ul class="list-disc list-inside text-sm text-green-900 mt-2 space-y-1">
+                                <li>Bañador y toalla (imprescindible para las termas y por si nos venimos arriba en alguna poza).</li>
+                                <li>Cortavientos/Chubasquero (en abril el tiempo en la sierra es una lotería).</li>
+                                <li>Botas de montaña buenas (vamos a hacer rutas con roca suelta y desnivel).</li>
+                                <li>Efectivo (en algunos pueblos pequeños o mercadillos pueden no coger tarjeta).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-
-            <!-- DIA 4 -->
-            <div id="dia4" class="day-panel hidden">
-                <div class="flex items-center gap-3 mb-6">
-                    <span class="text-4xl">⛴️</span>
-                    <div>
-                        <h2 class="text-3xl font-serif text-bosque">Día 4: Cañones del Sil y Mercado Medieval</h2>
-                        <p class="text-gray-500">Domingo, 5 de Abril</p>
-                    </div>
-                </div>
-
-                <p class="mb-8 text-lg">Toca volver a Gijón, pero vamos a hacer que el viaje de vuelta sea parte de la aventura. He encajado tu petición de Ribeira Sacra y la feria de artesanía en la misma ruta hacia el norte.</p>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <!-- Step 1 -->
-                    <div class="bg-white border border-gray-200 p-5 rounded-xl shadow-sm text-center info-card">
-                        <div class="text-arcilla font-bold text-lg mb-2">08:00 - Salida</div>
-                        <h4 class="font-bold text-bosque mb-2">Despedida de Gerês</h4>
-                        <p class="text-sm text-gray-600">Hacemos check-out temprano. Tenemos unas 2 horas de coche hasta nuestro primer destino en Galicia, adentrándonos en Ourense.</p>
-                    </div>
-
-                    <!-- Step 2 -->
-                    <div class="bg-white border border-gray-200 p-5 rounded-xl shadow-sm text-center info-card">
-                        <div class="text-arcilla font-bold text-lg mb-2">10:30 - Ribeira Sacra</div>
-                        <h4 class="font-bold text-bosque mb-2">Los Cañones del Sil</h4>
-                        <p class="text-sm text-gray-600">Llegamos a la zona. Tenemos dos opciones: asomarnos al vértigo del <strong>Mirador de Vilouxe</strong>, o coger un <strong>paseo en barco</strong> por dentro del cañón (suele salir desde el embarcadero de Santo Estevo). <em>(Ojo: el barco hay que reservarlo meses antes)</em>.</p>
-                    </div>
-
-                    <!-- Step 3 -->
-                    <div class="bg-white border-2 border-arcilla p-5 rounded-xl shadow-md text-center info-card relative overflow-hidden">
-                        <div class="absolute top-0 right-0 bg-arcilla text-white text-xs px-2 py-1 rounded-bl-lg font-bold">¡Planazo!</div>
-                        <div class="text-arcilla font-bold text-lg mb-2">14:00 - Monforte</div>
-                        <h4 class="font-bold text-bosque mb-2">Feria Medieval</h4>
-                        <p class="text-sm text-gray-600">A media horita del Sil llegamos a Monforte de Lemos. Comemos allí y pasamos la tarde en la <strong>XXII Feria Medieval</strong>. Es Domingo de Pascua, estará en pleno apogeo. Aquí sí que vas a encontrar toda la artesanía, cuero y plata que busques. De aquí, nos quedan 3 horitas a Gijón.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ALTERNATIVAS -->
-            <div id="alternativas" class="day-panel hidden">
-                <div class="flex items-center gap-3 mb-6">
-                    <span class="text-4xl">🔀</span>
-                    <div>
-                        <h2 class="text-3xl font-serif text-bosque">El Banquillo: Otras Opciones Geniales</h2>
-                        <p class="text-gray-500">Por si cambiamos de idea o hace mal tiempo</p>
-                    </div>
-                </div>
-
-                <p class="mb-6 text-lg">Había muchísimas rutas en los enlaces que me pasaste. He seleccionado las mejores para el plan principal, pero aquí te dejo las que se han quedado en reserva por si sobre la marcha queremos cambiar algo.</p>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="border border-gray-200 p-4 rounded-lg bg-white">
-                        <h4 class="font-bold text-lg text-bosque">🦅 Pitões das Júnias</h4>
-                        <p class="text-sm text-gray-700 mt-2">Me dijiste que lo valorara. Es un pueblo remoto increíble. Podríamos cambiar el Día 3 por ir allí: comer su famosa vitela, ver el monasterio en ruinas en silencio absoluto y que tú te hagas un tramo de trail corriendo hacia las cumbres mientras yo paseo. Está en la zona este del parque (Trás-os-Montes).</p>
-                    </div>
-
-                    <div class="border border-gray-200 p-4 rounded-lg bg-white">
-                        <h4 class="font-bold text-lg text-bosque">🏙️ Braga</h4>
-                        <p class="text-sm text-gray-700 mt-2">Si un día diluvia y no se puede ir al monte, Braga está a menos de 1 hora de nuestra casa. Es una ciudad preciosa, el "Santuario del Bom Jesus do Monte" (el de las escaleras infinitas) es espectacular, y tiene mucho ambiente para tomar algo y tiendas.</p>
-                    </div>
-
-                    <div class="border border-gray-200 p-4 rounded-lg bg-white">
-                        <h4 class="font-bold text-lg text-bosque">🥾 Trilho da Cidade da Calcedónia</h4>
-                        <p class="text-sm text-gray-700 mt-2">De las rutas que mandaste, esta es muy divertida porque pasas por grietas entre rocas gigantes (como si fuera una ciudad de piedra). Es dura y algo técnica. Si queremos algo de trepar un poco, esta es la elegida.</p>
-                    </div>
-
-                    <div class="border border-gray-200 p-4 rounded-lg bg-white">
-                        <h4 class="font-bold text-lg text-bosque">🛍️ Allariz (Galicia)</h4>
-                        <p class="text-sm text-gray-700 mt-2">Si el plan de Monforte el domingo falla, Allariz está en la autopista volviendo a España. Ese finde tienen "Semana Santa ao Vivo", música en la calle, mercado de la Biosfera y los outlets de ropa abiertos.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- NOTAS Y LOGÍSTICA -->
-            <div id="notas" class="day-panel hidden">
-                <div class="flex items-center gap-3 mb-6">
-                    <span class="text-4xl">⚠️</span>
-                    <div>
-                        <h2 class="text-3xl font-serif text-bosque">A Tener en Cuenta (Logística aburrida pero vital)</h2>
-                        <p class="text-gray-500">Antes de arrancar el coche</p>
-                    </div>
-                </div>
-
-                <div class="space-y-4">
-                    <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg">
-                        <h4 class="font-bold text-red-800 text-lg flex items-center gap-2"><span>🛡️</span> Autorizaciones ICNF (Muy Importante)</h4>
-                        <p class="text-sm text-red-900 mt-2">Me preguntaste qué era esto. El <em>Instituto da Conservação da Natureza e das Florestas</em> es el organismo que gestiona el parque. <strong>Para entrar en las Zonas de Protección Total (como la zona de Portela do Homem, Minas dos Carris, etc. del Día 2), hay que pedir un permiso online</strong>. Te multan si te pillan los guardas (Rangers) sin él. El aforo es limitado al día, así que tendremos que sacarlo por internet unas semanas antes. Además, en Portela do Homem cobran aparcamiento (unos 1.50€) si pasas en coche hacia la zona restringida.</p>
-                    </div>
-
-                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
-                        <h4 class="font-bold text-blue-800 text-lg flex items-center gap-2"><span>🛣️</span> Peajes en Portugal (SCUTs)</h4>
-                        <p class="text-sm text-blue-900 mt-2">Portugal usa peajes electrónicos (arcos en la autovía que leen la matrícula). No hay garitas para pagar en metálico. Lo más fácil: nada más cruzar la frontera o antes de irnos, vinculamos nuestra matrícula a la tarjeta de crédito por internet (sistema EasyToll), y nos olvidamos. Se cobra solo.</p>
-                    </div>
-
-                    <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg">
-                        <h4 class="font-bold text-green-800 text-lg flex items-center gap-2"><span>🎒</span> ¿Qué metemos en la mochila?</h4>
-                        <ul class="list-disc list-inside text-sm text-green-900 mt-2 space-y-1">
-                            <li>Bañador y toalla (imprescindible para las termas y por si nos venimos arriba en alguna poza).</li>
-                            <li>Cortavientos/Chubasquero (en abril el tiempo en la sierra es una lotería).</li>
-                            <li>Botas de montaña buenas (vamos a hacer rutas con roca suelta y desnivel).</li>
-                            <li>Efectivo (en algunos pueblos pequeños o mercadillos pueden no coger tarjeta).</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
         </div>
-    </main>
+    </section>
 
-    <footer class="text-center mt-16 text-gray-500 text-sm">
+    <!-- ==================== SECCIÓN: RUTAS ==================== -->
+    <section id="section-rutas" class="page-section section-hidden">
+        <header class="max-w-4xl mx-auto px-4 mt-10 mb-8 text-center">
+            <p class="text-arcilla font-semibold tracking-widest uppercase text-sm mb-2">Senderismo</p>
+            <h1 class="text-4xl md:text-5xl font-serif font-bold text-bosque mb-4">🥾 Rutas</h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Todas las rutas de senderismo que barajamos para el viaje: fichas técnicas, tracks y qué esperar de cada una.</p>
+        </header>
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="placeholder-item">
+                    <span class="text-4xl block mb-3">🗺️</span>
+                    <p class="font-semibold text-lg mb-1">Contenido por añadir</p>
+                    <p class="text-sm">Aquí irán las fichas detalladas de cada ruta con distancia, desnivel, tracks GPX y fotos de referencia.</p>
+                </div>
+                <div class="placeholder-item">
+                    <span class="text-4xl block mb-3">📊</span>
+                    <p class="font-semibold text-lg mb-1">Comparativa de rutas</p>
+                    <p class="text-sm">Tabla o gráfico comparativo de dificultad, duración y puntos de interés de cada ruta.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SECCIÓN: MERCADILLOS ==================== -->
+    <section id="section-mercadillos" class="page-section section-hidden">
+        <header class="max-w-4xl mx-auto px-4 mt-10 mb-8 text-center">
+            <p class="text-arcilla font-semibold tracking-widest uppercase text-sm mb-2">Artesanía y compras</p>
+            <h1 class="text-4xl md:text-5xl font-serif font-bold text-bosque mb-4">🛍️ Mercadillos</h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Ferias medievales, mercados de artesanía, tiendas de plata y cerámica que pillamos en ruta.</p>
+        </header>
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="placeholder-item">
+                    <span class="text-4xl block mb-3">🏰</span>
+                    <p class="font-semibold text-lg mb-1">Contenido por añadir</p>
+                    <p class="text-sm">Aquí irán los mercadillos confirmados con fechas, horarios, ubicación y qué tipo de puestos tienen.</p>
+                </div>
+                <div class="placeholder-item">
+                    <span class="text-4xl block mb-3">💍</span>
+                    <p class="font-semibold text-lg mb-1">Tiendas destacadas</p>
+                    <p class="text-sm">Tiendas concretas de plata, cuero o artesanía que nos recomiendan o que hemos encontrado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SECCIÓN: PUEBLOS ==================== -->
+    <section id="section-pueblos" class="page-section section-hidden">
+        <header class="max-w-4xl mx-auto px-4 mt-10 mb-8 text-center">
+            <p class="text-arcilla font-semibold tracking-widest uppercase text-sm mb-2">Patrimonio y encanto</p>
+            <h1 class="text-4xl md:text-5xl font-serif font-bold text-bosque mb-4">🏘️ Pueblos</h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Pueblos de piedra, aldeas remotas y villas con encanto que visitaremos o que nos quedan a tiro.</p>
+        </header>
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="placeholder-item">
+                    <span class="text-4xl block mb-3">🏘️</span>
+                    <p class="font-semibold text-lg mb-1">Contenido por añadir</p>
+                    <p class="text-sm">Fichas de cada pueblo: qué ver, dónde comer, fotos de referencia y cómo llegar.</p>
+                </div>
+                <div class="placeholder-item">
+                    <span class="text-4xl block mb-3">📍</span>
+                    <p class="font-semibold text-lg mb-1">Mapa de pueblos</p>
+                    <p class="text-sm">Ubicación de cada pueblo respecto a nuestra ruta para decidir sobre la marcha.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SECCIÓN: MALETA ==================== -->
+    <section id="section-maleta" class="page-section section-hidden">
+        <header class="max-w-4xl mx-auto px-4 mt-10 mb-8 text-center">
+            <p class="text-arcilla font-semibold tracking-widest uppercase text-sm mb-2">Preparativos</p>
+            <h1 class="text-4xl md:text-5xl font-serif font-bold text-bosque mb-4">🎒 Maleta</h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Todo lo que tenemos que llevarnos: ropa, material de montaña, documentos y cosas que no se nos pueden olvidar.</p>
+        </header>
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="placeholder-item">
+                    <span class="text-4xl block mb-3">👕</span>
+                    <p class="font-semibold text-lg mb-1">Ropa</p>
+                    <p class="text-sm">Lista de ropa para 4 días: montaña, casual y por si refresca.</p>
+                </div>
+                <div class="placeholder-item">
+                    <span class="text-4xl block mb-3">🧭</span>
+                    <p class="font-semibold text-lg mb-1">Material de montaña</p>
+                    <p class="text-sm">Botas, bastones, mochila, frontal, botiquín...</p>
+                </div>
+                <div class="placeholder-item">
+                    <span class="text-4xl block mb-3">📄</span>
+                    <p class="font-semibold text-lg mb-1">Documentos y varios</p>
+                    <p class="text-sm">DNI, tarjetas, permisos ICNF, EasyToll, efectivo...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="text-center mt-16 mb-8 text-gray-400 text-sm">
         <p>Diseñado con ❤️ para nuestra escapada. ¡Ganas de viaje!</p>
     </footer>
 
-    <!-- Lógica JavaScript -->
+    <!-- ==================== JAVASCRIPT ==================== -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        // --- NAVEGACIÓN ENTRE SECCIONES ---
+        function showSection(sectionId) {
+            // Ocultar todas las secciones
+            document.querySelectorAll('.page-section').forEach(s => s.classList.add('section-hidden'));
+            // Mostrar la elegida
+            const target = document.getElementById('section-' + sectionId);
+            if (target) target.classList.remove('section-hidden');
 
-            // --- 1. LÓGICA DE LAS PESTAÑAS (TABS) ---
+            // Actualizar botones de nav (desktop + mobile)
+            document.querySelectorAll('.main-nav-btn').forEach(btn => {
+                btn.classList.remove('active-section');
+                if (btn.getAttribute('data-section') === sectionId) {
+                    btn.classList.add('active-section');
+                }
+            });
+
+            // Scroll arriba
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Si entramos en Plan, inicializar el gráfico si no existe
+            if (sectionId === 'plan') {
+                setTimeout(initChart, 100);
+            }
+        }
+
+        // --- MENÚ MOBILE ---
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('open');
+        }
+
+        // --- PESTAÑAS DEL PLAN DE VIAJE ---
+        document.addEventListener('DOMContentLoaded', () => {
             const tabBtns = document.querySelectorAll('.tab-btn');
             const dayPanels = document.querySelectorAll('.day-panel');
 
             tabBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
-                    // Quitar activo a todos los botones
                     tabBtns.forEach(b => b.classList.remove('active', 'text-bosque', 'font-bold'));
                     btn.classList.add('active', 'text-bosque', 'font-bold');
-
-                    // Ocultar todos los paneles
-                    dayPanels.forEach(panel => panel.classList.add('hidden'));
-
-                    // Mostrar el panel objetivo
+                    dayPanels.forEach(panel => panel.classList.add('section-hidden'));
                     const targetId = btn.getAttribute('data-target');
-                    document.getElementById(targetId).classList.remove('hidden');
+                    document.getElementById(targetId).classList.remove('section-hidden');
                 });
             });
+        });
 
-            // --- 2. GRÁFICO DE BARRAS (CHART.JS) ---
-            const rutasData = {
-                labels: ['Pedra Bela (D1)', 'Pincães (D1)', 'Carris/Nevosa (D2)', '7 Lagoas (D3)'],
-                datasets: [
-                    {
-                        label: 'Distancia (Kilómetros)',
-                        data: [4.5, 6, 15, 12],
-                        backgroundColor: '#8A9A92',
-                        borderRadius: 4,
-                        yAxisID: 'y',
-                    },
-                    {
-                        label: 'Desnivel Acumulado (Metros)',
-                        data: [250, 180, 800, 450],
-                        backgroundColor: '#C06E52',
-                        borderRadius: 4,
-                        yAxisID: 'y1',
-                    }
-                ]
-            };
+        // --- CHART.JS (solo se inicializa una vez) ---
+        let chartInitialized = false;
+        function initChart() {
+            if (chartInitialized) return;
+            const canvas = document.getElementById('rutasChart');
+            if (!canvas) return;
 
-            const config = {
+            chartInitialized = true;
+            const ctx = canvas.getContext('2d');
+            new Chart(ctx, {
                 type: 'bar',
-                data: rutasData,
+                data: {
+                    labels: ['Pedra Bela (D1)', 'Pincães (D1)', 'Carris/Nevosa (D2)', '7 Lagoas (D3)'],
+                    datasets: [
+                        {
+                            label: 'Distancia (km)',
+                            data: [4.5, 6, 15, 12],
+                            backgroundColor: '#8A9A92',
+                            borderRadius: 4,
+                            yAxisID: 'y',
+                        },
+                        {
+                            label: 'Desnivel (m)',
+                            data: [250, 180, 800, 450],
+                            backgroundColor: '#C06E52',
+                            borderRadius: 4,
+                            yAxisID: 'y1',
+                        }
+                    ]
+                },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    interaction: {
-                        mode: 'index',
-                        intersect: false,
-                    },
+                    interaction: { mode: 'index', intersect: false },
                     plugins: {
-                        legend: {
-                            position: 'top',
-                            labels: {
-                                font: {
-                                    family: "'Nunito Sans', sans-serif"
-                                }
-                            }
-                        },
+                        legend: { position: 'top', labels: { font: { family: "'Nunito Sans', sans-serif" } } },
                         tooltip: {
                             callbacks: {
                                 label: function(context) {
                                     let label = context.dataset.label || '';
-                                    if (label) {
-                                        label += ': ';
-                                    }
-                                    if (context.parsed.y !== null) {
-                                        label += context.parsed.y + (context.datasetIndex === 0 ? ' km' : ' m');
-                                    }
+                                    if (label) label += ': ';
+                                    if (context.parsed.y !== null) label += context.parsed.y + (context.datasetIndex === 0 ? ' km' : ' m');
                                     return label;
                                 }
                             }
                         }
                     },
                     scales: {
-                        x: {
-                            grid: {
-                                display: false
-                            },
-                            ticks: {
-                                callback: function(value) {
-                                    const label = this.getLabelForValue(value);
-                                    if (label.length > 15) {
-                                        return label.match(/.{1,15}(\s|$)/g);
-                                    }
-                                    return label;
-                                },
-                                font: {
-                                    family: "'Nunito Sans', sans-serif"
-                                }
-                            }
-                        },
-                        y: {
-                            type: 'linear',
-                            display: true,
-                            position: 'left',
-                            title: {
-                                display: true,
-                                text: 'Kilómetros',
-                                font: { size: 11 }
-                            },
-                            grid: {
-                                color: 'rgba(0,0,0,0.05)'
-                            }
-                        },
-                        y1: {
-                            type: 'linear',
-                            display: true,
-                            position: 'right',
-                            title: {
-                                display: true,
-                                text: 'Metros (Desnivel)',
-                                font: { size: 11 }
-                            },
-                            grid: {
-                                drawOnChartArea: false
-                            }
-                        },
+                        x: { grid: { display: false }, ticks: { font: { family: "'Nunito Sans', sans-serif" } } },
+                        y: { type: 'linear', display: true, position: 'left', title: { display: true, text: 'Kilómetros', font: { size: 11 } }, grid: { color: 'rgba(0,0,0,0.05)' } },
+                        y1: { type: 'linear', display: true, position: 'right', title: { display: true, text: 'Metros (Desnivel)', font: { size: 11 } }, grid: { drawOnChartArea: false } },
                     }
                 }
-            };
-
-            const ctx = document.getElementById('rutasChart').getContext('2d');
-            new Chart(ctx, config);
-        });
+            });
+        }
     </script>
 </body>
 </html>
