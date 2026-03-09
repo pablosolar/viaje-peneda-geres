@@ -13,10 +13,10 @@
                 extend: {
                     colors: {
                         'tierra': '#F4EFEA',
-                        'bosque': '#2C4C3B',
-                        'arcilla': '#C06E52',
-                        'piedra': '#8A9A92',
-                        'texto': '#333333'
+                        'bosque': '#A8D8B9',
+                        'arcilla': '#F8C9B9',
+                        'piedra': '#C5D5CB',
+                        'texto': '#5D5D5D'
                     },
                     fontFamily: {
                         'serif': ['Lora', 'serif'],
@@ -27,7 +27,7 @@
         }
     </script>
     <style>
-        body { font-family: 'Nunito Sans', sans-serif; background-color: #F4EFEA; color: #333333; }
+        body { font-family: 'Nunito Sans', sans-serif; background-color: #F4EFEA; color: #5D5D5D; }
         h1, h2, h3, h4, .font-serif { font-family: 'Lora', serif; }
         .section-hidden { display: none !important; }
         .chart-container { position: relative; width: 100%; max-width: 900px; margin: 0 auto; height: 300px; max-height: 400px; background: white; border-radius: 0.75rem; padding: 1rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
@@ -36,25 +36,25 @@
         .route-card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         .seg-ctrl { display: inline-flex; background: #e5e7eb; padding: 3px; border-radius: 0.5rem; }
         .seg-btn { padding: 0.4rem 0.9rem; border-radius: 0.4rem; font-size: 0.8rem; font-weight: 600; transition: all 0.2s; cursor: pointer; border: none; background: transparent; color: #6b7280; }
-        .seg-btn.active { background: white; color: #2C4C3B; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .seg-btn.active { background: white; color: #A8D8B9; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
         .tab-btn { transition: all 0.3s ease; border-bottom: 3px solid transparent; }
-        .tab-btn.active { border-bottom-color: #C06E52; color: #2C4C3B; font-weight: bold; }
-        .tab-btn:hover:not(.active) { border-bottom-color: #8A9A92; }
+        .tab-btn.active { border-bottom-color: #F8C9B9; color: #A8D8B9; font-weight: bold; }
+        .tab-btn:hover:not(.active) { border-bottom-color: #C5D5CB; }
         .info-card { transition: transform 0.2s, box-shadow 0.2s; }
         .info-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
 
         /* --- Navegación principal --- */
         .main-nav-btn { position: relative; padding: 0.5rem 1rem; border-radius: 0.5rem; transition: all 0.25s ease; font-weight: 600; font-size: 0.875rem; }
         .main-nav-btn:hover { background-color: rgba(255,255,255,0.15); }
-        .main-nav-btn.active-section { background-color: rgba(255,255,255,0.2); box-shadow: inset 0 -3px 0 #C06E52; }
+        .main-nav-btn.active-section { background-color: rgba(255,255,255,0.2); box-shadow: inset 0 -3px 0 #F8C9B9; }
 
         /* --- Hero landing --- */
         .hero-card { transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; }
         .hero-card:hover { transform: translateY(-6px); box-shadow: 0 20px 30px -10px rgba(0,0,0,0.15); }
 
         /* --- Placeholder sections --- */
-        .placeholder-item { border: 2px dashed #8A9A92; border-radius: 1rem; padding: 2rem; text-align: center; color: #8A9A92; transition: all 0.2s; }
-        .placeholder-item:hover { border-color: #C06E52; color: #C06E52; }
+        .placeholder-item { border: 2px dashed #C5D5CB; border-radius: 1rem; padding: 2rem; text-align: center; color: #C5D5CB; transition: all 0.2s; }
+        .placeholder-item:hover { border-color: #F8C9B9; color: #F8C9B9; }
 
         /* --- Mobile nav --- */
         .mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
@@ -149,7 +149,7 @@
             </div>
 
             <div class="hero-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100" onclick="showSection('pueblos')">
-                <div class="h-3" style="background: linear-gradient(90deg, #2C4C3B, #C06E52);"></div>
+                <div class="h-3" style="background: linear-gradient(90deg, #A8D8B9, #F8C9B9);"></div>
                 <div class="p-6">
                     <div class="text-4xl mb-3">🏘️</div>
                     <h3 class="font-serif text-xl font-bold text-bosque mb-2">Pueblos</h3>
@@ -161,7 +161,7 @@
             </div>
 
             <div class="hero-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 sm:col-span-2 lg:col-span-1" onclick="showSection('maleta')">
-                <div class="h-3 bg-yellow-500"></div>
+                <div class="h-3 bg-yellow-300"></div>
                 <div class="p-6">
                     <div class="text-4xl mb-3">🎒</div>
                     <h3 class="font-serif text-xl font-bold text-bosque mb-2">Maleta</h3>
@@ -658,14 +658,14 @@
                         {
                             label: 'Distancia (km)',
                             data: [4.5, 6, 15, 12],
-                            backgroundColor: '#8A9A92',
+                            backgroundColor: '#C5D5CB',
                             borderRadius: 4,
                             yAxisID: 'y',
                         },
                         {
                             label: 'Desnivel (m)',
                             data: [250, 180, 800, 450],
-                            backgroundColor: '#C06E52',
+                            backgroundColor: '#F8C9B9',
                             borderRadius: 4,
                             yAxisID: 'y1',
                         }
@@ -722,9 +722,9 @@
         let currentDiffFilter = 'todas';
 
         function getDiffColor(d) {
-            if (d === 'facil') return '#16a34a';
-            if (d === 'moderada') return '#ca8a04';
-            return '#b91c1c';
+            if (d === 'facil') return '#A8D8B9';
+            if (d === 'moderada') return '#F8C9B9';
+            return '#FFB3B3';
         }
         function getDiffValue(d) {
             if (d === 'facil') return 1;
