@@ -13,11 +13,10 @@
                 extend: {
                     colors: {
                         'tierra': '#F4EFEA',
-                        'bosque': '#7D8F69', // Verde bosque pastel más oscuro para legibilidad
-                        'arcilla': '#C98B6D', // Arcilla/Terracota pastel más oscuro
-                        'piedra': '#94A684', // Piedra/Musgo pastel más oscuro
-                        'alerta': '#D68C8C', // Rojo pastel suave pero legible
-                        'texto': '#2D3436'  // Gris muy oscuro para máxima legibilidad
+                        'bosque': '#7D8F69',
+                        'arcilla': '#C98B6D',
+                        'piedra': '#94A684',
+                        'texto': '#2D3436'
                     },
                     fontFamily: {
                         'serif': ['Lora', 'serif'],
@@ -45,7 +44,7 @@
         .info-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
 
         /* --- Navegación principal --- */
-        .main-nav-btn { position: relative; padding: 0.5rem 1rem; border-radius: 0.5rem; transition: all 0.25s ease; font-weight: 600; font-size: 0.875rem; }
+        .main-nav-btn { position: relative; padding: 0.5rem 1rem; border-radius: 0.5rem; transition: all 0.25s ease; font-weight: 600; font-size: 0.875rem; color: #F4EFEA; }
         .main-nav-btn:hover { background-color: rgba(255,255,255,0.15); }
         .main-nav-btn.active-section { background-color: rgba(255,255,255,0.2); box-shadow: inset 0 -3px 0 #C98B6D; }
 
@@ -105,7 +104,7 @@
             <p class="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto">
                 Andrea, aquí tienes toda la info del viaje organizada. Pulsa en cualquier sección para explorarla.
             </p>
-            <div class="flex items-center justify-center gap-2 mt-4 text-sm text-piedra font-semibold">
+            <div class="flex items-center justify-center gap-2 mt-4 text-sm text-piedra font-bold">
                 <span>Gijón</span><span>→</span><span>Valença</span><span>→</span><span>Gerês</span><span>→</span><span>Ribeira Sacra</span><span>→</span><span>Gijón</span>
             </div>
         </header>
@@ -209,7 +208,7 @@
             <p class="text-arcilla font-semibold tracking-widest uppercase text-sm mb-2">Itinerario completo</p>
             <h1 class="text-4xl md:text-5xl font-serif font-bold text-bosque mb-4">Plan de Viaje</h1>
             <p class="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto">
-                Andrea, he diseñado este plan para nosotros. La idea es madrugar el primer día para aprovechar al máximo, hacer rutas preciosas y relajarnos en termas bajo las estrellas.
+                Andrea, he estado dándole vueltas a toda la información y he diseñado este plan para nosotros. La idea es madrugar el primer día para aprovechar al máximo, hacer rutas preciosas, relajarnos en termas bajo las estrellas y encajar la artesanía y la Feria Medieval en nuestro camino de vuelta.
             </p>
         </header>
 
@@ -242,23 +241,31 @@
                     <div class="flex items-center gap-3 mb-6">
                         <span class="text-4xl">🚗</span>
                         <div>
-                            <h2 class="text-3xl font-serif text-bosque">Día 1: Fronteras y Artesanía</h2>
+                            <h2 class="text-3xl font-serif text-bosque">Día 1: Fronteras, Artesanía y Primer Contacto</h2>
                             <p class="text-gray-500">Jueves, 2 de Abril</p>
                         </div>
                     </div>
+                    <p class="mb-8 text-lg">Empezamos fuerte. Salimos de Gijón a las 6:00 a.m. para poder aprovechar el día desde que crucemos la frontera. La idea es parar primero a ver cositas y luego estrenar las botas por la tarde antes de ir a nuestro alojamiento.</p>
                     <div class="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gray-300 before:to-transparent">
                         <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
                             <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-arcilla text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">10:30</div>
                             <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] info-card bg-tierra p-5 rounded-xl border border-gray-200">
-                                <h3 class="font-bold text-xl text-bosque mb-1">🏰 Valença do Minho</h3>
-                                <p class="text-gray-700">Todo el interior de la muralla está lleno de tiendas de artesanía, cosas para la casa, bolsos y joyerías.</p>
+                                <h3 class="font-bold text-xl text-bosque mb-1">🏰 Valença do Minho y Comida</h3>
+                                <p class="text-gray-700">Nada más cruzar el río Miño, paramos en La Fortaleza de Valença. <strong>Andrea, aquí está tu paraíso</strong>. Todo el interior de la muralla está lleno de tiendas de artesanía, cosas para la casa, bolsos y joyerías donde buscar esos anillos de plata. Comemos por aquí o en ruta hacia el parque.</p>
                             </div>
                         </div>
                         <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
                             <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-bosque text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">15:30</div>
                             <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] info-card bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
-                                <h3 class="font-bold text-xl text-bosque mb-1">🥾 Ruta Tarde</h3>
-                                <p class="text-gray-700">Cascata de Pincães o Pedra Bela para estrenar las botas con vistazas del parque.</p>
+                                <h3 class="font-bold text-xl text-bosque mb-1">🥾 Ruta Tarde: Cascata de Pincães o Pedra Bela</h3>
+                                <p class="text-gray-700">Llegamos al Parque Nacional. Para soltar piernas del viaje, haremos una ruta no muy larga pero preciosa. Podemos ir a la <em>Cascata de Pincães</em> (una de las cascadas más chulas, ruta de unas 2-3h) o subir al <em>Trilho de Pedra Bela</em> si preferimos vistazas increíbles del valle desde lo alto.</p>
+                            </div>
+                        </div>
+                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-piedra text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">18:30</div>
+                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] info-card bg-white p-5 rounded-xl border border-gray-200">
+                                <h3 class="font-bold text-xl text-bosque mb-1">🏠 Check-in y Cena</h3>
+                                <p class="text-gray-700">Llegada a nuestro campamento base: <strong>Gerês Valley</strong> (Rua Chã de Ermida). Nos instalamos, ducha, y bajamos a la Vila do Gerês a cenar algo contundente (¡hay que probar la posta mirandesa o un buen bacalao!).</p>
                             </div>
                         </div>
                     </div>
@@ -269,34 +276,158 @@
                     <div class="flex items-center gap-3 mb-6">
                         <span class="text-4xl">⛰️</span>
                         <div>
-                            <h2 class="text-3xl font-serif text-bosque">Día 2: Naturaleza y Termas</h2>
+                            <h2 class="text-3xl font-serif text-bosque">Día 2: Naturaleza Salvaje y Aguas Termales</h2>
                             <p class="text-gray-500">Viernes, 3 de Abril</p>
                         </div>
                     </div>
+                    <p class="mb-8 text-lg">Hoy es el día de la gran ruta. Llevaremos bocadillos y agua de sobra. Vamos a meternos en el corazón del parque, buscando esos paisajes épicos, y terminaremos el día relajando los músculos como nos merecemos.</p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-bosque">
                             <h3 class="font-bold text-2xl text-bosque mb-3">📍 Mañana: Portela do Homem</h3>
-                            <p class="text-gray-700">Ruta épica hacia Pico da Nevosa o las pozas de Poço Azul. Paisajes espectaculares garantizados.</p>
+                            <p class="mb-3 text-gray-700">Nos acercamos a la frontera en la zona de Mata da Albergaria. Aquí tenemos dos opciones cañeras según cómo nos levantemos:</p>
+                            <ul class="list-none space-y-2 mb-4 text-gray-700">
+                                <li>🔸 <strong>Opción A (Épica):</strong> Ruta hacia Pico da Nevosa / Minas dos Carris. Es larga (aprox 15km) y espectacular, zona de alta montaña pura.</li>
+                                <li>🔸 <strong>Opción B (Pozas):</strong> Ruta de los 7 puentes o enlazar hacia Poço Azul. Menos desnivel pero nos permite ver piscinas naturales impresionantes.</li>
+                            </ul>
+                            <div class="bg-yellow-50 text-yellow-800 p-3 rounded text-sm mt-4">
+                                <strong>Nota:</strong> Esta zona tiene alta protección. Ver pestaña "Notas" sobre el ICNF y aparcamiento.
+                            </div>
                         </div>
                         <div class="bg-tierra rounded-xl p-6 border-l-4 border-arcilla flex flex-col justify-center">
-                            <h3 class="font-bold text-2xl text-bosque mb-3">✨ Tarde: Termas de Lobios</h3>
-                            <p class="text-gray-700">Relajación total en aguas a 40ºC bajo las estrellas en un entorno natural único.</p>
+                            <h3 class="font-bold text-2xl text-bosque mb-3">✨ Tarde/Noche: Termas de Lobios</h3>
+                            <p class="mb-4 text-gray-700">Después de la paliza, cogemos el coche y cruzamos a España justo ahí al lado (Portela do Homem). A 15 minutos están las <strong>Termas de Lobios</strong>.</p>
+                            <p class="text-gray-700">Son termas públicas gratuitas al aire libre. La idea es llegar atardeciendo, meternos en el agua a 40ºc mientras baja el sol y hacer lo que me pediste: <strong>relajar los músculos bajo las estrellas</strong>. Cenamos por los alrededores antes de volver a la cabaña.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- ... resto de días con estructura similar ... -->
+                <!-- DIA 3 -->
                 <div id="dia3" class="day-panel section-hidden">
-                    <p class="text-center py-10 text-gray-500 italic">Detalles del día 3...</p>
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="text-4xl">💧</span>
+                        <div>
+                            <h2 class="text-3xl font-serif text-bosque">Día 3: Las 7 Lagoas y Pueblos de Piedra</h2>
+                            <p class="text-gray-500">Sábado, 4 de Abril</p>
+                        </div>
+                    </div>
+                    <p class="mb-8 text-lg">El sábado lo dividiremos en dos: una mañana de senderismo buscando las mejores piscinas naturales de Portugal, y una tarde más cultural visitando patrimonio y pueblos con encanto de la zona.</p>
+                    <div class="space-y-6">
+                        <div class="flex flex-col md:flex-row gap-6 items-stretch">
+                            <div class="md:w-1/3 bg-bosque text-white rounded-xl p-6 shadow-md flex flex-col justify-center text-center">
+                                <span class="text-5xl mb-2">🥾</span>
+                                <h3 class="text-xl font-bold mb-2">Mañana</h3>
+                                <p class="text-tierra">Trilho das 7 Lagoas</p>
+                                <p class="text-sm mt-2 opacity-80">Ruta desde Xertelo</p>
+                            </div>
+                            <div class="md:w-2/3 bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                                <h4 class="text-xl font-bold text-bosque mb-2">Las Pozas Más Famosas</h4>
+                                <p class="text-gray-700">Esta ruta nos lleva a una serie de pozas escalonadas de agua cristalina. Es exigente (unos 10-12km según cómo la cerremos) y no tiene mucha sombra, pero las vistas merecen cada paso. Si sale un día de calor primaveral, <strong>baño obligatorio</strong>, aunque el agua estará helada.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row gap-6 items-stretch">
+                            <div class="md:w-1/3 bg-arcilla text-white rounded-xl p-6 shadow-md flex flex-col justify-center text-center">
+                                <span class="text-5xl mb-2">🏰</span>
+                                <h3 class="text-xl font-bold mb-2">Tarde</h3>
+                                <p class="text-tierra">Castillos y Hórreos</p>
+                                <p class="text-sm mt-2 opacity-80">Visita a Lindoso</p>
+                            </div>
+                            <div class="md:w-2/3 bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                                <h4 class="text-xl font-bold text-bosque mb-2">Historia en Piedra</h4>
+                                <p class="text-gray-700 mb-3">Cogemos el coche tras comer y nos vamos a <strong>Lindoso</strong>. Es famoso por tener el mayor conjunto de <em>espigueiros</em> (hórreos de piedra coronados con cruces) de la península, agrupados a los pies de un castillo medieval. Es súper fotogénico.</p>
+                                <p class="text-gray-700">Si nos sobra tiempo y energía, podemos estirar un poco el coche hasta el <em>Santuário de Nossa Senhora da Peneda</em> (una réplica del Bom Jesus encajada en la montaña), aunque queda un poco lejos. Lo valoramos sobre la marcha.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- DIA 4 -->
                 <div id="dia4" class="day-panel section-hidden">
-                    <p class="text-center py-10 text-gray-500 italic">Detalles del día 4...</p>
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="text-4xl">⛴️</span>
+                        <div>
+                            <h2 class="text-3xl font-serif text-bosque">Día 4: Cañones del Sil y Mercado Medieval</h2>
+                            <p class="text-gray-500">Domingo, 5 de Abril</p>
+                        </div>
+                    </div>
+                    <p class="mb-8 text-lg">Toca volver a Gijón, pero vamos a hacer que el viaje de vuelta sea parte de la aventura. He encajado tu petición de Ribeira Sacra y la feria de artesanía en la misma ruta hacia el norte.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-white border border-gray-200 p-5 rounded-xl shadow-sm text-center info-card">
+                            <div class="text-arcilla font-bold text-lg mb-2">08:00 - Salida</div>
+                            <h4 class="font-bold text-bosque mb-2">Despedida de Gerês</h4>
+                            <p class="text-sm text-gray-600">Hacemos check-out temprano. Tenemos unas 2 horas de coche hasta nuestro primer destino en Galicia, adentrándonos en Ourense.</p>
+                        </div>
+                        <div class="bg-white border border-gray-200 p-5 rounded-xl shadow-sm text-center info-card">
+                            <div class="text-arcilla font-bold text-lg mb-2">10:30 - Ribeira Sacra</div>
+                            <h4 class="font-bold text-bosque mb-2">Los Cañones del Sil</h4>
+                            <p class="text-sm text-gray-600">Llegamos a la zona. Tenemos dos opciones: asomarnos al vértigo del <strong>Mirador de Vilouxe</strong>, o coger un <strong>paseo en barco</strong> por dentro del cañón (suele salir desde el embarcadero de Santo Estevo). <em>(Ojo: el barco hay que reservarlo meses antes)</em>.</p>
+                        </div>
+                        <div class="bg-white border-2 border-arcilla p-5 rounded-xl shadow-md text-center info-card relative overflow-hidden">
+                            <div class="absolute top-0 right-0 bg-arcilla text-white text-xs px-2 py-1 rounded-bl-lg font-bold">¡Planazo!</div>
+                            <div class="text-arcilla font-bold text-lg mb-2">14:00 - Monforte</div>
+                            <h4 class="font-bold text-bosque mb-2">Feria Medieval</h4>
+                            <p class="text-sm text-gray-600">A media horita del Sil llegamos a Monforte de Lemos. Comemos allí y pasamos la tarde en la <strong>XXII Feria Medieval</strong>. Es Domingo de Pascua, estará en pleno apogeo. Aquí sí que vas a encontrar toda la artesanía, cuero y plata que busques. De aquí, nos quedan 3 horitas a Gijón.</p>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- ALTERNATIVAS -->
                 <div id="alternativas" class="day-panel section-hidden">
-                    <p class="text-center py-10 text-gray-500 italic">Otras opciones...</p>
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="text-4xl">🔀</span>
+                        <div>
+                            <h2 class="text-3xl font-serif text-bosque">El Banquillo: Otras Opciones Geniales</h2>
+                            <p class="text-gray-500">Por si cambiamos de idea o hace mal tiempo</p>
+                        </div>
+                    </div>
+                    <p class="mb-6 text-lg">Había muchísimas rutas en los enlaces que me pasaste. He seleccionado las mejores para el plan principal, pero aquí te dejo las que se han quedado en reserva por si sobre la marcha queremos cambiar algo.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="border border-gray-200 p-4 rounded-lg bg-white">
+                            <h4 class="font-bold text-lg text-bosque">🦅 Pitões das Júnias</h4>
+                            <p class="text-sm text-gray-700 mt-2">Me dijiste que lo valorara. Es un pueblo remoto increíble. Podríamos cambiar el Día 3 por ir allí: comer su famosa vitela, ver el monasterio en ruinas en silencio absoluto y que tú te hagas un tramo de trail corriendo hacia las cumbres mientras yo paseo. Está en la zona este del parque (Trás-os-Montes).</p>
+                        </div>
+                        <div class="border border-gray-200 p-4 rounded-lg bg-white">
+                            <h4 class="font-bold text-lg text-bosque">🏙️ Braga</h4>
+                            <p class="text-sm text-gray-700 mt-2">Si un día diluvia y no se puede ir al monte, Braga está a menos de 1 hora de nuestra casa. Es una ciudad preciosa, el "Santuario del Bom Jesus do Monte" (el de las escaleras infinitas) es espectacular, y tiene mucho ambiente para tomar algo y tiendas.</p>
+                        </div>
+                        <div class="border border-gray-200 p-4 rounded-lg bg-white">
+                            <h4 class="font-bold text-lg text-bosque">🥾 Trilho da Cidade da Calcedónia</h4>
+                            <p class="text-sm text-gray-700 mt-2">De las rutas que mandaste, esta es muy divertida porque pasas por grietas entre rocas gigantes (como si fuera una ciudad de piedra). Es dura y algo técnica. Si queremos algo de trepar un poco, esta es la elegida.</p>
+                        </div>
+                        <div class="border border-gray-200 p-4 rounded-lg bg-white">
+                            <h4 class="font-bold text-lg text-bosque">🛍️ Allariz (Galicia)</h4>
+                            <p class="text-sm text-gray-700 mt-2">Si el plan de Monforte el domingo falla, Allariz está en la autopista volviendo a España. Ese finde tienen "Semana Santa ao Vivo", música en la calle, mercado de la Biosfera y los outlets de ropa abiertos.</p>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- NOTAS -->
                 <div id="notas" class="day-panel section-hidden">
-                    <p class="text-center py-10 text-gray-500 italic">Información importante...</p>
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="text-4xl">⚠️</span>
+                        <div>
+                            <h2 class="text-3xl font-serif text-bosque">A Tener en Cuenta (Logística aburrida pero vital)</h2>
+                            <p class="text-gray-500">Antes de arrancar el coche</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg">
+                            <h4 class="font-bold text-red-800 text-lg flex items-center gap-2"><span>🛡️</span> Autorizaciones ICNF (Muy Importante)</h4>
+                            <p class="text-sm text-red-900 mt-2">Me preguntaste qué era esto. El <em>Instituto da Conservação da Natureza e das Florestas</em> es el organismo que gestiona el parque. <strong>Para entrar en las Zonas de Protección Total (como la zona de Portela do Homem, Minas dos Carris, etc. del Día 2), hay que pedir un permiso online</strong>. Te multan si te pillan los guardas (Rangers) sin él. El aforo es limitado al día, así que tendremos que sacarlo por internet unas semanas antes. Además, en Portela do Homem cobran aparcamiento (unos 1.50€) si pasas en coche hacia la zona restringida.</p>
+                        </div>
+                        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
+                            <h4 class="font-bold text-blue-800 text-lg flex items-center gap-2"><span>🛣️</span> Peajes en Portugal (SCUTs)</h4>
+                            <p class="text-sm text-blue-900 mt-2">Portugal usa peajes electrónicos (arcos en la autovía que leen la matrícula). No hay garitas para pagar en metálico. Lo más fácil: nada más cruzar la frontera o antes de irnos, vinculamos nuestra matrícula a la tarjeta de crédito por internet (sistema EasyToll), y nos olvidamos. Se cobra solo.</p>
+                        </div>
+                        <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg">
+                            <h4 class="font-bold text-green-800 text-lg flex items-center gap-2"><span>🎒</span> ¿Qué metemos en la mochila?</h4>
+                            <ul class="list-disc list-inside text-sm text-green-900 mt-2 space-y-1">
+                                <li>Bañador y toalla (imprescindible para las termas y por si nos venimos arriba en alguna poza).</li>
+                                <li>Cortavientos/Chubasquero (en abril el tiempo en la sierra es una lotería).</li>
+                                <li>Botas de montaña buenas (vamos a hacer rutas con roca suelta y desnivel).</li>
+                                <li>Efectivo (en algunos pueblos pequeños o mercadillos pueden no coger tarjeta).</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -308,168 +439,455 @@
         <header class="max-w-4xl mx-auto px-4 mt-10 mb-8 text-center">
             <p class="text-arcilla font-semibold tracking-widest uppercase text-sm mb-2">Senderismo</p>
             <h1 class="text-4xl md:text-5xl font-serif font-bold text-bosque mb-4">🥾 Rutas</h1>
-            <p class="text-lg text-gray-700 max-w-2xl mx-auto">Análisis técnico de las rutas seleccionadas.</p>
+            <p class="text-lg text-gray-700 max-w-2xl mx-auto">Análisis técnico y comparativo de las 17 rutas seleccionadas para Peneda-Gerês y alrededores.</p>
         </header>
 
-        <div class="max-w-6xl mx-auto px-4 mb-10">
+        <!-- ── Dashboard: Comparativa Técnica ── -->
+        <div class="max-w-6xl mx-auto px-4 -mt-2 mb-10">
             <div class="bg-white rounded-2xl shadow-xl p-5 md:p-8 border border-gray-100">
                 <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
-                    <h2 class="text-xl md:text-2xl font-serif font-bold text-bosque">Comparativa Técnica</h2>
+                    <div>
+                        <h2 class="text-xl md:text-2xl font-serif font-bold text-bosque">Comparativa Técnica</h2>
+                        <p class="text-sm text-gray-500">Visualiza el esfuerzo requerido por cada itinerario</p>
+                    </div>
                     <div class="seg-ctrl">
                         <button onclick="showRutaChart('distancia')" class="seg-btn active" data-chart="distancia">Distancia</button>
                         <button onclick="showRutaChart('desnivel')" class="seg-btn" data-chart="desnivel">Desnivel</button>
                         <button onclick="showRutaChart('dificultad')" class="seg-btn" data-chart="dificultad">Dificultad</button>
+                        <button onclick="showRutaChart('tiempo')" class="seg-btn" data-chart="tiempo">Tiempo</button>
                     </div>
                 </div>
-                <div class="chart-container" style="height:420px;">
+
+                <div class="chart-container" style="height:420px; max-height:500px;">
                     <canvas id="rutasCompChart"></canvas>
+                </div>
+
+                <!-- Resumen rápido dentro del dashboard -->
+                <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div class="p-3 bg-green-50 rounded-xl border border-green-100">
+                        <span class="block text-2xl font-bold text-green-700">17</span>
+                        <span class="text-[10px] uppercase tracking-wider text-green-600 font-semibold">Opciones de Ruta</span>
+                    </div>
+                    <div class="p-3 bg-orange-50 rounded-xl border border-orange-100">
+                        <span class="block text-2xl font-bold text-orange-700">200 km</span>
+                        <span class="text-[10px] uppercase tracking-wider text-orange-600 font-semibold">Distancia Total</span>
+                    </div>
+                    <div class="p-3 bg-amber-50 rounded-xl border border-amber-100">
+                        <span class="block text-2xl font-bold text-amber-700">8 267 m</span>
+                        <span class="text-[10px] uppercase tracking-wider text-amber-600 font-semibold">Desnivel Acumulado</span>
+                    </div>
+                    <div class="p-3 bg-blue-50 rounded-xl border border-blue-100">
+                        <span class="block text-2xl font-bold text-blue-700">~83 h</span>
+                        <span class="text-[10px] uppercase tracking-wider text-blue-600 font-semibold">Tiempo Estimado</span>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- ── Buscador + Filtros ── -->
+        <div class="max-w-6xl mx-auto px-4 mb-6">
+            <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+                <div class="relative w-full md:max-w-sm">
+                    <input type="text" id="rutaSearch" placeholder="Buscar ruta por nombre..."
+                           class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-arcilla focus:border-transparent outline-none transition-all shadow-sm text-sm"
+                           oninput="renderRutasGrid()">
+                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">🔍</span>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="setDiffFilter('todas')" class="ruta-filter-btn seg-btn active" data-filter="todas">Todas</button>
+                    <button onclick="setDiffFilter('facil')" class="ruta-filter-btn seg-btn" data-filter="facil">Fácil</button>
+                    <button onclick="setDiffFilter('moderada')" class="ruta-filter-btn seg-btn" data-filter="moderada">Moderada</button>
+                    <button onclick="setDiffFilter('dificil')" class="ruta-filter-btn seg-btn" data-filter="dificil">Difícil</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Grid de rutas (renderizado dinámico) ── -->
         <div class="max-w-6xl mx-auto px-4 mb-12">
-            <div id="rutas-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+            <div id="rutas-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Se llena desde JS -->
+            </div>
         </div>
     </section>
 
-    <!-- ... Secciones de Mercadillos, Pueblos y Maleta simplificadas ... -->
-    <section id="section-mercadillos" class="page-section section-hidden"><p class="text-center py-20">Contenido Mercadillos...</p></section>
-    <section id="section-pueblos" class="page-section section-hidden"><p class="text-center py-20">Contenido Pueblos...</p></section>
-    <section id="section-maleta" class="page-section section-hidden"><p class="text-center py-20">Contenido Maleta...</p></section>
+    <!-- ==================== SECCIÓN: MERCADILLOS ==================== -->
+    <section id="section-mercadillos" class="page-section section-hidden">
+        <header class="max-w-4xl mx-auto px-4 mt-10 mb-8 text-center">
+            <p class="text-arcilla font-semibold tracking-widest uppercase text-sm mb-2">Artesanía y compras</p>
+            <h1 class="text-4xl md:text-5xl font-serif font-bold text-bosque mb-4">🛍️ Mercadillos</h1>
+            <p class="text-lg text-gray-700 max-w-2xl mx-auto">Ferias medievales, mercados de artesanía, tiendas de plata y cerámica que pillamos en ruta.</p>
+        </header>
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="placeholder-item">
+                    <span class="text-4xl block mb-3">🏰</span>
+                    <p class="font-semibold text-lg mb-1">Contenido por añadir</p>
+                    <p class="text-sm">Aquí irán los mercadillos confirmados con fechas, horarios, ubicación y qué tipo de puestos tienen.</p>
+                </div>
+                <div class="placeholder-item">
+                    <span class="text-4xl block mb-3">💍</span>
+                    <p class="font-semibold text-lg mb-1">Tiendas destacadas</p>
+                    <p class="text-sm">Tiendas concretas de plata, cuero o artesanía que nos recomiendan o que hemos encontrado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- ==================== SECCIÓN: PUEBLOS ==================== -->
+    <section id="section-pueblos" class="page-section section-hidden">
+        <header class="max-w-4xl mx-auto px-4 mt-10 mb-8 text-center">
+            <p class="text-arcilla font-semibold tracking-widest uppercase text-sm mb-2">Patrimonio y encanto</p>
+            <h1 class="text-4xl md:text-5xl font-serif font-bold text-bosque mb-4">🏘️ Pueblos</h1>
+            <p class="text-lg text-gray-700 max-w-2xl mx-auto">Pueblos de piedra, aldeas remotas y villas con encanto que visitaremos o que nos quedan a tiro.</p>
+        </header>
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="placeholder-item">
+                    <span class="text-4xl block mb-3">🏘️</span>
+                    <p class="font-semibold text-lg mb-1">Contenido por añadir</p>
+                    <p class="text-sm">Fichas de cada pueblo: qué ver, dónde comer, fotos de referencia y cómo llegar.</p>
+                </div>
+                <div class="placeholder-item">
+                    <span class="text-4xl block mb-3">📍</span>
+                    <p class="font-semibold text-lg mb-1">Mapa de pueblos</p>
+                    <p class="text-sm">Ubicación de cada pueblo respecto a nuestra ruta para decidir sobre la marcha.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SECCIÓN: MALETA ==================== -->
+    <section id="section-maleta" class="page-section section-hidden">
+        <header class="max-w-4xl mx-auto px-4 mt-10 mb-8 text-center">
+            <p class="text-arcilla font-semibold tracking-widest uppercase text-sm mb-2">Preparativos</p>
+            <h1 class="text-4xl md:text-5xl font-serif font-bold text-bosque mb-4">🎒 Maleta</h1>
+            <p class="text-lg text-gray-700 max-w-2xl mx-auto">Todo lo que tenemos que llevarnos: ropa, material de montaña, documentos y cosas que no se nos pueden olvidar.</p>
+        </header>
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="placeholder-item">
+                    <span class="text-4xl block mb-3">👕</span>
+                    <p class="font-semibold text-lg mb-1">Ropa</p>
+                    <p class="text-sm">Lista de ropa para 4 días: montaña, casual y por si refresca.</p>
+                </div>
+                <div class="placeholder-item">
+                    <span class="text-4xl block mb-3">🧭</span>
+                    <p class="font-semibold text-lg mb-1">Material de montaña</p>
+                    <p class="text-sm">Botas, bastones, mochila, frontal, botiquín...</p>
+                </div>
+                <div class="placeholder-item">
+                    <span class="text-4xl block mb-3">📄</span>
+                    <p class="font-semibold text-lg mb-1">Documentos y varios</p>
+                    <p class="text-sm">DNI, tarjetas, permisos ICNF, EasyToll, efectivo...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
     <footer class="text-center mt-16 mb-8 text-gray-500 text-sm">
         <p>Diseñado con ❤️ para nuestra escapada. ¡Ganas de viaje!</p>
     </footer>
 
+    <!-- ==================== JAVASCRIPT ==================== -->
     <script>
-        // --- COLORES HOMOGENEIZADOS (HEX de Tailwind Config) ---
+        // --- COLORES HOMOGENEIZADOS ---
         const COLORS = {
             bosque: '#7D8F69',
             arcilla: '#C98B6D',
             piedra: '#94A684',
-            alerta: '#D68C8C',
             texto: '#2D3436'
         };
 
+        // --- NAVEGACIÓN ENTRE SECCIONES ---
         function showSection(sectionId) {
             document.querySelectorAll('.page-section').forEach(s => s.classList.add('section-hidden'));
             const target = document.getElementById('section-' + sectionId);
             if (target) target.classList.remove('section-hidden');
+
             document.querySelectorAll('.main-nav-btn').forEach(btn => {
                 btn.classList.remove('active-section');
-                if (btn.getAttribute('data-section') === sectionId) btn.classList.add('active-section');
+                if (btn.getAttribute('data-section') === sectionId) {
+                    btn.classList.add('active-section');
+                }
             });
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            if (sectionId === 'plan') setTimeout(initChart, 100);
-            if (sectionId === 'rutas') setTimeout(initRutasCharts, 100);
+
+            if (sectionId === 'plan') {
+                setTimeout(initChart, 100);
+            }
+            if (sectionId === 'rutas') {
+                setTimeout(initRutasCharts, 100);
+            }
         }
 
-        function toggleMobileMenu() { document.getElementById('mobile-menu').classList.toggle('open'); }
+        // --- MENÚ MOBILE ---
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('open');
+        }
 
-        // --- PESTAÑAS ---
+        // --- PESTAÑAS DEL PLAN DE VIAJE ---
         document.addEventListener('DOMContentLoaded', () => {
             const tabBtns = document.querySelectorAll('.tab-btn');
             const dayPanels = document.querySelectorAll('.day-panel');
+
             tabBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
-                    tabBtns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
+                    tabBtns.forEach(b => b.classList.remove('active', 'text-bosque', 'font-bold'));
+                    btn.classList.add('active', 'text-bosque', 'font-bold');
                     dayPanels.forEach(panel => panel.classList.add('section-hidden'));
                     const targetId = btn.getAttribute('data-target');
-                    if(document.getElementById(targetId)) document.getElementById(targetId).classList.remove('section-hidden');
+                    if (document.getElementById(targetId)) {
+                        document.getElementById(targetId).classList.remove('section-hidden');
+                    }
                 });
             });
         });
 
-        // --- CHART: PLAN DE VIAJE ---
+        // --- CHART.JS ---
         let chartInitialized = false;
         function initChart() {
             if (chartInitialized) return;
-            const ctx = document.getElementById('rutasChart')?.getContext('2d');
-            if (!ctx) return;
+            const canvas = document.getElementById('rutasChart');
+            if (!canvas) return;
+
             chartInitialized = true;
+            const ctx = canvas.getContext('2d');
             new Chart(ctx, {
                 type: 'bar',
                 data: {
                     labels: ['Pedra Bela (D1)', 'Pincães (D1)', 'Carris/Nevosa (D2)', '7 Lagoas (D3)'],
                     datasets: [
-                        { label: 'Distancia (km)', data: [4.5, 6, 15, 12], backgroundColor: COLORS.bosque, borderRadius: 4, yAxisID: 'y' },
-                        { label: 'Desnivel (m)', data: [250, 180, 800, 450], backgroundColor: COLORS.arcilla, borderRadius: 4, yAxisID: 'y1' }
+                        {
+                            label: 'Distancia (km)',
+                            data: [4.5, 6, 15, 12],
+                            backgroundColor: COLORS.bosque,
+                            borderRadius: 4,
+                            yAxisID: 'y',
+                        },
+                        {
+                            label: 'Desnivel (m)',
+                            data: [250, 180, 800, 450],
+                            backgroundColor: COLORS.arcilla,
+                            borderRadius: 4,
+                            yAxisID: 'y1',
+                        }
                     ]
                 },
                 options: {
-                    responsive: true, maintainAspectRatio: false,
-                    plugins: { legend: { labels: { color: COLORS.texto, font: { weight: 'bold' } } } },
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: {
+                        legend: { position: 'top', labels: { color: COLORS.texto, font: { family: "'Nunito Sans', sans-serif", weight: 'bold' } } },
+                    },
                     scales: {
-                        y: { ticks: { color: COLORS.texto } },
-                        y1: { ticks: { color: COLORS.texto }, grid: { drawOnChartArea: false } }
+                        x: { grid: { display: false }, ticks: { color: COLORS.texto, font: { family: "'Nunito Sans', sans-serif" } } },
+                        y: { type: 'linear', display: true, position: 'left', ticks: { color: COLORS.texto }, title: { display: true, text: 'Kilómetros', color: COLORS.texto, font: { size: 11 } }, grid: { color: 'rgba(0,0,0,0.05)' } },
+                        y1: { type: 'linear', display: true, position: 'right', ticks: { color: COLORS.texto }, title: { display: true, text: 'Metros (Desnivel)', color: COLORS.texto, font: { size: 11 } }, grid: { drawOnChartArea: false } },
                     }
                 }
             });
         }
 
-        // --- RUTAS DATA ---
+        // ═══════════ RUTAS: Datos completos (RESTAURADOS) ═══════════
         const rutasData = [
-            { name: 'Portela do Homem – Pico da Nevosa', short: 'Nevosa', dist: 24.4, elev: 968, diff: 'dificil', tag: 'Épica' },
-            { name: 'Trilho Poço Azul', short: 'Poço Azul', dist: 10.1, elev: 353, diff: 'moderada', tag: 'Agua' },
-            { name: 'Sete Lagoas', short: 'Sete Lagoas', dist: 10, elev: 300, diff: 'moderada', tag: 'Pozas' },
-            { name: 'Trilho Cidade da Calcedónia', short: 'Calcedónia', dist: 6.7, elev: 250, diff: 'facil', tag: 'Técnica' }
+            { name: 'Trilho Bouzas a Fonte Fria',          short: 'Bouzas–Fonte Fria',   dist: 11,   elev: 500,  diff: 'moderada', time: 4,   tag: 'Montaña', desc: 'Ruta circular por el Xurés entre Bouzas y Fonte Fria, con paisajes de alta montaña y restos megalíticos.', url: 'https://es.wikiloc.com/rutas-senderismo/trilho-de-bouzas-a-fonte-fria-11003252' },
+            { name: 'Portela do Homem – Pico da Nevosa',   short: 'Portela–Nevosa',       dist: 24.4, elev: 968,  diff: 'dificil',  time: 9,   tag: 'Épica',   desc: 'Travesía hasta el techo del Parque Nacional (1546 m), pasando por Minas dos Carris. Requiere permiso del ICNF.', url: 'https://pt.wikiloc.com/trilhas-trekking/portela-do-homem-pico-da-nevosa-2401028' },
+            { name: 'Portela do Homem – Portela de Leonte', short: 'Portela–Leonte',       dist: 14,   elev: 450,  diff: 'moderada', time: 5,   tag: 'Bosque',  desc: 'Circular por los prados de montaña entre Portela do Homem y Portela de Leonte. Paisajes abiertos y ganadería salvaje.', url: 'https://es.wikiloc.com/rutas-senderismo/geres-portela-do-homem-pelos-prados-ate-portela-de-leonte-a-portela-do-homem-19533752' },
+            { name: 'Trilho Poço Azul',                     short: 'Poço Azul',            dist: 10.1, elev: 353,  diff: 'moderada', time: 3.5, tag: 'Agua',    desc: 'Ruta a la Cascata do Arado y el Poço Azul, una de las más bonitas y populares del Parque. Ideal para bañarse.', url: 'https://pt.wikiloc.com/trilhas-trekking/trilho-poco-azul-geres-113130771' },
+            { name: 'Sete Lagoas (7 Lagunas)',              short: 'Sete Lagoas',          dist: 10,   elev: 300,  diff: 'moderada', time: 3.5, tag: 'Pozas',   desc: 'Desde Xertelo hasta las 7 lagunas del río Cabril. Pozas de agua cristalina en un entorno mágico. Muy popular.', url: 'https://es.wikiloc.com/rutas-senderismo/sete-lagoas-geres-7307407' },
+            { name: 'Trilho Cidade da Calcedónia (PR1)',    short: 'Calcedónia (PR1)',     dist: 6.7,  elev: 250,  diff: 'facil',    time: 2,   tag: 'Técnica', desc: 'Sendero señalizado (PR1) que recorre la "ciudad de piedra" de Calcedónia. Formaciones graníticas espectaculares.', url: 'https://es.wikiloc.com/rutas-senderismo/trilho-da-cidade-da-calcedonia-51216566' },
+            { name: 'Trilho Pedra Bela',                    short: 'Pedra Bela',           dist: 12.5, elev: 450,  diff: 'moderada', time: 4,   tag: 'Vistas',  desc: 'Circular hasta el mirador de Pedra Bela (829 m). Paisajes variados, zona de baño y vistas panorámicas del valle.', url: 'https://www.alltrails.com/es/ruta/portugal/braga/trilho-pedra-bela' },
+            { name: 'PR3 Currais + PR10 Preguiça + Vidoal', short: 'PR3+PR10 Currais',    dist: 16,   elev: 650,  diff: 'dificil',  time: 6,   tag: 'Completa',desc: 'Combinación de los senderos PR3 (Currais) y PR10 (Preguiça) ampliado al Prado do Vidoal. Corrales y bosque autóctono.', url: 'https://es.wikiloc.com/rutas-senderismo/pnpg-pr3-tbr-currais-pr10-tbr-preguica-alargado-ao-prado-do-vidoal-231715328' },
+            { name: '7 Puentes – Mata da Albergaria',       short: '7 Puentes Albergaria', dist: 10,   elev: 300,  diff: 'moderada', time: 4,   tag: 'Historia',desc: 'Por la Geira Romana a través del bosque milenario de Mata da Albergaria. 7 puentes, cascadas y lagunas.', url: 'https://es.wikiloc.com/rutas-senderismo/por-los-7-puentes-de-mata-da-albergaria-36660792' },
+            { name: 'Lugares Mágicos da Serra do Gerês',    short: 'Lugares Mágicos',      dist: 15,   elev: 500,  diff: 'moderada', time: 6,   tag: 'Mix',     desc: 'Programa guiado por Andamento.pt: Cascatas do Arado, Poço Azul, Fenda da Calcedónia y Minas de Carris.', url: 'https://andamento.pt/lugares-magicos-da-serra-do-geres/' },
+            { name: 'Pico do Sobreiro + Altar dos Cabrões', short: 'Sobreiro+Cabrões',     dist: 10,   elev: 600,  diff: 'dificil',  time: 5,   tag: 'Épica',   desc: 'Subida exigente al Pico do Sobreiro y la formación rocosa del Altar dos Cabrões. Vistas de infarto.', url: 'https://pt.wikiloc.com/trilhas-trekking/pico-do-sobreiro-vs-altar-dos-cabroes-165037222' },
+            { name: 'Serra Amarela: Vilarinho – Louriça',   short: 'Serra Amarela',        dist: 18,   elev: 800,  diff: 'dificil',  time: 8,   tag: 'Dura',    desc: 'Travesía hasta Louriça (1361 m) por la Serra Amarela. Parte del GR34. Muy exigente, sin mucha señalización.', url: 'https://es.wikiloc.com/rutas-senderismo/serra-amarela-vilarinho-das-furnas-lourica-21322306' },
+            { name: 'Mirador de Vilouxe (Ribeira Sacra)',   short: 'Vilouxe',              dist: 4.2,  elev: 196,  diff: 'facil',    time: 1.5, tag: 'R. Sacra',desc: 'Paseo corto hasta el espectacular mirador del Cañón del Sil. Incluye capilla de Vilouxe.', url: 'https://es.wikiloc.com/rutas-senderismo/mirador-de-vilouxe-130962802' },
+            { name: 'Castro Laboreiro: Puentes y Cascada',  short: 'Castro Laboreiro',     dist: 12,   elev: 400,  diff: 'moderada', time: 4,   tag: 'Pueblos', desc: 'Puentes medievales, aldea de Pontes (inverneira), acueducto y la Cascada de Pontes. No señalizada, GPS.', url: 'https://es.wikiloc.com/rutas-senderismo/por-castro-laboreiro-puentes-aldea-y-cascada-de-pontes-78671985' },
+            { name: 'Lagoa do Marinho + Cascata Pincães',   short: 'Marinho+Pincães',      dist: 20,   elev: 800,  diff: 'dificil',  time: 9,   tag: 'Pozas',   desc: 'Ruta larga desde Pincães: laguna de Marinho, fojos de lobos, silhas de ursos y la cascada. GPS imprescindible.', url: 'https://es.wikiloc.com/rutas-senderismo/rota-da-lagoa-do-marinho-e-cascata-de-pincaes-10985932/photo-6649106' },
+            { name: 'Pincães – Cascada – Colmenar',         short: 'Pincães–Colmenar',     dist: 10,   elev: 350,  diff: 'moderada', time: 4,   tag: 'Agua',    desc: 'Circular desde Pincães pasando por la cascada y el colmenar de la Silha. Versión más asequible que la ruta larga.', url: 'https://es.wikiloc.com/rutas-senderismo/pincaes-cascada-colmenar-pincaes-13718358' },
+            { name: 'Vilarinho das Furnas',                 short: 'Vilarinho Furnas',     dist: 12,   elev: 400,  diff: 'moderada', time: 5,   tag: 'Ruinas',  desc: 'Recorrido por la aldea sumergida de Vilarinho das Furnas y su embalse. Sin señalizar, GPS necesario.', url: 'https://es.wikiloc.com/rutas-senderismo/vilarinho-das-furnas-100104049' },
         ];
 
         let rutasChartInstance = null;
-        function showRutaChart(type) {
-            const ctx = document.getElementById('rutasCompChart')?.getContext('2d');
-            if (!ctx) return;
-            if (rutasChartInstance) rutasChartInstance.destroy();
+        let rutasChartInitialized = false;
+        let currentDiffFilter = 'todas';
 
-            let label, unit, values, bgColors;
-            if (type === 'distancia') {
-                label = 'Distancia'; unit = ' km';
-                values = rutasData.map(r => r.dist);
-                bgColors = COLORS.bosque;
-            } else if (type === 'desnivel') {
-                label = 'Desnivel'; unit = ' m';
-                values = rutasData.map(r => r.elev);
-                bgColors = COLORS.arcilla;
-            } else {
-                label = 'Dificultad'; unit = '';
-                values = rutasData.map(r => r.diff === 'facil' ? 1 : r.diff === 'moderada' ? 2 : 3);
-                bgColors = rutasData.map(r => r.diff === 'facil' ? COLORS.bosque : r.diff === 'moderada' ? COLORS.arcilla : COLORS.alerta);
+        function getDiffColor(d) {
+            if (d === 'facil') return COLORS.bosque;
+            if (d === 'moderada') return COLORS.arcilla;
+            return '#D68C8C'; // Rojo pastel para difícil
+        }
+        function getDiffValue(d) {
+            if (d === 'facil') return 1;
+            if (d === 'moderada') return 2;
+            return 3;
+        }
+        function getDiffLabel(d) {
+            if (d === 'facil') return 'Fácil';
+            if (d === 'moderada') return 'Moderada';
+            return 'Difícil';
+        }
+        function getDiffBgClass(d) {
+            if (d === 'facil') return 'bg-[#7D8F69]';
+            if (d === 'moderada') return 'bg-[#C98B6D]';
+            return 'bg-[#D68C8C]';
+        }
+        function getTagBg(tag) {
+            const map = { 'Agua':'bg-blue-100 text-blue-700', 'Pozas':'bg-cyan-100 text-cyan-700', 'Épica':'bg-red-100 text-red-700', 'Bosque':'bg-green-100 text-green-700', 'Vistas':'bg-purple-100 text-purple-700', 'Técnica':'bg-orange-100 text-orange-700', 'Completa':'bg-indigo-100 text-indigo-700', 'Historia':'bg-amber-100 text-amber-700', 'Mix':'bg-pink-100 text-pink-700', 'Dura':'bg-rose-100 text-rose-700', 'R. Sacra':'bg-violet-100 text-violet-700', 'Pueblos':'bg-teal-100 text-teal-700', 'Ruinas':'bg-stone-200 text-stone-700', 'Montaña':'bg-emerald-100 text-emerald-700' };
+            return map[tag] || 'bg-gray-100 text-gray-600';
+        }
+
+        // ═══════════ Renderizado dinámico de tarjetas ═══════════
+        function renderRutasGrid() {
+            const grid = document.getElementById('rutas-grid');
+            if (!grid) return;
+            const search = (document.getElementById('rutaSearch')?.value || '').toLowerCase();
+            grid.innerHTML = '';
+
+            const filtered = rutasData.filter(r => {
+                const matchSearch = r.name.toLowerCase().includes(search) || r.tag.toLowerCase().includes(search) || r.desc.toLowerCase().includes(search);
+                const matchDiff = currentDiffFilter === 'todas' || r.diff === currentDiffFilter;
+                return matchSearch && matchDiff;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '<div class="col-span-full text-center py-12 text-gray-400"><p class="text-4xl mb-2">🔍</p><p>No se encontraron rutas con esos criterios</p></div>';
+                return;
             }
 
-            rutasChartInstance = new Chart(ctx, {
+            filtered.forEach(r => {
+                const card = document.createElement('div');
+                card.className = 'route-card bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm';
+                card.innerHTML = `
+                    <div class="p-5">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-2.5 py-1 ${getTagBg(r.tag)} text-[10px] uppercase font-bold rounded-full">${r.tag}</span>
+                            <span class="text-xs font-bold px-2 py-0.5 rounded-full text-white ${getDiffBgClass(r.diff)}">${getDiffLabel(r.diff)}</span>
+                        </div>
+                        <h3 class="font-serif font-bold text-base text-bosque mb-2 leading-tight" style="min-height:2.5rem;">${r.name}</h3>
+                        <div class="flex items-center gap-4 mb-3 text-sm text-gray-600">
+                            <span class="flex items-center gap-1">📏 <strong>${r.dist}</strong> km</span>
+                            <span class="flex items-center gap-1">📈 <strong>${r.elev}</strong> m</span>
+                            <span class="flex items-center gap-1">⏱ <strong>~${r.time}</strong> h</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-4 leading-relaxed">${r.desc}</p>
+                        <a href="${r.url}" target="_blank" class="block text-center py-2 bg-bosque text-tierra rounded-lg font-semibold hover:opacity-90 transition-all text-sm">
+                            Ver en Mapa →
+                        </a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function setDiffFilter(diff) {
+            currentDiffFilter = diff;
+            document.querySelectorAll('.ruta-filter-btn').forEach(btn => {
+                if (btn.dataset.filter === diff) { btn.classList.add('active'); }
+                else { btn.classList.remove('active'); }
+            });
+            renderRutasGrid();
+        }
+
+        function initRutasCharts() {
+            if (rutasChartInitialized) return;
+            rutasChartInitialized = true;
+            renderRutasGrid();
+            showRutaChart('distancia');
+        }
+
+        // ═══════════ Gráficos Chart.js ═══════════
+        function showRutaChart(type) {
+            document.querySelectorAll('.seg-btn[data-chart]').forEach(btn => {
+                if (btn.dataset.chart === type) { btn.classList.add('active'); }
+                else { btn.classList.remove('active'); }
+            });
+
+            let sorted, values, label, unit, colors;
+            if (type === 'distancia') {
+                sorted = [...rutasData].sort((a, b) => b.dist - a.dist);
+                values = sorted.map(r => r.dist);
+                label = 'Distancia'; unit = ' km';
+            } else if (type === 'desnivel') {
+                sorted = [...rutasData].sort((a, b) => b.elev - a.elev);
+                values = sorted.map(r => r.elev);
+                label = 'Desnivel +'; unit = ' m';
+            } else if (type === 'dificultad') {
+                sorted = [...rutasData].sort((a, b) => getDiffValue(b.diff) - getDiffValue(a.diff) || b.dist - a.dist);
+                values = sorted.map(r => getDiffValue(r.diff));
+                label = 'Dificultad'; unit = '';
+            } else {
+                sorted = [...rutasData].sort((a, b) => b.time - a.time);
+                values = sorted.map(r => r.time);
+                label = 'Tiempo estimado'; unit = ' h';
+            }
+            colors = sorted.map(r => getDiffColor(r.diff));
+
+            const canvas = document.getElementById('rutasCompChart');
+            if (!canvas) return;
+            if (rutasChartInstance) rutasChartInstance.destroy();
+
+            rutasChartInstance = new Chart(canvas.getContext('2d'), {
                 type: 'bar',
                 data: {
-                    labels: rutasData.map(r => r.short),
-                    datasets: [{ label: label, data: values, backgroundColor: bgColors, borderRadius: 5 }]
+                    labels: sorted.map(r => r.short),
+                    datasets: [{
+                        label: label,
+                        data: values,
+                        backgroundColor: colors,
+                        borderRadius: 5,
+                        borderSkipped: false,
+                    }]
                 },
                 options: {
-                    indexAxis: 'y', responsive: true, maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(ctx) {
+                                    if (type === 'dificultad') {
+                                        return ['', 'Fácil', 'Moderada', 'Difícil'][ctx.parsed.x] || '';
+                                    }
+                                    return ctx.parsed.x + unit;
+                                }
+                            }
+                        }
+                    },
                     scales: {
-                        x: { ticks: { color: COLORS.texto, callback: (v) => type === 'dificultad' ? (['','Fácil','Mod.','Dif.'][v] || '') : v + unit } },
-                        y: { ticks: { color: COLORS.texto } }
+                        x: {
+                            grid: { color: 'rgba(0,0,0,0.04)' },
+                            ticks: {
+                                color: COLORS.texto,
+                                font: { family: "'Nunito Sans', sans-serif", size: 11 },
+                                callback: function(v) {
+                                    if (type === 'dificultad') return ['', 'Fácil', 'Moderada', 'Difícil'][v] || '';
+                                    return v + unit;
+                                }
+                            },
+                            ...(type === 'dificultad' ? { min: 0, max: 3.5 } : {})
+                        },
+                        y: {
+                            grid: { display: false },
+                            ticks: {
+                                color: COLORS.texto,
+                                font: { family: "'Nunito Sans', sans-serif", size: 10 },
+                                callback: function(value) {
+                                    const label = this.getLabelForValue(value);
+                                    return label.length > 22 ? label.substring(0, 22) + '…' : label;
+                                }
+                            }
+                        }
                     }
                 }
             });
         }
-
-        function renderRutasGrid() {
-            const grid = document.getElementById('rutas-grid');
-            if(!grid) return;
-            grid.innerHTML = rutasData.map(r => `
-                <div class="route-card bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
-                    <span class="text-[10px] font-bold uppercase px-2 py-1 rounded-full bg-gray-100 mb-2 inline-block">${r.tag}</span>
-                    <h3 class="font-bold text-bosque mb-2">${r.name}</h3>
-                    <p class="text-sm text-gray-600">📏 ${r.dist}km | 📈 ${r.elev}m</p>
-                    <div class="mt-4 text-xs font-bold py-1 px-3 rounded inline-block text-white" style="background:${r.diff==='facil'?COLORS.bosque:r.diff==='moderada'?COLORS.arcilla:COLORS.alerta}">
-                        ${r.diff.toUpperCase()}
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function initRutasCharts() { renderRutasGrid(); showRutaChart('distancia'); }
     </script>
 </body>
 </html>
