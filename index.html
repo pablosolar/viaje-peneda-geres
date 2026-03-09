@@ -13,9 +13,11 @@
                 extend: {
                     colors: {
                         'tierra': '#F4EFEA',
-                        'bosque': '#7D8F69',
-                        'arcilla': '#C98B6D',
+                        'bosque': '#7D8F69', // Fácil
+                        'oceano': '#85A9D1', // Moderada (Azul pastel)
+                        'arcilla': '#C98B6D', // Color secundario
                         'piedra': '#94A684',
+                        'alerta': '#D68C8C', // Difícil
                         'texto': '#2D3436'
                     },
                     fontFamily: {
@@ -125,7 +127,7 @@
             </div>
 
             <div class="hero-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100" onclick="showSection('rutas')">
-                <div class="h-3 bg-arcilla"></div>
+                <div class="h-3 bg-oceano"></div>
                 <div class="p-6">
                     <div class="text-4xl mb-3">🥾</div>
                     <h3 class="font-serif text-xl font-bold text-bosque mb-2">Rutas</h3>
@@ -149,7 +151,7 @@
             </div>
 
             <div class="hero-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100" onclick="showSection('pueblos')">
-                <div class="h-3" style="background: linear-gradient(90deg, #7D8F69, #C98B6D);"></div>
+                <div class="h-3" style="background: linear-gradient(90deg, #7D8F69, #85A9D1);"></div>
                 <div class="p-6">
                     <div class="text-4xl mb-3">🏘️</div>
                     <h3 class="font-serif text-xl font-bold text-bosque mb-2">Pueblos</h3>
@@ -208,7 +210,7 @@
             <p class="text-arcilla font-semibold tracking-widest uppercase text-sm mb-2">Itinerario completo</p>
             <h1 class="text-4xl md:text-5xl font-serif font-bold text-bosque mb-4">Plan de Viaje</h1>
             <p class="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto">
-                Andrea, he estado dándole vueltas a toda la información y he diseñado este plan para nosotros. La idea es madrugar el primer día para aprovechar al máximo, hacer rutas preciosas, relajarnos en termas bajo las estrellas y encajar la artesanía y la Feria Medieval en nuestro camino de vuelta.
+                Andrea, he diseñado este plan para nosotros. La idea es madrugar el primer día para aprovechar al máximo, hacer rutas preciosas, relajarnos en termas bajo las estrellas y encajar la artesanía y la Feria Medieval en nuestro camino de vuelta.
             </p>
         </header>
 
@@ -293,7 +295,7 @@
                                 <strong>Nota:</strong> Esta zona tiene alta protección. Ver pestaña "Notas" sobre el ICNF y aparcamiento.
                             </div>
                         </div>
-                        <div class="bg-tierra rounded-xl p-6 border-l-4 border-arcilla flex flex-col justify-center">
+                        <div class="bg-tierra rounded-xl p-6 border-l-4 border-oceano flex flex-col justify-center">
                             <h3 class="font-bold text-2xl text-bosque mb-3">✨ Tarde/Noche: Termas de Lobios</h3>
                             <p class="mb-4 text-gray-700">Después de la paliza, cogemos el coche y cruzamos a España justo ahí al lado (Portela do Homem). A 15 minutos están las <strong>Termas de Lobios</strong>.</p>
                             <p class="text-gray-700">Son termas públicas gratuitas al aire libre. La idea es llegar atardeciendo, meternos en el agua a 40ºc mientras baja el sol y hacer lo que me pediste: <strong>relajar los músculos bajo las estrellas</strong>. Cenamos por los alrededores antes de volver a la cabaña.</p>
@@ -325,7 +327,7 @@
                             </div>
                         </div>
                         <div class="flex flex-col md:flex-row gap-6 items-stretch">
-                            <div class="md:w-1/3 bg-arcilla text-white rounded-xl p-6 shadow-md flex flex-col justify-center text-center">
+                            <div class="md:w-1/3 bg-oceano text-white rounded-xl p-6 shadow-md flex flex-col justify-center text-center">
                                 <span class="text-5xl mb-2">🏰</span>
                                 <h3 class="text-xl font-bold mb-2">Tarde</h3>
                                 <p class="text-tierra">Castillos y Hórreos</p>
@@ -352,18 +354,18 @@
                     <p class="mb-8 text-lg">Toca volver a Gijón, pero vamos a hacer que el viaje de vuelta sea parte de la aventura. He encajado tu petición de Ribeira Sacra y la feria de artesanía en la misma ruta hacia el norte.</p>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div class="bg-white border border-gray-200 p-5 rounded-xl shadow-sm text-center info-card">
-                            <div class="text-arcilla font-bold text-lg mb-2">08:00 - Salida</div>
+                            <div class="text-oceano font-bold text-lg mb-2">08:00 - Salida</div>
                             <h4 class="font-bold text-bosque mb-2">Despedida de Gerês</h4>
                             <p class="text-sm text-gray-600">Hacemos check-out temprano. Tenemos unas 2 horas de coche hasta nuestro primer destino en Galicia, adentrándonos en Ourense.</p>
                         </div>
                         <div class="bg-white border border-gray-200 p-5 rounded-xl shadow-sm text-center info-card">
-                            <div class="text-arcilla font-bold text-lg mb-2">10:30 - Ribeira Sacra</div>
+                            <div class="text-oceano font-bold text-lg mb-2">10:30 - Ribeira Sacra</div>
                             <h4 class="font-bold text-bosque mb-2">Los Cañones del Sil</h4>
                             <p class="text-sm text-gray-600">Llegamos a la zona. Tenemos dos opciones: asomarnos al vértigo del <strong>Mirador de Vilouxe</strong>, o coger un <strong>paseo en barco</strong> por dentro del cañón (suele salir desde el embarcadero de Santo Estevo). <em>(Ojo: el barco hay que reservarlo meses antes)</em>.</p>
                         </div>
-                        <div class="bg-white border-2 border-arcilla p-5 rounded-xl shadow-md text-center info-card relative overflow-hidden">
-                            <div class="absolute top-0 right-0 bg-arcilla text-white text-xs px-2 py-1 rounded-bl-lg font-bold">¡Planazo!</div>
-                            <div class="text-arcilla font-bold text-lg mb-2">14:00 - Monforte</div>
+                        <div class="bg-white border-2 border-oceano p-5 rounded-xl shadow-md text-center info-card relative overflow-hidden">
+                            <div class="absolute top-0 right-0 bg-oceano text-white text-xs px-2 py-1 rounded-bl-lg font-bold">¡Planazo!</div>
+                            <div class="text-oceano font-bold text-lg mb-2">14:00 - Monforte</div>
                             <h4 class="font-bold text-bosque mb-2">Feria Medieval</h4>
                             <p class="text-sm text-gray-600">A media horita del Sil llegamos a Monforte de Lemos. Comemos allí y pasamos la tarde en la <strong>XXII Feria Medieval</strong>. Es Domingo de Pascua, estará en pleno apogeo. Aquí sí que vas a encontrar toda la artesanía, cuero y plata que busques. De aquí, nos quedan 3 horitas a Gijón.</p>
                         </div>
@@ -379,7 +381,7 @@
                             <p class="text-gray-500">Por si cambiamos de idea o hace mal tiempo</p>
                         </div>
                     </div>
-                    <p class="mb-6 text-lg">Había muchísimas rutas en los enlaces que me pasaste. He seleccionado las mejores para el plan principal, pero aquí te dejo las que se han quedado en reserva por si sobre la marcha queremos cambiar algo.</p>
+                    <p class="mb-6 text-lg">Había muchísimas rutas seleccionadas para el plan principal, pero aquí te dejo las que se han quedado en reserva por si sobre la marcha queremos cambiar algo.</p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="border border-gray-200 p-4 rounded-lg bg-white">
                             <h4 class="font-bold text-lg text-bosque">🦅 Pitões das Júnias</h4>
@@ -391,7 +393,7 @@
                         </div>
                         <div class="border border-gray-200 p-4 rounded-lg bg-white">
                             <h4 class="font-bold text-lg text-bosque">🥾 Trilho da Cidade da Calcedónia</h4>
-                            <p class="text-sm text-gray-700 mt-2">De las rutas que mandaste, esta es muy divertida porque pasas por grietas entre rocas gigantes (como si fuera una ciudad de piedra). Es dura y algo técnica. Si queremos algo de trepar un poco, esta es la elegida.</p>
+                            <p class="text-sm text-gray-700 mt-2">De las rutas que mandaste, esta es muy divertida porque pasas por grietas entre rocas gigantes (como si fuera una ciudad de piedra). Ahora marcada como Moderada según Wikiloc.</p>
                         </div>
                         <div class="border border-gray-200 p-4 rounded-lg bg-white">
                             <h4 class="font-bold text-lg text-bosque">🛍️ Allariz (Galicia)</h4>
@@ -410,15 +412,15 @@
                         </div>
                     </div>
                     <div class="space-y-4">
-                        <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg">
+                        <div class="bg-red-50 border-l-4 border-alerta p-4 rounded-r-lg">
                             <h4 class="font-bold text-red-800 text-lg flex items-center gap-2"><span>🛡️</span> Autorizaciones ICNF (Muy Importante)</h4>
-                            <p class="text-sm text-red-900 mt-2">Me preguntaste qué era esto. El <em>Instituto da Conservação da Natureza e das Florestas</em> es el organismo que gestiona el parque. <strong>Para entrar en las Zonas de Protección Total (como la zona de Portela do Homem, Minas dos Carris, etc. del Día 2), hay que pedir un permiso online</strong>. Te multan si te pillan los guardas (Rangers) sin él. El aforo es limitado al día, así que tendremos que sacarlo por internet unas semanas antes. Además, en Portela do Homem cobran aparcamiento (unos 1.50€) si pasas en coche hacia la zona restringida.</p>
+                            <p class="text-sm text-red-900 mt-2">El <em>Instituto da Conservação da Natureza e das Florestas</em> gestiona el parque. <strong>Para entrar en las Zonas de Protección Total (como la zona de Portela do Homem, Minas dos Carris, etc. del Día 2), hay que pedir un permiso online</strong>. Te multan si te pillan los guardas (Rangers) sin él. El aforo es limitado al día, así que tendremos que sacarlo por internet unas semanas antes. Además, en Portela do Homem cobran aparcamiento (unos 1.50€) si pasas en coche hacia la zona restringida.</p>
                         </div>
-                        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
+                        <div class="bg-blue-50 border-l-4 border-oceano p-4 rounded-r-lg">
                             <h4 class="font-bold text-blue-800 text-lg flex items-center gap-2"><span>🛣️</span> Peajes en Portugal (SCUTs)</h4>
                             <p class="text-sm text-blue-900 mt-2">Portugal usa peajes electrónicos (arcos en la autovía que leen la matrícula). No hay garitas para pagar en metálico. Lo más fácil: nada más cruzar la frontera o antes de irnos, vinculamos nuestra matrícula a la tarjeta de crédito por internet (sistema EasyToll), y nos olvidamos. Se cobra solo.</p>
                         </div>
-                        <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg">
+                        <div class="bg-green-50 border-l-4 border-bosque p-4 rounded-r-lg">
                             <h4 class="font-bold text-green-800 text-lg flex items-center gap-2"><span>🎒</span> ¿Qué metemos en la mochila?</h4>
                             <ul class="list-disc list-inside text-sm text-green-900 mt-2 space-y-1">
                                 <li>Bañador y toalla (imprescindible para las termas y por si nos venimos arriba en alguna poza).</li>
@@ -437,7 +439,7 @@
     <!-- ==================== SECCIÓN: RUTAS ==================== -->
     <section id="section-rutas" class="page-section section-hidden">
         <header class="max-w-4xl mx-auto px-4 mt-10 mb-8 text-center">
-            <p class="text-arcilla font-semibold tracking-widest uppercase text-sm mb-2">Senderismo</p>
+            <p class="text-oceano font-semibold tracking-widest uppercase text-sm mb-2">Senderismo</p>
             <h1 class="text-4xl md:text-5xl font-serif font-bold text-bosque mb-4">🥾 Rutas</h1>
             <p class="text-lg text-gray-700 max-w-2xl mx-auto">Análisis técnico y comparativo de las 17 rutas seleccionadas para Peneda-Gerês y alrededores.</p>
         </header>
@@ -468,17 +470,17 @@
                         <span class="block text-2xl font-bold text-green-700">17</span>
                         <span class="text-[10px] uppercase tracking-wider text-green-600 font-semibold">Opciones de Ruta</span>
                     </div>
-                    <div class="p-3 bg-orange-50 rounded-xl border border-orange-100">
-                        <span class="block text-2xl font-bold text-orange-700">200 km</span>
-                        <span class="text-[10px] uppercase tracking-wider text-orange-600 font-semibold">Distancia Total</span>
+                    <div class="p-3 bg-blue-50 rounded-xl border border-blue-100">
+                        <span class="block text-2xl font-bold text-blue-700">200 km</span>
+                        <span class="text-[10px] uppercase tracking-wider text-blue-600 font-semibold">Distancia Total</span>
                     </div>
                     <div class="p-3 bg-amber-50 rounded-xl border border-amber-100">
                         <span class="block text-2xl font-bold text-amber-700">8 267 m</span>
                         <span class="text-[10px] uppercase tracking-wider text-amber-600 font-semibold">Desnivel Acumulado</span>
                     </div>
-                    <div class="p-3 bg-blue-50 rounded-xl border border-blue-100">
-                        <span class="block text-2xl font-bold text-blue-700">~83 h</span>
-                        <span class="text-[10px] uppercase tracking-wider text-blue-600 font-semibold">Tiempo Estimado</span>
+                    <div class="p-3 bg-red-50 rounded-xl border border-red-100">
+                        <span class="block text-2xl font-bold text-red-700">~83 h</span>
+                        <span class="text-[10px] uppercase tracking-wider text-red-600 font-semibold">Tiempo Estimado</span>
                     </div>
                 </div>
             </div>
@@ -489,7 +491,7 @@
             <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
                 <div class="relative w-full md:max-w-sm">
                     <input type="text" id="rutaSearch" placeholder="Buscar ruta por nombre..."
-                           class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-arcilla focus:border-transparent outline-none transition-all shadow-sm text-sm"
+                           class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-oceano focus:border-transparent outline-none transition-all shadow-sm text-sm"
                            oninput="renderRutasGrid()">
                     <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">🔍</span>
                 </div>
@@ -513,7 +515,7 @@
     <!-- ==================== SECCIÓN: MERCADILLOS ==================== -->
     <section id="section-mercadillos" class="page-section section-hidden">
         <header class="max-w-4xl mx-auto px-4 mt-10 mb-8 text-center">
-            <p class="text-arcilla font-semibold tracking-widest uppercase text-sm mb-2">Artesanía y compras</p>
+            <p class="text-oceano font-semibold tracking-widest uppercase text-sm mb-2">Artesanía y compras</p>
             <h1 class="text-4xl md:text-5xl font-serif font-bold text-bosque mb-4">🛍️ Mercadillos</h1>
             <p class="text-lg text-gray-700 max-w-2xl mx-auto">Ferias medievales, mercados de artesanía, tiendas de plata y cerámica que pillamos en ruta.</p>
         </header>
@@ -536,7 +538,7 @@
     <!-- ==================== SECCIÓN: PUEBLOS ==================== -->
     <section id="section-pueblos" class="page-section section-hidden">
         <header class="max-w-4xl mx-auto px-4 mt-10 mb-8 text-center">
-            <p class="text-arcilla font-semibold tracking-widest uppercase text-sm mb-2">Patrimonio y encanto</p>
+            <p class="text-oceano font-semibold tracking-widest uppercase text-sm mb-2">Patrimonio y encanto</p>
             <h1 class="text-4xl md:text-5xl font-serif font-bold text-bosque mb-4">🏘️ Pueblos</h1>
             <p class="text-lg text-gray-700 max-w-2xl mx-auto">Pueblos de piedra, aldeas remotas y villas con encanto que visitaremos o que nos quedan a tiro.</p>
         </header>
@@ -559,7 +561,7 @@
     <!-- ==================== SECCIÓN: MALETA ==================== -->
     <section id="section-maleta" class="page-section section-hidden">
         <header class="max-w-4xl mx-auto px-4 mt-10 mb-8 text-center">
-            <p class="text-arcilla font-semibold tracking-widest uppercase text-sm mb-2">Preparativos</p>
+            <p class="text-oceano font-semibold tracking-widest uppercase text-sm mb-2">Preparativos</p>
             <h1 class="text-4xl md:text-5xl font-serif font-bold text-bosque mb-4">🎒 Maleta</h1>
             <p class="text-lg text-gray-700 max-w-2xl mx-auto">Todo lo que tenemos que llevarnos: ropa, material de montaña, documentos y cosas que no se nos pueden olvidar.</p>
         </header>
@@ -593,9 +595,11 @@
     <script>
         // --- COLORES HOMOGENEIZADOS ---
         const COLORS = {
-            bosque: '#7D8F69',
+            bosque: '#7D8F69', // Fácil
+            oceano: '#85A9D1', // Moderada (AZUL)
             arcilla: '#C98B6D',
             piedra: '#94A684',
+            alerta: '#D68C8C', // Difícil
             texto: '#2D3436'
         };
 
@@ -662,7 +666,7 @@
                         {
                             label: 'Distancia (km)',
                             data: [4.5, 6, 15, 12],
-                            backgroundColor: COLORS.bosque,
+                            backgroundColor: COLORS.oceano, // Usamos azul para moderadas en el resumen
                             borderRadius: 4,
                             yAxisID: 'y',
                         },
@@ -691,25 +695,25 @@
             });
         }
 
-        // ═══════════ RUTAS: Datos completos (RESTAURADOS) ═══════════
+        // ═══════════ RUTAS: Datos actualizados según URLs ═══════════
         const rutasData = [
-            { name: 'Trilho Bouzas a Fonte Fria',          short: 'Bouzas–Fonte Fria',   dist: 11,   elev: 500,  diff: 'moderada', time: 4,   tag: 'Montaña', desc: 'Ruta circular por el Xurés entre Bouzas y Fonte Fria, con paisajes de alta montaña y restos megalíticos.', url: 'https://es.wikiloc.com/rutas-senderismo/trilho-de-bouzas-a-fonte-fria-11003252' },
-            { name: 'Portela do Homem – Pico da Nevosa',   short: 'Portela–Nevosa',       dist: 24.4, elev: 968,  diff: 'dificil',  time: 9,   tag: 'Épica',   desc: 'Travesía hasta el techo del Parque Nacional (1546 m), pasando por Minas dos Carris. Requiere permiso del ICNF.', url: 'https://pt.wikiloc.com/trilhas-trekking/portela-do-homem-pico-da-nevosa-2401028' },
-            { name: 'Portela do Homem – Portela de Leonte', short: 'Portela–Leonte',       dist: 14,   elev: 450,  diff: 'moderada', time: 5,   tag: 'Bosque',  desc: 'Circular por los prados de montaña entre Portela do Homem y Portela de Leonte. Paisajes abiertos y ganadería salvaje.', url: 'https://es.wikiloc.com/rutas-senderismo/geres-portela-do-homem-pelos-prados-ate-portela-de-leonte-a-portela-do-homem-19533752' },
-            { name: 'Trilho Poço Azul',                     short: 'Poço Azul',            dist: 10.1, elev: 353,  diff: 'moderada', time: 3.5, tag: 'Agua',    desc: 'Ruta a la Cascata do Arado y el Poço Azul, una de las más bonitas y populares del Parque. Ideal para bañarse.', url: 'https://pt.wikiloc.com/trilhas-trekking/trilho-poco-azul-geres-113130771' },
-            { name: 'Sete Lagoas (7 Lagunas)',              short: 'Sete Lagoas',          dist: 10,   elev: 300,  diff: 'moderada', time: 3.5, tag: 'Pozas',   desc: 'Desde Xertelo hasta las 7 lagunas del río Cabril. Pozas de agua cristalina en un entorno mágico. Muy popular.', url: 'https://es.wikiloc.com/rutas-senderismo/sete-lagoas-geres-7307407' },
-            { name: 'Trilho Cidade da Calcedónia (PR1)',    short: 'Calcedónia (PR1)',     dist: 6.7,  elev: 250,  diff: 'facil',    time: 2,   tag: 'Técnica', desc: 'Sendero señalizado (PR1) que recorre la "ciudad de piedra" de Calcedónia. Formaciones graníticas espectaculares.', url: 'https://es.wikiloc.com/rutas-senderismo/trilho-da-cidade-da-calcedonia-51216566' },
-            { name: 'Trilho Pedra Bela',                    short: 'Pedra Bela',           dist: 12.5, elev: 450,  diff: 'moderada', time: 4,   tag: 'Vistas',  desc: 'Circular hasta el mirador de Pedra Bela (829 m). Paisajes variados, zona de baño y vistas panorámicas del valle.', url: 'https://www.alltrails.com/es/ruta/portugal/braga/trilho-pedra-bela' },
-            { name: 'PR3 Currais + PR10 Preguiça + Vidoal', short: 'PR3+PR10 Currais',    dist: 16,   elev: 650,  diff: 'dificil',  time: 6,   tag: 'Completa',desc: 'Combinación de los senderos PR3 (Currais) y PR10 (Preguiça) ampliado al Prado do Vidoal. Corrales y bosque autóctono.', url: 'https://es.wikiloc.com/rutas-senderismo/pnpg-pr3-tbr-currais-pr10-tbr-preguica-alargado-ao-prado-do-vidoal-231715328' },
-            { name: '7 Puentes – Mata da Albergaria',       short: '7 Puentes Albergaria', dist: 10,   elev: 300,  diff: 'moderada', time: 4,   tag: 'Historia',desc: 'Por la Geira Romana a través del bosque milenario de Mata da Albergaria. 7 puentes, cascadas y lagunas.', url: 'https://es.wikiloc.com/rutas-senderismo/por-los-7-puentes-de-mata-da-albergaria-36660792' },
-            { name: 'Lugares Mágicos da Serra do Gerês',    short: 'Lugares Mágicos',      dist: 15,   elev: 500,  diff: 'moderada', time: 6,   tag: 'Mix',     desc: 'Programa guiado por Andamento.pt: Cascatas do Arado, Poço Azul, Fenda da Calcedónia y Minas de Carris.', url: 'https://andamento.pt/lugares-magicos-da-serra-do-geres/' },
-            { name: 'Pico do Sobreiro + Altar dos Cabrões', short: 'Sobreiro+Cabrões',     dist: 10,   elev: 600,  diff: 'dificil',  time: 5,   tag: 'Épica',   desc: 'Subida exigente al Pico do Sobreiro y la formación rocosa del Altar dos Cabrões. Vistas de infarto.', url: 'https://pt.wikiloc.com/trilhas-trekking/pico-do-sobreiro-vs-altar-dos-cabroes-165037222' },
-            { name: 'Serra Amarela: Vilarinho – Louriça',   short: 'Serra Amarela',        dist: 18,   elev: 800,  diff: 'dificil',  time: 8,   tag: 'Dura',    desc: 'Travesía hasta Louriça (1361 m) por la Serra Amarela. Parte del GR34. Muy exigente, sin mucha señalización.', url: 'https://es.wikiloc.com/rutas-senderismo/serra-amarela-vilarinho-das-furnas-lourica-21322306' },
-            { name: 'Mirador de Vilouxe (Ribeira Sacra)',   short: 'Vilouxe',              dist: 4.2,  elev: 196,  diff: 'facil',    time: 1.5, tag: 'R. Sacra',desc: 'Paseo corto hasta el espectacular mirador del Cañón del Sil. Incluye capilla de Vilouxe.', url: 'https://es.wikiloc.com/rutas-senderismo/mirador-de-vilouxe-130962802' },
-            { name: 'Castro Laboreiro: Puentes y Cascada',  short: 'Castro Laboreiro',     dist: 12,   elev: 400,  diff: 'moderada', time: 4,   tag: 'Pueblos', desc: 'Puentes medievales, aldea de Pontes (inverneira), acueducto y la Cascada de Pontes. No señalizada, GPS.', url: 'https://es.wikiloc.com/rutas-senderismo/por-castro-laboreiro-puentes-aldea-y-cascada-de-pontes-78671985' },
-            { name: 'Lagoa do Marinho + Cascata Pincães',   short: 'Marinho+Pincães',      dist: 20,   elev: 800,  diff: 'dificil',  time: 9,   tag: 'Pozas',   desc: 'Ruta larga desde Pincães: laguna de Marinho, fojos de lobos, silhas de ursos y la cascada. GPS imprescindible.', url: 'https://es.wikiloc.com/rutas-senderismo/rota-da-lagoa-do-marinho-e-cascata-de-pincaes-10985932/photo-6649106' },
-            { name: 'Pincães – Cascada – Colmenar',         short: 'Pincães–Colmenar',     dist: 10,   elev: 350,  diff: 'moderada', time: 4,   tag: 'Agua',    desc: 'Circular desde Pincães pasando por la cascada y el colmenar de la Silha. Versión más asequible que la ruta larga.', url: 'https://es.wikiloc.com/rutas-senderismo/pincaes-cascada-colmenar-pincaes-13718358' },
-            { name: 'Vilarinho das Furnas',                 short: 'Vilarinho Furnas',     dist: 12,   elev: 400,  diff: 'moderada', time: 5,   tag: 'Ruinas',  desc: 'Recorrido por la aldea sumergida de Vilarinho das Furnas y su embalse. Sin señalizar, GPS necesario.', url: 'https://es.wikiloc.com/rutas-senderismo/vilarinho-das-furnas-100104049' },
+            { name: 'Trilho Bouzas a Fonte Fria',          short: 'Bouzas–Fonte Fria',   dist: 11,   elev: 500,  diff: 'moderada', time: 4,   tag: 'Montaña', desc: 'Ruta circular por el Xurés entre Bouzas y Fonte Fria. Paisajes de alta montaña y restos megalíticos.', url: 'https://es.wikiloc.com/rutas-senderismo/trilho-de-bouzas-a-fonte-fria-11003252' },
+            { name: 'Portela do Homem – Pico da Nevosa',   short: 'Portela–Nevosa',       dist: 24.4, elev: 968,  diff: 'dificil',  time: 9,   tag: 'Épica',   desc: 'Travesía hasta el techo del Parque Nacional (1546 m). Requiere permiso del ICNF.', url: 'https://pt.wikiloc.com/trilhas-trekking/portela-do-homem-pico-da-nevosa-2401028' },
+            { name: 'Portela do Homem – Portela de Leonte', short: 'Portela–Leonte',       dist: 14,   elev: 450,  diff: 'moderada', time: 5,   tag: 'Bosque',  desc: 'Circular por los prados de montaña entre Portela do Homem y Leonte. Paisajes abiertos.', url: 'https://es.wikiloc.com/rutas-senderismo/geres-portela-do-homem-pelos-prados-ate-portela-de-leonte-a-portela-do-homem-19533752' },
+            { name: 'Trilho Poço Azul',                     short: 'Poço Azul',            dist: 10.1, elev: 353,  diff: 'moderada', time: 3.5, tag: 'Agua',    desc: 'Ruta a la Cascata do Arado y el Poço Azul, una de las más populares del Parque. Ideal para bañarse.', url: 'https://pt.wikiloc.com/trilhas-trekking/trilho-poco-azul-geres-113130771' },
+            { name: 'Sete Lagoas (7 Lagunas)',              short: 'Sete Lagoas',          dist: 10,   elev: 300,  diff: 'moderada', time: 3.5, tag: 'Pozas',   desc: 'Desde Xertelo hasta las 7 lagunas del río Cabril. Pozas de agua cristalina.', url: 'https://es.wikiloc.com/rutas-senderismo/sete-lagoas-geres-7307407' },
+            { name: 'Trilho Cidade da Calcedónia (PR1)',    short: 'Calcedónia (PR1)',     dist: 6.7,  elev: 250,  diff: 'moderada', time: 2,   tag: 'Técnica', desc: 'Sendero que recorre la "ciudad de piedra" de Calcedónia. Formaciones graníticas espectaculares.', url: 'https://es.wikiloc.com/rutas-senderismo/trilho-da-cidade-da-calcedonia-51216566' },
+            { name: 'Trilho Pedra Bela',                    short: 'Pedra Bela',           dist: 12.5, elev: 450,  diff: 'moderada', time: 4,   tag: 'Vistas',  desc: 'Circular hasta el mirador de Pedra Bela (829 m). Paisajes variados y zona de baño.', url: 'https://www.alltrails.com/es/ruta/portugal/braga/trilho-pedra-bela' },
+            { name: 'PR3 Currais + PR10 Preguiça + Vidoal', short: 'PR3+PR10 Currais',    dist: 16,   elev: 650,  diff: 'dificil',  time: 6,   tag: 'Completa',desc: 'Combinación de senderos PR3 y PR10 ampliado al Prado do Vidoal. Corrales y bosque autóctono.', url: 'https://es.wikiloc.com/rutas-senderismo/pnpg-pr3-tbr-currais-pr10-tbr-preguica-alargado-ao-prado-do-vidoal-231715328' },
+            { name: '7 Puentes – Mata da Albergaria',       short: '7 Puentes Albergaria', dist: 10,   elev: 300,  diff: 'facil',    time: 4,   tag: 'Historia',desc: 'Por la Geira Romana a través del bosque milenario de Mata da Albergaria. Patrimonio y naturaleza.', url: 'https://es.wikiloc.com/rutas-senderismo/por-los-7-puentes-de-mata-da-albergaria-36660792' },
+            { name: 'Lugares Mágicos da Serra do Gerês',    short: 'Lugares Mágicos',      dist: 15,   elev: 500,  diff: 'moderada', time: 6,   tag: 'Mix',     desc: 'Programa por Cascatas do Arado, Poço Azul, Fenda da Calcedónia y Minas de Carris.', url: 'https://andamento.pt/lugares-magicos-da-serra-do-geres/' },
+            { name: 'Pico do Sobreiro + Altar dos Cabrões', short: 'Sobreiro+Cabrões',     dist: 10,   elev: 600,  diff: 'moderada', time: 5,   tag: 'Épica',   desc: 'Subida al Pico do Sobreiro y formación del Altar dos Cabrões. Vistas de infarto.', url: 'https://pt.wikiloc.com/trilhas-trekking/pico-do-sobreiro-vs-altar-dos-cabroes-165037222' },
+            { name: 'Serra Amarela: Vilarinho – Louriça',   short: 'Serra Amarela',        dist: 18,   elev: 800,  diff: 'dificil',  time: 8,   tag: 'Dura',    desc: 'Travesía hasta Louriça (1361 m) por la Serra Amarela. Muy exigente, sin mucha señalización.', url: 'https://es.wikiloc.com/rutas-senderismo/serra-amarela-vilarinho-das-furnas-lourica-21322306' },
+            { name: 'Mirador de Vilouxe (Ribeira Sacra)',   short: 'Vilouxe',              dist: 4.2,  elev: 196,  diff: 'facil',    time: 1.5, tag: 'R. Sacra',desc: 'Paseo corto hasta el espectacular mirador del Cañón del Sil. Vistas inmejorables.', url: 'https://es.wikiloc.com/rutas-senderismo/mirador-de-vilouxe-130962802' },
+            { name: 'Castro Laboreiro: Puentes y Cascada',  short: 'Castro Laboreiro',     dist: 12,   elev: 400,  diff: 'moderada', time: 4,   tag: 'Pueblos', desc: 'Puentes medievales, aldea de Pontes, acueducto y cascada. Historia y agua.', url: 'https://es.wikiloc.com/rutas-senderismo/por-castro-laboreiro-puentes-aldea-y-cascada-de-pontes-78671985' },
+            { name: 'Lagoa do Marinho + Cascata Pincães',   short: 'Marinho+Pincães',      dist: 20,   elev: 800,  diff: 'dificil',  time: 9,   tag: 'Pozas',   desc: 'Ruta larga desde Pincães: laguna de Marinho, fojos de lobos y la cascada. GPS imprescindible.', url: 'https://es.wikiloc.com/rutas-senderismo/rota-da-lagoa-do-marinho-e-cascata-de-pincaes-10985932/photo-6649106' },
+            { name: 'Pincães – Cascada – Colmenar',         short: 'Pincães–Colmenar',     dist: 10,   elev: 350,  diff: 'moderada', time: 4,   tag: 'Agua',    desc: 'Circular desde Pincães pasando por la cascada y el colmenar de la Silha. Muy recomendada.', url: 'https://es.wikiloc.com/rutas-senderismo/pincaes-cascada-colmenar-pincaes-13718358' },
+            { name: 'Vilarinho das Furnas',                 short: 'Vilarinho Furnas',     dist: 12,   elev: 400,  diff: 'moderada', time: 5,   tag: 'Ruinas',  desc: 'Recorrido por la aldea sumergida y su embalse. Paisaje melancólico y único.', url: 'https://es.wikiloc.com/rutas-senderismo/vilarinho-das-furnas-100104049' },
         ];
 
         let rutasChartInstance = null;
@@ -718,8 +722,8 @@
 
         function getDiffColor(d) {
             if (d === 'facil') return COLORS.bosque;
-            if (d === 'moderada') return COLORS.arcilla;
-            return '#D68C8C'; // Rojo pastel para difícil
+            if (d === 'moderada') return COLORS.oceano; // MODERADA EN AZUL
+            return COLORS.alerta; // DIFÍCIL EN ROJO/ALERTA
         }
         function getDiffValue(d) {
             if (d === 'facil') return 1;
@@ -732,9 +736,9 @@
             return 'Difícil';
         }
         function getDiffBgClass(d) {
-            if (d === 'facil') return 'bg-[#7D8F69]';
-            if (d === 'moderada') return 'bg-[#C98B6D]';
-            return 'bg-[#D68C8C]';
+            if (d === 'facil') return 'bg-[#7D8F69]'; // bosque
+            if (d === 'moderada') return 'bg-[#85A9D1]'; // oceano
+            return 'bg-[#D68C8C]'; // alerta
         }
         function getTagBg(tag) {
             const map = { 'Agua':'bg-blue-100 text-blue-700', 'Pozas':'bg-cyan-100 text-cyan-700', 'Épica':'bg-red-100 text-red-700', 'Bosque':'bg-green-100 text-green-700', 'Vistas':'bg-purple-100 text-purple-700', 'Técnica':'bg-orange-100 text-orange-700', 'Completa':'bg-indigo-100 text-indigo-700', 'Historia':'bg-amber-100 text-amber-700', 'Mix':'bg-pink-100 text-pink-700', 'Dura':'bg-rose-100 text-rose-700', 'R. Sacra':'bg-violet-100 text-violet-700', 'Pueblos':'bg-teal-100 text-teal-700', 'Ruinas':'bg-stone-200 text-stone-700', 'Montaña':'bg-emerald-100 text-emerald-700' };
