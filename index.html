@@ -67,7 +67,7 @@
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between items-center py-3">
                 <button onclick="showSection('home')" class="transition-opacity hover:opacity-80">
-                    <img src="ecu_viajeras.webp" alt="Ecuaciones Viajeras" class="w-auto" style="height: 5rem; border-radius: 12px;">
+                    <img src="ecu_logo.png" alt="Ecuaciones Viajeras" class="w-auto" style="height: 5rem; border-radius: 12px;">
                 </button>
                 <!-- Desktop nav -->
                 <div class="hidden md:flex items-center gap-1" id="desktop-nav">
@@ -98,10 +98,20 @@
     <!-- ==================== SECCIÓN: HOME / LANDING ==================== -->
     <section id="section-home" class="page-section">
 
-        <!-- ── Header ── -->
-        <header class="max-w-4xl mx-auto px-4 mt-12 mb-8 text-center">
-            <p class="text-arcilla font-semibold tracking-widest uppercase text-sm mb-3">2 – 5 de Abril de 2026</p>
-            <h1 class="font-anton text-5xl md:text-7xl text-bosque mb-4 tracking-wide">Gerês & Cañones del Sil</h1>
+        <!-- ── Hero Banner ── -->
+        <div class="relative w-full overflow-hidden" style="height: clamp(260px, 42vw, 480px);">
+            <img src="ecu_viajeras.webp" alt="Ecuaciones Viajeras"
+                 class="w-full h-full"
+                 style="object-fit: cover; object-position: center 50%;">
+            <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(244,239,234,0.92) 85%, #F4EFEA 100%);"></div>
+            <div class="absolute top-5 right-5 md:top-8 md:right-8 bg-bosque/80 backdrop-blur-sm text-tierra px-4 py-2 rounded-xl text-xs font-semibold tracking-widest uppercase shadow-lg">
+                2 – 5 Abril 2026
+            </div>
+        </div>
+
+        <!-- ── Título + subtítulo ── -->
+        <header class="max-w-4xl mx-auto px-4 -mt-8 mb-8 text-center relative z-10">
+            <h1 class="font-anton text-5xl md:text-7xl text-bosque mb-3 tracking-wide">Gerês & Cañones del Sil</h1>
             <p class="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto">
                 Andrea, aquí tienes toda la info del viaje organizada. Pulsa en cualquier sección para explorarla.
             </p>
