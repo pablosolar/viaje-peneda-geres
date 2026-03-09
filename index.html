@@ -67,7 +67,7 @@
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between items-center py-3">
                 <button onclick="showSection('home')" class="transition-opacity hover:opacity-80">
-                    <img src="ecu_viajeras.webp" alt="Ecuaciones Viajeras" class="h-12 w-auto" style="border-radius: 12px;">
+                    <img src="ecu_viajeras.png" alt="Ecuaciones Viajeras" class="h-12 w-auto" style="border-radius: 12px;">
                 </button>
                 <!-- Desktop nav -->
                 <div class="hidden md:flex items-center gap-1" id="desktop-nav">
@@ -99,15 +99,13 @@
     <section id="section-home" class="page-section">
 
         <!-- ── Hero Banner ── -->
-        <div class="relative w-full overflow-hidden" style="max-height: 420px;">
-            <img src="ecu_viajeras.webp" alt="Ecuaciones Viajeras"
-                 class="w-full object-cover object-center"
-                 style="max-height: 420px;">
-            <!-- Overlay degradado inferior para que la transición sea suave -->
-            <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(0,0,0,0) 30%, rgba(244,239,234,0.85) 80%, #F4EFEA 100%);"></div>
-            <!-- Overlay lateral izquierdo sutil -->
-            <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(0,0,0,0.08) 0%, transparent 50%);"></div>
-            <!-- Badge de fechas encima de la imagen -->
+        <div class="relative w-full overflow-hidden" style="height: clamp(260px, 42vw, 480px);">
+            <img src="ecu_viajeras.png" alt="Ecuaciones Viajeras"
+                 class="w-full h-full"
+                 style="object-fit: cover; object-position: center 20%;">
+            <!-- Overlay degradado inferior suave -->
+            <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(244,239,234,0.9) 85%, #F4EFEA 100%);"></div>
+            <!-- Badge de fechas -->
             <div class="absolute top-5 right-5 md:top-8 md:right-8 bg-bosque/80 backdrop-blur-sm text-tierra px-4 py-2 rounded-xl text-xs font-semibold tracking-widest uppercase shadow-lg">
                 2 – 5 Abril 2026
             </div>
