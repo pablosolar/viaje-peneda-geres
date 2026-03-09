@@ -1,0 +1,71 @@
+{
+  "general_comida": [
+    {"text": "Snacks para las rutas", "checked": false},
+    {"text": "Barritas energéticas", "checked": false},
+    {"text": "Frutos secos", "checked": false},
+    {"text": "Fruta fresca", "checked": false},
+    {"text": "Agua (cantimploras)", "checked": false}
+  ],
+  "general_farmacia": [
+    {"text": "Ibuprofeno / paracetamol", "checked": false},
+    {"text": "Tiritas y vendas", "checked": false},
+    {"text": "Crema antiséptica", "checked": false},
+    {"text": "Antihistamínico", "checked": false},
+    {"text": "Protector solar SPF50", "checked": false},
+    {"text": "Repelente de insectos", "checked": false}
+  ],
+  "pablo_ropa": [
+    {"text": "Camisetas técnicas ×3", "checked": false},
+    {"text": "Pantalón de montaña", "checked": false},
+    {"text": "Forro polar", "checked": false},
+    {"text": "Chubasquero", "checked": false},
+    {"text": "Ropa interior ×4", "checked": false},
+    {"text": "Calcetines senderismo ×3", "checked": false},
+    {"text": "Ropa casual para cenar", "checked": false},
+    {"text": "Bañador", "checked": false}
+  ],
+  "pablo_material": [
+    {"text": "Botas de montaña", "checked": false},
+    {"text": "Mochila de día 25L", "checked": false},
+    {"text": "Bastones", "checked": false},
+    {"text": "Frontal + pilas extra", "checked": false},
+    {"text": "Gafas de sol", "checked": false},
+    {"text": "Gorra / buff", "checked": false},
+    {"text": "Navaja multiusos", "checked": false}
+  ],
+  "pablo_documentos": [
+    {"text": "DNI", "checked": false},
+    {"text": "Tarjeta sanitaria", "checked": false},
+    {"text": "Tarjeta bancaria", "checked": false},
+    {"text": "Permiso ICNF (Nevosa)", "checked": false},
+    {"text": "EasyToll cargado", "checked": false},
+    {"text": "Confirmaciones alojamiento", "checked": false}
+  ],
+  "andrea_ropa": [
+    {"text": "Camisetas técnicas ×3", "checked": false},
+    {"text": "Pantalón de montaña", "checked": false},
+    {"text": "Forro polar", "checked": false},
+    {"text": "Chubasquero", "checked": false},
+    {"text": "Ropa interior ×4", "checked": false},
+    {"text": "Calcetines senderismo ×3", "checked": false},
+    {"text": "Ropa casual para cenar", "checked": false},
+    {"text": "Bañador", "checked": false}
+  ],
+  "andrea_material": [
+    {"text": "Botas de montaña", "checked": false},
+    {"text": "Mochila de día 25L", "checked": false},
+    {"text": "Bastones", "checked": false},
+    {"text": "Frontal + pilas extra", "checked": false},
+    {"text": "Gafas de sol", "checked": false},
+    {"text": "Gorra / buff", "checked": false},
+    {"text": "Navaja multiusos", "checked": false}
+  ],
+  "andrea_documentos": [
+    {"text": "DNI", "checked": false},
+    {"text": "Tarjeta sanitaria", "checked": false},
+    {"text": "Tarjeta bancaria", "checked": false},
+    {"text": "Permiso ICNF (Nevosa)", "checked": false},
+    {"text": "EasyToll cargado", "checked": false},
+    {"text": "Confirmaciones alojamiento", "checked": false}
+  ]
+}

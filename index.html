@@ -598,6 +598,10 @@
             <p class="font-semibold tracking-widest uppercase text-sm mb-2" style="color:#53a8c8;">Preparativos</p>
             <h1 class="font-anton text-4xl md:text-6xl text-bosque mb-4 tracking-wide">Maleta</h1>
             <p class="text-lg text-gray-700 max-w-2xl mx-auto">Todo lo que tenemos que llevarnos. Marca lo que ya tienes listo — se guarda automáticamente.</p>
+            <div class="flex items-center justify-center gap-3 mt-2">
+                <p id="maleta-sync-status" class="text-xs font-semibold" style="color:#9ca3af;">⟳ Cargando…</p>
+                <button onclick="promptGHToken(); loadMaletaFromGitHub();" class="text-xs text-gray-400 hover:text-gray-600 underline">🔑 Token</button>
+            </div>
         </header>
 
         <!-- Tabs de personas -->
@@ -773,17 +777,26 @@
             }
         }
 
-        // --- MALETA: CHECKLISTS CON PERSISTENCIA ---
-        const MALETA_DEFAULTS = {
-            'general_comida':     ['Snacks para las rutas', 'Barritas energéticas', 'Frutos secos', 'Fruta fresca', 'Agua (cantimploras)'],
-            'general_farmacia':   ['Ibuprofeno / paracetamol', 'Tiritas y vendas', 'Crema antiséptica', 'Antihistamínico', 'Protector solar SPF50', 'Repelente de insectos'],
-            'pablo_ropa':         ['Camisetas técnicas ×3', 'Pantalón de montaña', 'Forro polar', 'Chubasquero', 'Ropa interior ×4', 'Calcetines senderismo ×3', 'Ropa casual para cenar', 'Bañador'],
-            'pablo_material':     ['Botas de montaña', 'Mochila de día 25L', 'Bastones', 'Frontal + pilas extra', 'Gafas de sol', 'Gorra / buff', 'Navaja multiusos'],
-            'pablo_documentos':   ['DNI', 'Tarjeta sanitaria', 'Tarjeta bancaria', 'Permiso ICNF (Nevosa)', 'EasyToll cargado', 'Confirmaciones alojamiento'],
-            'andrea_ropa':        ['Camisetas técnicas ×3', 'Pantalón de montaña', 'Forro polar', 'Chubasquero', 'Ropa interior ×4', 'Calcetines senderismo ×3', 'Ropa casual para cenar', 'Bañador'],
-            'andrea_material':    ['Botas de montaña', 'Mochila de día 25L', 'Bastones', 'Frontal + pilas extra', 'Gafas de sol', 'Gorra / buff', 'Navaja multiusos'],
-            'andrea_documentos':  ['DNI', 'Tarjeta sanitaria', 'Tarjeta bancaria', 'Permiso ICNF (Nevosa)', 'EasyToll cargado', 'Confirmaciones alojamiento'],
-        };
+        // --- MALETA: SYNC CON GITHUB ---
+        const GH_REPO = 'pablosolar/viaje-peneda-geres';
+        const GH_FILE = 'maleta-data.json';
+        const GH_API  = `https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}`;
+
+        function getGHToken() {
+            return localStorage.getItem('maleta_gh_token') || '';
+        }
+        function promptGHToken() {
+            const existing = getGHToken();
+            const msg = existing
+                ? 'Token actual guardado. Introduce uno nuevo para cambiarlo (deja vacío para mantenerlo):'
+                : '🔑 Introduce tu GitHub Personal Access Token para sincronizar la maleta:';
+            const token = window.prompt(msg, '');
+            if (token && token.trim()) {
+                localStorage.setItem('maleta_gh_token', token.trim());
+                return token.trim();
+            }
+            return existing;
+        }
 
         const MALETA_META = {
             'general_comida':    { title: '🍎 Comida & Snacks' },
@@ -796,38 +809,105 @@
             'andrea_documentos': { title: '📄 Documentos' },
         };
 
-        function getMaletaItems(key) {
-            const stored = localStorage.getItem('maleta_' + key);
-            if (stored) return JSON.parse(stored);
-            return MALETA_DEFAULTS[key].map(t => ({ text: t, checked: false }));
+        let maletaData = {};
+        let maletaSha  = null;
+        let saveTimer  = null;
+
+        function syncStatus(state) {
+            const el = document.getElementById('maleta-sync-status');
+            if (!el) return;
+            const s = { loading: ['⟳ Cargando…','#9ca3af'], saving: ['⟳ Guardando…','#9ca3af'],
+                        ok: ['✓ Sincronizado','#7D8F69'], offline: ['⚡ Modo local','#E3B87B'], error: ['✗ Error al guardar','#D88C9A'] };
+            const [text, color] = s[state] || s.ok;
+            el.textContent = text; el.style.color = color;
         }
 
-        function saveMaletaItems(key, items) {
-            localStorage.setItem('maleta_' + key, JSON.stringify(items));
+        async function loadMaletaFromGitHub() {
+            let token = getGHToken();
+            if (!token) token = promptGHToken();
+            if (!token) { syncStatus('offline'); maletaData = buildDefaultMaletaData(); renderAllChecklists(); return; }
+            syncStatus('loading');
+            try {
+                const res = await fetch(GH_API, { headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' } });
+                if (res.ok) {
+                    const data = await res.json();
+                    maletaSha  = data.sha;
+                    maletaData = JSON.parse(decodeURIComponent(escape(atob(data.content.replace(/\n/g,'')))));
+                    syncStatus('ok');
+                } else if (res.status === 404) {
+                    maletaData = buildDefaultMaletaData();
+                    await pushMaletaToGitHub();
+                } else { throw new Error(res.status); }
+            } catch(e) {
+                const local = localStorage.getItem('maleta_data');
+                maletaData = local ? JSON.parse(local) : buildDefaultMaletaData();
+                syncStatus('offline');
+            }
+            renderAllChecklists();
+        }
+
+        async function pushMaletaToGitHub() {
+            const token = getGHToken();
+            if (!token) { localStorage.setItem('maleta_data', JSON.stringify(maletaData)); syncStatus('offline'); return; }
+            syncStatus('saving');
+            try {
+                const content = btoa(unescape(encodeURIComponent(JSON.stringify(maletaData, null, 2))));
+                const body = { message: 'Actualizar maleta', content, ...(maletaSha && { sha: maletaSha }) };
+                const res = await fetch(GH_API, { method: 'PUT',
+                    headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body) });
+                if (res.ok) {
+                    const data = await res.json();
+                    maletaSha = data.content.sha;
+                    syncStatus('ok');
+                } else if (res.status === 409) {
+                    // Conflict: reload and retry
+                    await loadMaletaFromGitHub();
+                } else { throw new Error(res.status); }
+            } catch(e) {
+                localStorage.setItem('maleta_data', JSON.stringify(maletaData));
+                syncStatus('offline');
+            }
+        }
+
+        function scheduleSave() {
+            clearTimeout(saveTimer);
+            saveTimer = setTimeout(pushMaletaToGitHub, 1500);
+        }
+
+        function buildDefaultMaletaData() {
+            return {
+                general_comida:    [{text:'Snacks para las rutas',checked:false},{text:'Barritas energéticas',checked:false},{text:'Frutos secos',checked:false},{text:'Fruta fresca',checked:false},{text:'Agua (cantimploras)',checked:false}],
+                general_farmacia:  [{text:'Ibuprofeno / paracetamol',checked:false},{text:'Tiritas y vendas',checked:false},{text:'Crema antiséptica',checked:false},{text:'Antihistamínico',checked:false},{text:'Protector solar SPF50',checked:false},{text:'Repelente de insectos',checked:false}],
+                pablo_ropa:        [{text:'Camisetas técnicas ×3',checked:false},{text:'Pantalón de montaña',checked:false},{text:'Forro polar',checked:false},{text:'Chubasquero',checked:false},{text:'Ropa interior ×4',checked:false},{text:'Calcetines senderismo ×3',checked:false},{text:'Ropa casual para cenar',checked:false},{text:'Bañador',checked:false}],
+                pablo_material:    [{text:'Botas de montaña',checked:false},{text:'Mochila de día 25L',checked:false},{text:'Bastones',checked:false},{text:'Frontal + pilas extra',checked:false},{text:'Gafas de sol',checked:false},{text:'Gorra / buff',checked:false},{text:'Navaja multiusos',checked:false}],
+                pablo_documentos:  [{text:'DNI',checked:false},{text:'Tarjeta sanitaria',checked:false},{text:'Tarjeta bancaria',checked:false},{text:'Permiso ICNF (Nevosa)',checked:false},{text:'EasyToll cargado',checked:false},{text:'Confirmaciones alojamiento',checked:false}],
+                andrea_ropa:       [{text:'Camisetas técnicas ×3',checked:false},{text:'Pantalón de montaña',checked:false},{text:'Forro polar',checked:false},{text:'Chubasquero',checked:false},{text:'Ropa interior ×4',checked:false},{text:'Calcetines senderismo ×3',checked:false},{text:'Ropa casual para cenar',checked:false},{text:'Bañador',checked:false}],
+                andrea_material:   [{text:'Botas de montaña',checked:false},{text:'Mochila de día 25L',checked:false},{text:'Bastones',checked:false},{text:'Frontal + pilas extra',checked:false},{text:'Gafas de sol',checked:false},{text:'Gorra / buff',checked:false},{text:'Navaja multiusos',checked:false}],
+                andrea_documentos: [{text:'DNI',checked:false},{text:'Tarjeta sanitaria',checked:false},{text:'Tarjeta bancaria',checked:false},{text:'Permiso ICNF (Nevosa)',checked:false},{text:'EasyToll cargado',checked:false},{text:'Confirmaciones alojamiento',checked:false}],
+            };
         }
 
         function renderChecklist(key) {
             const container = document.getElementById('checklist-' + key);
             if (!container) return;
-            const items = getMaletaItems(key);
-            const meta = MALETA_META[key];
-            const done = items.filter(i => i.checked).length;
-
+            const items = maletaData[key] || [];
+            const meta  = MALETA_META[key];
+            const done  = items.filter(i => i.checked).length;
             container.innerHTML = `
                 <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
                     <div class="flex items-center justify-between mb-3">
                         <h3 class="font-anton tracking-wider text-lg text-bosque">${meta.title}</h3>
                         <span class="text-xs font-semibold px-2 py-0.5 rounded-full" style="background:rgba(83,168,200,0.15);color:#53a8c8;">${done}/${items.length}</span>
                     </div>
-                    <ul class="space-y-0.5 mb-4" id="list-${key}">
+                    <ul class="space-y-0.5 mb-4">
                         ${items.map((item, i) => `
                             <li class="checklist-item">
                                 <input type="checkbox" id="chk-${key}-${i}" ${item.checked ? 'checked' : ''}
                                     onchange="toggleMaletaItem('${key}', ${i})">
                                 <label for="chk-${key}-${i}" class="${item.checked ? 'done' : ''}">${item.text}</label>
                                 <button class="del-btn" onclick="deleteMaletaItem('${key}', ${i})" title="Eliminar">✕</button>
-                            </li>
-                        `).join('')}
+                            </li>`).join('')}
                     </ul>
                     <div class="flex gap-2">
                         <input type="text" id="input-${key}" placeholder="Añadir elemento…"
@@ -840,28 +920,31 @@
                 </div>`;
         }
 
+        function renderAllChecklists() {
+            Object.keys(MALETA_META).forEach(key => renderChecklist(key));
+        }
+
         function toggleMaletaItem(key, index) {
-            const items = getMaletaItems(key);
-            items[index].checked = !items[index].checked;
-            saveMaletaItems(key, items);
+            maletaData[key][index].checked = !maletaData[key][index].checked;
             renderChecklist(key);
+            scheduleSave();
         }
 
         function deleteMaletaItem(key, index) {
-            const items = getMaletaItems(key);
-            items.splice(index, 1);
-            saveMaletaItems(key, items);
+            maletaData[key].splice(index, 1);
             renderChecklist(key);
+            scheduleSave();
         }
 
         function addMaletaItem(key) {
             const input = document.getElementById('input-' + key);
-            const text = input.value.trim();
+            const text  = input.value.trim();
             if (!text) return;
-            const items = getMaletaItems(key);
-            items.push({ text, checked: false });
-            saveMaletaItems(key, items);
+            if (!maletaData[key]) maletaData[key] = [];
+            maletaData[key].push({ text, checked: false });
+            input.value = '';
             renderChecklist(key);
+            scheduleSave();
         }
 
         function showMaletaTab(tab) {
@@ -872,7 +955,7 @@
         }
 
         function initMaleta() {
-            Object.keys(MALETA_META).forEach(key => renderChecklist(key));
+            loadMaletaFromGitHub();
             showMaletaTab('general');
         }
 
