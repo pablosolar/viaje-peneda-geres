@@ -769,11 +769,10 @@
                 card.innerHTML = `
                     <div class="p-5">
                         <div class="flex justify-between items-start mb-3">
-                            <div class="flex flex-col gap-1">
-                                <span class="px-2.5 py-1 ${getTagBg(r.tag)} text-[10px] uppercase font-bold rounded-full w-fit">${r.tag}</span>
-                                ${r.circular ? '<span class="text-xs">🔄 Circular</span>' : '<span class="text-xs">➡️ Lineal</span>'}
-                            </div>
-                            <span class="text-xs font-bold px-2 py-0.5 rounded-full text-white ${getDiffBgClass(r.diff)}">${getDiffLabel(r.diff)}</span>
+                            <span class="px-2.5 py-1 ${getTagBg(r.tag)} text-[10px] uppercase font-bold rounded-full w-fit">${r.tag}</span>
+                            <span class="text-xs font-bold px-2 py-0.5 rounded-full text-white ${getDiffBgClass(r.diff)}">
+                                ${r.circular ? '🔄' : '➡️'} ${getDiffLabel(r.diff)}
+                            </span>
                         </div>
                         <h3 class="font-serif font-bold text-base text-bosque mb-2 leading-tight" style="min-height:2.5rem;">${r.name}</h3>
                         <div class="flex items-center gap-4 mb-3 text-sm text-gray-600">
